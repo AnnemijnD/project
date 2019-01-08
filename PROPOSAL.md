@@ -8,7 +8,6 @@ In verschillende debatten rondom studeren, denk ik hierbij aan de man/vrouw verh
 ## Oplossing
 Ik wil voor mijn project verschillende onderdelen van een dataset over aanmeldingen voor studies visualiseren zodat deze makkelijker te vergelijken zijn.
 
-<!-- Voor schetsen: zie pagina 3 & 4. -->
 
 ## Main features
 ### MVP
@@ -23,6 +22,10 @@ Optioneel
 2)	Een animatie in de kaart van de veranderingen in aanmeldingen
 3)	De studies indelen in afla/beta/gamma en een vergelijkingen tussen aanmeldingen van mannen een vrouwen maken.
 
+Markup : 1. A numbered list
+              1. A nested numbered list
+              2. Which is numbered
+          2. Which is numbered
 
 ### schets
 ![Alt text](https://user-images.githubusercontent.com/43959303/50844788-cb045d00-136b-11e9-9276-da8a5a1f419f.png)
