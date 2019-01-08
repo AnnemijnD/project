@@ -41,3 +41,5 @@ wanneer de studifinanciering stopte.
 ## Plugins
 ### D3
 * Tip
+
+### Bootstrap
