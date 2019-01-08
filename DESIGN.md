@@ -15,7 +15,8 @@ Provincie | Gemeentenaam | Instellingsnaam | Opleidingsvorm | Opleidingsnaam | 2
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 Noord-Holland | Amsterdam | UvA | Voltijd | Biomedische wetenschappen | 50 | 100 | 53 | 112 | 72 | 134 | 60 | 92 | 98 | 114|
 
-
+Als het mogelijk is per opleiding een cijfer toe te voegen van de data van studiekeuze123.nl,
+zal dat worden gedaan per jaar.
 
 ## Diagram
 
