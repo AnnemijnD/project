@@ -22,10 +22,7 @@ Optioneel
 2)	Een animatie in de kaart van de veranderingen in aanmeldingen
 3)	De studies indelen in afla/beta/gamma en een vergelijkingen tussen aanmeldingen van mannen een vrouwen maken.
 
-Markup : 1. A numbered list
-              1. A nested numbered list
-              2. Which is numbered
-          2. Which is numbered
+
 
 ### schets
 ![Alt text](https://user-images.githubusercontent.com/43959303/50844788-cb045d00-136b-11e9-9276-da8a5a1f419f.png)
