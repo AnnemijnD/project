@@ -24,4 +24,8 @@ De gebruiker kan zelf de diagrammen verwijderen.
 ### Lijngrafiek
 De gebruiker kan een opleiding kiezen, vervolgens wordt een lijndiagram weergegeven
 welke de eerstejaarsstudenten over de jaren laat zien. Daarbij zal worden aangegeven
-wanneer de studifinanciering stopte. 
+wanneer de studifinanciering stopte.
+
+## Plugins
+### D3
+* Tip
