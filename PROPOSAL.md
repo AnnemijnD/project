@@ -24,7 +24,9 @@ Optioneel
 3)	De studies indelen in afla/beta/gamma en een vergelijkingen tussen aanmeldingen van mannen een vrouwen maken.
 
 
-
+### schets
+![Alt text] (https://user-images.githubusercontent.com/43959303/50844788-cb045d00-136b-11e9-9276-da8a5a1f419f.png)
+![Alt text](https://user-images.githubusercontent.com/43959303/50844819-d9527900-136b-11e9-9d88-07e7dfaa18ee.png)
 
 ## Prerequisites
 -	https://www.duo.nl/open_onderwijsdata/databestanden/ho/ingeschreven/wo-ingeschr/ (twijfel tussen alleen WO of ook HBO)
