@@ -28,8 +28,11 @@ def convert_csv_json():
 
     combine_dict = {"": []}
     for i in range(len(rows) - 1, -1, -1):
+        if not rows[i]["SOORT INSTELLING"] == "reguliere inst.":
+            print(rows[i])
         if not rows[i]["TYPE HOGER ONDERWIJS"] == "bachelor":
             del rows[i]
+
 
 
 

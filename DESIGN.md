@@ -11,11 +11,11 @@ en jaren?
 Het huidige bestand is een CSV file. Er zal een json worden gecreeërd waarbij de
 data als volgt is geordend:
 
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+Provincie | Gemeentenaam | Instellingsnaam | Opleidingsvorm | Opleidingsnaam | 2013 Man | 2013 Vrouw | 2014 Man | 2014 Vrouw | 2015 Man | 2015 Vrouw | 2016 Man | 2016 Vrouw | 2017 Man | 2017 Vrouw |
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
+Noord-Holland | Amsterdam | UvA | Voltijd | Biomedische wetenschappen | 50 | 100 | 53 | 112 | 72 | 134 | 60 | 92 | 98 | 114|
 
-
+PROVINCIE;GEMEENTENUMMER;GEMEENTENAAM;SOORT INSTELLING;TYPE HOGER ONDERWIJS;BRIN NUMMER ACTUEEL;INSTELLINGSNAAM ACTUEEL;CROHO ONDERDEEL;CROHO SUBONDERDEEL;OPLEIDINGSCODE ACTUEEL;OPLEIDINGSNAAM ACTUEEL;OPLEIDINGSVORM;OPLEIDINGSFASE ACTUEEL;2013 MAN;2013 VROUW;2014 MAN;2014 VROUW;2015 MAN;2015 VROUW;2016 MAN;2016 VROUW;2017 MAN;2017 VROUW;
 
 ## Diagram
 
