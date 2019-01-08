@@ -22,10 +22,12 @@ Optioneel
 2)	Een animatie in de kaart van de veranderingen in aanmeldingen
 3)	De studies indelen in afla/beta/gamma en een vergelijkingen tussen aanmeldingen van mannen een vrouwen maken.
 
-* Bullet list
-              * Nested bullet
-                  * Sub-nested bullet etc
-          * Bullet list item 2
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
 
 ### Schets
 ![Alt text](https://user-images.githubusercontent.com/43959303/50844788-cb045d00-136b-11e9-9276-da8a5a1f419f.png)
