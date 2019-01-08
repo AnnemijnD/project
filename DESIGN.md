@@ -21,7 +21,7 @@ zal dat worden gedaan per jaar.
 ## Diagram
 
 ![Alt text](https://user-images.githubusercontent.com/43959303/50842970-216f9c80-1368-11e9-899a-c9e31f7e81bc.png)
-![Alt text](https://user-images.githubusercontent.com/43959303/50844788-cb045d00-136b-11e9-9276-da8a5a1f419f.png)
+
 ## Componenten
 
 ### Kaart Nederland
