@@ -2,9 +2,20 @@
 Hoe zijn de eerstejaarsaanmeldingen verdeeld over verschillende universiteiten
 en jaren?
 
-## Bron data
+## Data
+### Bron
 -	DUO (https://www.duo.nl/open_onderwijsdata/databestanden/ho/ingeschreven/wo-ingeschr/ingeschrevenen-wo3.jsp). Csv is gedownload.
 -	Eventueel: API studiekeuze123.nl. Aanvraagformulier is verzonden.
+
+### Preprocessen
+Het huidige bestand is een CSV file. Er zal een json worden gecreeërd waarbij de
+data als volgt is geordend:
+
+Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+
+
 
 ## Diagram
 
