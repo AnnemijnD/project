@@ -354,7 +354,8 @@ function barChart() {
           .range([0, width]);
 
       // set svg
-      var svg = d3.select('svg')
+      var svg = d3.select("body").append("div")
+          .append('svg')
           .attr("width", svgWidth)
           .attr("height", svgHeight)
         .append("g")
