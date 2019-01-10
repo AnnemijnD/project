@@ -121,19 +121,21 @@ function createHeatMap(dataMap) {
       console.log("hoi")
     })
 
-    dataset = [[4.295654296875,
-          52.10650519075632]]
+    dataset = [[6.558837890625,
+          53.216723950863425]]
+
+
 
     var circle = svg.selectAll("circle")
                       .data(dataset)
                       .enter()
                       .append("circle")
                       .attr("cx", function(d) {
-                        console.log(d[0])
-                        return 230;
+
+                        return 274;
                       })
                       .attr("cy", function(d) {
-                        return 330;
+                        return 190;
                       })
                       // // .scale([ width*10])
                       .attr("id", "name")
@@ -232,8 +234,227 @@ function createHeatMap(dataMap) {
     //  .attr("y", 480);
 
     // set standard bargraph to the Netherlands
+    var graph = lineGraph()
 
 };
 
+function circleXScale(x) {
+
+  var scaled = ((4.910888671875 - x) / 0.01205581124491)
+
+  return 279 - scaled  // The function returns the product of p1 and p2
+}
+
+function circleYScale(y){
+  var scaled = ((52.3789525300026 - y) / 0.00708684141057)
+
+  return 288 + scaled
+
+}
+
+function lineGraph(){
+  var margin = {top: 50, right: 50, bottom: 50, left: 50}
+  , width = window.innerWidth - margin.left - margin.right // Use the window's width
+  , height = window.innerHeight - margin.top - margin.bottom; // Use the window's height
+
+// The number of datapoints
+var n = 21;
+
+// 5. X scale will use the index of our data
+var xScale = d3.scaleLinear()
+    .domain([0, n-1]) // input
+    .range([0, width]); // output
+
+// 6. Y scale will use the randomly generate number
+var yScale = d3.scaleLinear()
+    .domain([0, 1]) // input
+    .range([height, 0]); // output
+
+// 7. d3's line generator
+var line = d3.line()
+    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.y); }) // set the y values for the line generator
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+// 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
+var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
+
+// 1. Add the SVG to the page and employ #2
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// 3. Call the x axis in a group tag
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+
+// 4. Call the y axis in a group tag
+svg.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+// 9. Append the path, bind the data, and call the line generator
+svg.append("path")
+    .datum(dataset) // 10. Binds data to the line
+    .attr("class", "line") // Assign a class for styling
+    .attr("d", line); // 11. Calls the line generator
+
+// 12. Appends a circle for each datapoint
+svg.selectAll(".dot")
+    .data(dataset)
+  .enter().append("circle") // Uses the enter().append() method
+    .attr("class", "dot") // Assign a class for styling
+    .attr("cx", function(d, i) { return xScale(i) })
+    .attr("cy", function(d) { return yScale(d.y) })
+    .attr("r", 5)
+      .on("mouseover", function(a, b, c) {
+  			console.log(a)
+        this.attr('class', 'focus')
+		})
+      .on("mouseout", function() {  })
+
+      var barChartVar = barChart()
+
+}
+
+function barChart() {
+  // load data for x and y axis
+  var data_lev = []
+  var data_pers = []
+  d3.json("pers_exp.json").then(function(root) {
+
+        root.forEach(function(element) {
+            if (parseInt(element["1-Personele exploitatie"]) > 2){
+
+            data_pers.push(parseInt(element["1-Personele exploitatie"]));
+            data_lev.push((element["Leveranciers"]));
+        };
+    })
+
+      // create SVG
+      var svgWidth = 800, svgHeight = 500, barPadding = 5;
+      var margin = { top: 150, right: 0, bottom: 50, left: 80};
+      var width = svgWidth - margin.left - margin.right;
+      var height = svgHeight - margin.top - margin.bottom;
+      var barWidth = (width / data_pers.length);
+
+
+      // set scales
+      var yScale = d3.scaleLinear()
+          .domain([0, d3.max(data_pers)])
+          .range([height, 0]);
+
+
+      var xScale = d3.scaleBand()
+          .domain(data_lev)
+          .range([0, width]);
+
+      // set svg
+      var svg = d3.select('svg')
+          .attr("width", svgWidth)
+          .attr("height", svgHeight)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.bottom + ")");
+
+      // create tooltip, source: https://bl.ocks.org/alandunning/274bf248fd0f362d64674920e85c1eb7
+      var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+
+      // creat right axes
+      svg.append("g")
+        .attr("class", "x axis")
+        .attr('transform', "translate(0," + height + ")")
+        .call(d3.axisBottom(xScale)
+              .ticks(data_lev.length))
+
+        .selectAll("text")
+          .style("font-size", "6px")
+          .style("text-anchor", "end")
+          .attr("dx", "-.7em")
+          .attr("dy", ".14em")
+          .attr("transform", "translate(0, 0)rotate(-45)")
+
+
+    // title
+    svg.append("text")
+        .attr("y", -margin.bottom)
+        .attr("x",width/2)
+        .attr("dy", "2em")
+        .style("text-anchor", "middle")
+        .style("font-size", "20px")
+        .text("Uitgaven personele exploitatie overheid 2014")
+
+      // text label for the y axis
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 10-margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "2em")
+        .style("text-anchor", "middle")
+        .text("Uitgaven in Staffels")
+
+
+    // text label for the x axis
+    svg.append("text")
+        .attr("y", svgWidth/2)
+        .attr("x", width/2)
+        .attr("dy", "2em")
+        .style("text-anchor", "middle")
+        .text("Leveranciers")
+
+
+      // create right axes
+      svg.append("g")
+        .attr("class", "y axis")
+        .attr('transform', "translate(0," + 0 +")")
+        .call(d3.axisLeft(yScale));
+
+
+    // make barchart
+    var barChart = svg.selectAll("rect")
+          .data(data_pers)
+          .enter()
+          .append("rect")
+          .attr("class", "bar")
+          .attr("y", function (d) {
+                    return yScale(d)
+          })
+          .attr("height", function(d) {
+            return height - yScale(d);
+          })
+          .attr("width", barWidth - barPadding)
+          .attr("transform", function (d,i) {
+            var translate = [barWidth * i, 0];
+            return "translate(" + translate + ")"})
+          .on('mouseover', function(d) {
+
+            // set tooltip
+            tooltip
+              .style("left", d3.event.pageX - 20 + "px")
+              .style("top", d3.event.pageY - 70 + "px")
+              .style("display", "inline-block")
+              .html(d);
+
+            // make the chart diffently colored when mouse is on it
+            var self = this;
+            d3.selectAll(".bar").filter(function() {
+              return self!=this;
+            }).transition()
+            .style("opacity", .5)
+
+
+          })
+          .on("mouseout", function(d) {
+            d3.selectAll(".bar")
+            .transition()
+            .style("opacity", 5);
+
+            tooltip.style("display", "none");
+          });
+      });
+}
 
 }
