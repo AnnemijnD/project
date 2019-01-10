@@ -20,9 +20,10 @@ function onload(){
                 height = 700 - margin.top - margin.bottom;
 
     // titles
-    var title = d3.select("body")
+    var title = d3.select(".container")
+
                 .append("h1")
-                .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland in 201? ");
+                .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland in 201?");
 
     // create map
     var path = d3.geoPath();
@@ -32,7 +33,7 @@ function onload(){
                 .append("div")
                 .attr("class", "row")
                 .append("div")
-                .attr("class", "col-xs-6")
+                .attr("class", "col-sm-6")
                 .attr("id", "map")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
@@ -287,7 +288,7 @@ var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() }
 // 1. Add the SVG to the page and employ #2
 var svg = d3.select('.row')
               .append("div")
-            .attr("class","col-xs-6")
+            .attr("class","col-sm-6")
             .attr("id", "line")
             .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -395,7 +396,7 @@ function barChart() {
         .attr("dy", "2em")
         .style("text-anchor", "middle")
         .style("font-size", "20px")
-        .text("Uitgaven personele exploitatie overheid 2014")
+        .text("Aanmeldingen eerstejaarsstudenten bij [opleiding] aan [instituut] in [jaar]")
 
       // text label for the y axis
     svg.append("text")
@@ -404,7 +405,7 @@ function barChart() {
         .attr("x",0 - (height / 2))
         .attr("dy", "2em")
         .style("text-anchor", "middle")
-        .text("Uitgaven in Staffels")
+        .text("Aantal studenten")
 
 
     // text label for the x axis
@@ -413,7 +414,7 @@ function barChart() {
         .attr("x", width/2)
         .attr("dy", "2em")
         .style("text-anchor", "middle")
-        .text("Leveranciers")
+        .text("[opleiding]")
 
 
       // create right axes
