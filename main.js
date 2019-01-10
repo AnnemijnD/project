@@ -3,7 +3,11 @@
 // 11149272
 
 function onload(){
-
+    d3.select("button")
+    .on("click", function(d){
+      var e = document.getElementById("ddlViewBy");
+      var strUser = e.options[e.selectedIndex].text
+      console.log(strUser);})
     var format = d3.format(",");
 
     // Set tooltips
