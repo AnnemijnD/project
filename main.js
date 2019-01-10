@@ -29,27 +29,27 @@ function onload(){
 
     // make svg
     var svg = d3.select(".container")
-
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
-                .append('g')
-                .attr('class', 'map')
+                // .append('g')
+                // .attr('class', 'map')
 
 
     var projection = d3.geoMercator()
                       .center([ 5, 52 ])
                       .translate([ width/2, height/2])
-                      .scale([ width/2 ]);
+                      .scale([ width*10]);
 
     var path = d3.geoPath().projection(projection);
 
-    svg.call(tip);
+    // svg.call(tip);
 
     // load data
-    var worldMap = "world_countries.json"
+    var ned = "nederland.json"
 
-    var requests = [d3.json(worldMap)];
+    var requests = [d3.json(ned)];
+
 
 
     Promise.all(requests).then(function(response) {
@@ -82,7 +82,7 @@ function createHeatMap(dataMap) {
     // fill map with the right color
     d3.select('svg')
     .append("g")
-    .attr("class", "countries")
+    .attr("class", "provincies")
     .selectAll("path")
     .data(dataMap.features)
     .enter().append("path")
@@ -92,6 +92,8 @@ function createHeatMap(dataMap) {
     .style('stroke', 'white')
     .style('stroke-width', 1.5)
     .style("opacity",0.8)
+    .style("position", "relative")
+    .style('z-index', "-1")
 
     // tooltips
     .style("stroke","white")
@@ -118,6 +120,31 @@ function createHeatMap(dataMap) {
     .on("click", function(d){
       console.log("hoi")
     })
+
+    dataset = [[4.295654296875,
+          52.10650519075632]]
+
+    var circle = svg.selectAll("circle")
+                      .data(dataset)
+                      .enter()
+                      .append("circle")
+                      .attr("cx", function(d) {
+                        console.log(d[0])
+                        return 230;
+                      })
+                      .attr("cy", function(d) {
+                        return 330;
+                      })
+                      // // .scale([ width*10])
+                      .attr("id", "name")
+                      .attr("r", 4)
+                      .attr("class", "circle")
+                      .style("position", "relative")
+                      .style("z-index", "1000")
+                      .style("fill", "red");
+
+
+
     //
     // // width and height of legendbar
     // var w = 300, h = 50;

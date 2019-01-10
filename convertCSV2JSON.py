@@ -36,9 +36,6 @@ def convert_csv_json():
 
 
 
-
-
-
     # write jsonfile
     output = json.dumps(rows)
     out_file.write(output)
