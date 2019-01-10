@@ -29,6 +29,11 @@ function onload(){
 
     // make svg
     var svg = d3.select(".container")
+                .append("div")
+                .attr("class", "row")
+                .append("div")
+                .attr("class", "col-xs-6")
+                .attr("id", "map")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
@@ -254,8 +259,8 @@ function circleYScale(y){
 
 function lineGraph(){
   var margin = {top: 50, right: 50, bottom: 50, left: 50}
-  , width = window.innerWidth - margin.left - margin.right // Use the window's width
-  , height = window.innerHeight - margin.top - margin.bottom; // Use the window's height
+  , width = 600 - margin.left - margin.right // Use the window's width
+  , height = 400 - margin.top - margin.bottom; // Use the window's height
 
 // The number of datapoints
 var n = 21;
@@ -280,7 +285,11 @@ var line = d3.line()
 var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
 
 // 1. Add the SVG to the page and employ #2
-var svg = d3.select("body").append("svg")
+var svg = d3.select('.row')
+              .append("div")
+            .attr("class","col-xs-6")
+            .attr("id", "line")
+            .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
