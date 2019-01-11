@@ -20,19 +20,24 @@ def convert_csv_json():
     # write rows
     reader = csv.DictReader(in_file, delimiter=';')
     rows = [row for row in reader]
-    print(rows[1048])
+
     # for i in range(len(rows)):
     #     # print(i)
     #     if not rows[i]["TYPE HOGER ONDERWIJS"] == "bachelor":
     #         del rows[i]
 
+    steden = []
     combine_dict = {"": []}
     for i in range(len(rows) - 1, -1, -1):
+        if rows[i]["GEMEENTENAAM"] not in steden:
+            steden.append(rows[i]["GEMEENTENAAM"])
         if not rows[i]["SOORT INSTELLING"] == "reguliere inst.":
             print(rows[i])
         if not rows[i]["TYPE HOGER ONDERWIJS"] == "bachelor":
             del rows[i]
 
+
+    print(steden)
 
 
 

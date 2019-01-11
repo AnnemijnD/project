@@ -1,13 +1,17 @@
-// Script for the linked.html file. Part of linked views assignment
+// Script for the index.html file. Part of end project
 // Annemijn Dijkhuis
 // 11149272
 
 function onload(){
-    d3.select("button")
-    .on("click", function(d){
-      var e = document.getElementById("ddlViewBy");
-      var strUser = e.options[e.selectedIndex].text
-      console.log(strUser);})
+    // d3.select("button")
+    // .on("click", function(d){
+    //   console.log(strUser);})
+  //   d3.select('#dropdown li').on('click', function(){
+  //     var a = $(this).val();
+  //     console.log(a)
+  // });
+
+
     var format = d3.format(",");
 
     // Set tooltips
@@ -15,7 +19,7 @@ function onload(){
                 .attr('class', 'd3-tip')
                 .offset([-10, 0])
                 .html(function(d) {
-                  return "<strong>Country: </strong><span class='details'>" + "<br></span>" + "<strong>People working in bioeconomics: </strong><span class='details'>" + "</span>";
+                  return "<strong>Stad: </strong><span class='details'>" + "<br></span>" + "<strong>Aantal studenten: </strong><span class='details'>" + "</span>";
                 })
 
     // set margins
@@ -37,7 +41,7 @@ function onload(){
                 .append("div")
                 .attr("class", "row")
                 .append("div")
-                .attr("class", "col-sm-8")
+                .attr("class", "col-sm-7")
                 .attr("id", "map")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
@@ -51,6 +55,7 @@ function onload(){
                       .translate([ width/2, height/2])
                       .scale([ width*10]);
 
+
     var path = d3.geoPath().projection(projection);
 
     // svg.call(tip);
@@ -59,6 +64,8 @@ function onload(){
     var ned = "nederland.json"
 
     var requests = [d3.json(ned)];
+
+    var test = test()
 
 
 
@@ -73,14 +80,17 @@ function createHeatMap(dataMap) {
 
     var dataById = {};
 
+    var dict = {"Maastricht": 200, "Amsterdam": 1000, "Groningen": 500, "Leiden": 400}
     // find data of countries
+    // dataMap.features.forEach(function(d){console.log(d['properties']['name'])})
     dataMap.features.forEach(function(d){ d.total = dataById[d.properties['name']]})
     dataMap.features.forEach(function(d){ if (typeof d.total === "undefined") {
                                               d.total = NaN
                                               }
     });
     // find minima and maxima
-    let arr = Object.values(dataById);
+
+    let arr = Object.values(dict);
     let min = Math.min(...arr);
     let max = Math.max(...arr);
 
@@ -98,7 +108,10 @@ function createHeatMap(dataMap) {
     .enter().append("path")
     .attr("d", path)
     .style("fill", function(d) {
-                                      return "#000000"})
+                                      return '#ff0000'
+
+                                  })
+
     .style('stroke', 'white')
     .style('stroke-width', 1.5)
     .style("opacity",0.8)
@@ -131,8 +144,37 @@ function createHeatMap(dataMap) {
       console.log("hoi")
     })
 
-    dataset = [[6.558837890625,
-          53.216723950863425]]
+    dataset = [['Kampen',
+              	5.9161376953125,
+                        52.558820799874695],
+              ['Groningen', 6.558837890625,
+                        53.216723950863425],
+              ['Maastricht', 5.6970977783203125,
+                        50.8506076217602],
+              ['Amsterdam', 4.898529052734375,
+                        52.37224556866933],
+              ['Rotterdam', 4.464225769042969,
+                        51.9228847853886],
+              ['Leiden', 4.481563568115234,
+                        52.16055986368401],
+              ['Delft', 4.3581390380859375,
+                        52.01119693084988],
+              ['Utrecht', 5.110015869140625,
+                        52.095327821920584],
+              ['Enschede', 6.892890930175781,
+                        52.220228214941905],
+              ['Tilburg', 5.0846099853515625,
+                        51.558716715617386],
+              ['Eindhoven', 5.480461120605469,
+                        51.43902871975925],
+              ['Breda', 4.7756195068359375,
+                        51.58944283871291],
+              ['Wageningen', 5.664825439453125,
+                        51.974624029877454],
+              ['Nijmegen', 5.8632659912109375,
+                        51.84214142542858],
+              ['Apeldoorn', 5.967979431152344,
+                        52.214969674901404]]
 
 
 
@@ -142,22 +184,28 @@ function createHeatMap(dataMap) {
                       .append("circle")
                       .attr("cx", function(d) {
 
-                        return 274;
+                        return circleXScale(d[1]);
                       })
                       .attr("cy", function(d) {
-                        return 190;
+                        return circleYScale(d[2]);
                       })
                       // // .scale([ width*10])
-                      .attr("id", "name")
-                      .attr("r", 4)
+                      .attr("id", function(d){
+                              return d[0]
+                      })
+                      .attr("r", function(x){
+                        return Math.floor(Math.random() * 8) + 4;
+                      })
                       .attr("class", "circle")
                       .style("position", "relative")
                       .style("z-index", "1000")
-                      .style("fill", "red");
+                      .style("fill", function(d) {
+                                                    return "rgb("+ color(dict[d[0]] + ",0," + -(color(dict[d[0]] - 255) +")"
+                                                  ))});
 
 
 
-    //
+
     // // width and height of legendbar
     // var w = 300, h = 50;
     //
@@ -250,22 +298,22 @@ function createHeatMap(dataMap) {
 
 function circleXScale(x) {
 
-  var scaled = ((4.910888671875 - x) / 0.01205581124491)
+  var scaled = ((5.6970977783203125 - x) / 0.00920278999983715)
 
-  return 279 - scaled  // The function returns the product of p1 and p2
+  return 375 - scaled  // The function returns the product of p1 and p2
 }
 
 function circleYScale(y){
-  var scaled = ((52.3789525300026 - y) / 0.00708684141057)
+  var scaled = ((50.8506076217602 - y) / 0.005925835076440901)
 
-  return 288 + scaled
+  return 543 + scaled
 
 }
 
 function lineGraph(){
   var margin = {top: 50, right: 50, bottom: 50, left: 50}
-  , width = 600 - margin.left - margin.right // Use the window's width
-  , height = 400 - margin.top - margin.bottom; // Use the window's height
+  , width = 500 - margin.left - margin.right // Use the window's width
+  , height = 350 - margin.top - margin.bottom; // Use the window's height
 
 // The number of datapoints
 var n = 21;
@@ -292,7 +340,7 @@ var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() }
 // 1. Add the SVG to the page and employ #2
 var svg = d3.select('.row')
               .append("div")
-            .attr("class","col-sm-4")
+            .attr("class","col-sm-5")
             .attr("id", "line")
             .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -471,5 +519,63 @@ function barChart() {
           });
       });
 }
+
+function test(){
+
+  var cities = [[4.898529052734375,
+          52.37224556866933, 279, 288], [ 4.295654296875,
+          52.1098789403549, 230, 330], [6.558837890625,
+          53.216723950863425, 465, 140],[5.6970977783203125,
+          50.8506076217602, 375, 543], [4.7625732421875,
+          52.95194755829188, 274, 190]]
+
+  var xfactors = []
+  var yfactors = []
+
+  for (i = 0; i < cities.length; i++) {
+
+  // stad A
+  var xJsA = cities[4][2]
+  var yJsA = cities[4][3]
+  var xGeoA = cities[4][0]
+  var yGeoA = cities[4][1]
+
+  // stad B
+  var xJsB = cities[i][2]
+  var yJsB = cities[i][3]
+  var xGeoB = cities[i][0]
+  var yGeoB = cities[i][1]
+
+  // voor x as
+  var x1 = xJsA - xJsB
+  var x2 = xGeoA - xGeoB
+  var xfactor = Math.abs(x2/x1)
+  if ((isNaN(xfactor)) === false){
+      xfactors.push(xfactor);
+  }
+
+  // console.log("xfactor:")
+  // console.log(xfactor)
+
+  // voor y as
+  var y1 = yJsA - yJsB
+  var y2 = yGeoA - yGeoB
+  var yfactor = Math.abs(y2/y1)
+
+  if ((isNaN(yfactor)) === false){
+      yfactors.push(yfactor);
+  }
+  // console.log("yfactor:")
+  // console.log(yfactor)
+
+}
+
+const average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length
+var averageX = average(xfactors)
+var averageY = average(yfactors)
+return 1
+}
+
+
 
 }

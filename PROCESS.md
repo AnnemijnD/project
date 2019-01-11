@@ -18,3 +18,6 @@ verzamelen
   studenten
 * Site kunnen indelen op de manier waarop ik het er iut wil laten zien. Wel met
   nepdata
+
+## VR 11/1/19
+* Scalefunctie kunnen maken voor de steden op de kaart

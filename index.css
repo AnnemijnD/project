@@ -25,3 +25,8 @@
   fill: none;
   stroke: steelblue;
 }
+
+.slidecontainer {
+  overflow: hidden;
+  width: 15%;
+}
