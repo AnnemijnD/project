@@ -37,7 +37,7 @@ function onload(){
                 .append("div")
                 .attr("class", "row")
                 .append("div")
-                .attr("class", "col-sm-6")
+                .attr("class", "col-sm-8")
                 .attr("id", "map")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
@@ -292,7 +292,7 @@ var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() }
 // 1. Add the SVG to the page and employ #2
 var svg = d3.select('.row')
               .append("div")
-            .attr("class","col-sm-6")
+            .attr("class","col-sm-4")
             .attr("id", "line")
             .append("svg")
     .attr("width", width + margin.left + margin.right)

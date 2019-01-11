@@ -10,3 +10,11 @@ verzamelen
 * Eerste vorm van de website gemaakt dmv bootstrap
   * Verschillende pagina's gemaakt
 * Geprobeerd een kaart van NL te maken in D3, eentje gevonden maar die klopte niet
+
+## DO 10/1/19
+* Goede kaart van Nederland kunnen maken
+* Ander idee: eerst was het plan een heatmap te maken voor alle provincies. Nu
+  wil ik per stad een bel maken die groter of kleiner is aan de hand van de hoeveelheid
+  studenten
+* Site kunnen indelen op de manier waarop ik het er iut wil laten zien. Wel met
+  nepdata
