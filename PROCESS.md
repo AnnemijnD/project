@@ -21,3 +21,9 @@ verzamelen
 
 ## VR 11/1/19
 * Scalefunctie kunnen maken voor de steden op de kaart
+* Data ingeladen en wordt nu toegepast op de kaart
+  * nog geen mogelijkheid tot het kiezen van een jaartal, nu alleen de data van
+    2017 in gebruik
+* Tooltips toegevoegd
+* Blijkbaar kan je bij .data() geen dictionary toevoegen maar alleen een lijst,
+  hieromheen gewerkt
