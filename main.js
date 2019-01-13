@@ -201,7 +201,7 @@ function createHeatMap(dataMap, dataStud) {
         d3.select(this)
           .style("opacity", 0.8)
           .style("stroke","white")
-          .style("stroke-width",0.3);
+          .style("stroke-width",0);
         }
     })
 
@@ -240,6 +240,12 @@ function createHeatMap(dataMap, dataStud) {
                             .style("stroke","white")
                             .style("stroke-width",3);
 
+                            var self = this;
+                            d3.selectAll(".circle").filter(function() {
+                              return self!=this;
+                            }).transition()
+                            .style("opacity", .5)
+
                       })
                       .on('mouseout', function(d){
 
@@ -247,7 +253,13 @@ function createHeatMap(dataMap, dataStud) {
                           d3.select(this)
                             .style("opacity", 0.8)
                             .style("stroke","white")
-                            .style("stroke-width",0.3);
+                            .style("stroke-width",0);
+
+                            var self = this;
+                            d3.selectAll(".circle").filter(function() {
+                              return self!=this;
+                            }).transition()
+                            .style("opacity", 1)
 
                       });
 
@@ -340,7 +352,9 @@ function createHeatMap(dataMap, dataStud) {
     //  .attr("y", 480);
 
     // set standard bargraph to the Netherlands
-    var graph = lineGraph(dataStud)
+    var linegraphvar = lineGraph(dataStud, "Amsterdam")
+    var dropdowns = makeDropdowns(dataStud)
+    var barChartVar = barChart(dataStud)
 
 };
 
@@ -358,12 +372,16 @@ function circleYScale(y){
 
 }
 
-function lineGraph(dataStud){
+function lineGraph(dataStud, instelling){
+
+  d3.select("#line svg")
+    .remove()
+
 
   //input
   // UvA Bmw 2017
-  var instelling = "Leiden"
-  var opleiding = "Biomedische Wetenschappen"
+  // var instelling = "Leiden"
+  var opleiding = "Recht"
 
 
   // Set tooltips
@@ -505,20 +523,11 @@ svg.selectAll(".dot")
       .on("mouseout", function(d) { tip.hide(d) })
 
 
-      // make dropdowns
-      var a = d3.select("#line")
-        .append("div")
-        .attr("class", "dropdown")
-        .append("button")
-        .attr("class", "btn btn-danger dropdown-toggle")
-        .attr("type", "button")
-        .attr("data-toggle", "dropdown")
-        .text("Instituut");
 
       d3.select("#line")
         .append("form")
         .attr("autocomplete", "off")
-        .attr("action","/action_page.php" )
+        .attr("action","/action_page.php")
 
         //
         // <!--Make sure the form has the autocomplete function switched off:-->
@@ -539,14 +548,15 @@ svg.selectAll(".dot")
       // </div>
 
 
-      var barChartVar = barChart()
+
 
 }
 
-function barChart() {
+function barChart(dataStud) {
   // load data for x and y axis
   var data_lev = []
   var data_pers = []
+
   d3.json("pers_exp.json").then(function(root) {
 
         root.forEach(function(element) {
@@ -572,7 +582,7 @@ function barChart() {
 
 
       var xScale = d3.scaleBand()
-          .domain(data_lev)
+          .domain(["Vrouw", "Man"])
           .range([0, width]);
 
       // set svg
@@ -736,11 +746,100 @@ return 1
 
 
 
-}
+
 function sliderChange(val) {
 document.getElementById('myRange').innerHTML = val;
 
 }
 function makeDropdowns(dataStud){
-  
+
+  instituten = []
+
+  dataStud.forEach(function(d){
+  if (!(instituten.includes(d["INSTELLINGSNAAM ACTUEEL"]))){
+    instituten.push(d["INSTELLINGSNAAM ACTUEEL"])
+  }
+
+  })
+
+
+        // make dropdowns
+      var button = d3.select("#line")
+          .append("div")
+          .attr("class", "dropdown")
+          .attr("id", 'dropLine')
+          .append("button")
+          .attr("class", "btn btn-default dropdown-toggle")
+          .attr("type", "button")
+          .attr("data-toggle", "dropdown")
+          .text("Instituut")
+          .append("span")
+          .attr("class", "caret")
+
+
+      var emptyDropLine = d3.select("#dropLine")
+                            .append("ul")
+                            .attr("id", "dropdown-id")
+                            .attr("class", "dropdown-menu")
+
+      emptyDropLine.selectAll("li")
+                    .data(instituten)
+                    .enter()
+                    .append("li")
+                    .attr("value", function(d){
+                      return d;
+                    })
+                    .text(function(d){
+                      return d;
+                    })
+                    .on("mouseover", function(d){
+                      d3.select(this)
+                      .style("color", "blue")
+
+                    })
+                    .on("mouseout", function(d){
+                      d3.select(this)
+                      .style("color", "black")
+                    })
+                    .on("click", function(d){
+                      lineGraph(dataStud, d)
+                    });
+
+
+          // <div class="dropdown">
+          // <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Instituut
+          // <ul id="dropdown-id" class="dropdown-menu">
+          // <li value="Theologische Universiteit Apeldoorn">Theologische Universiteit Apeldoorn</li>
+          // <li value="Radboud Universiteit Nijmegen">Radboud Universiteit Nijmegen</li>
+          // <li value="Wageningen University">Wageningen University</li>
+          // <li value="Rijksuniversiteit Groningen">Rijksuniversiteit Groningen</li>
+          // <li value="Universiteit Maastricht">Universiteit Maastricht</li>
+          // <li value="NHTV Internationale Hogeschool Breda">NHTV Internationale Hogeschool Breda</li>
+          // <li value="Technische Universiteit Eindhoven">Technische Universiteit Eindhoven</li>
+          // <li value="Tilburg University">Tilburg University</li>
+          // <li value="Protestantse Theologische Universiteit">Protestantse Theologische Universiteit</li>
+          // <li value="Universiteit van Amsterdam">Universiteit van Amsterdam</li>
+          // <li value="Vrije Universiteit Amsterdam">Vrije Universiteit Amsterdam</li>
+          // <li value="Universiteit Twente">Universiteit Twente</li>
+          // <li value="Theologische Universiteit Kampen">Theologische Universiteit Kampen</li>
+          // <li value="Universiteit voor Humanistiek">Universiteit voor Humanistiek</li>
+          // <li value="Universiteit Utrecht">Universiteit Utrecht</li>
+          // <li value="Technische Universiteit Delft">Technische Universiteit Delft</li>
+          // <li value="Universiteit Leiden">Universiteit Leiden</li>
+          // <li value="Erasmus Universiteit Rotterdam">Erasmus Universiteit Rotterdam</li>
+          // </ul>
+          // </button>
+          // </div>
+
+          //   <div class="dropdown">
+          //   <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Kies jaartal
+          //   <span class="caret"></span></button>
+          //   <ul id="dropdown" class="dropdown-menu">
+          //     <li value="2014">2014</li>
+          //     <li value="2015">2015</li>
+          //     <li value="2016">2016</li>
+          //   </ul>
+          // </div>
+
+}
 }

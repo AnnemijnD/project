@@ -30,3 +30,7 @@
   overflow: hidden;
   width: 15%;
 }
+
+#dropLine.li:hover {
+  color: blue;
+}
