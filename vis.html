@@ -48,13 +48,34 @@
       </ul>
     </div>
     <div class="slidecontainer">
-        <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange">
+        <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="sliderChange(this.value)">
 </div>
 </div>
 </div>
   </div>
+  <!--Make sure the form has the autocomplete function switched off:-->
+<!-- <form autocomplete="off" action="/action_page.php">
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCountry" placeholder="Country">
+  </div>
+  <input type="submit">
+</form> -->
+
+<!-- <section class="main">
+	 <form class="search" method="post" action="index.html" >
+		 <input type="text" name="q" placeholder="Search..." />
+		 <ul class="results" >
+			 <li><a href="index.html">Search Result #1<br /><span>Description...</span></a></li>
+			 <li><a href="index.html">Search Result #2<br /><span>Description...</span></a></li>
+	 		<!-- <li><a href="index.html">Search Result #3<br /><span>Description...</span></a></li> -->
+         	<li><a href="index.html">Search Result #4</a></li>
+		 <!-- </ul>
+	 </form>
+</section> --> 
+
   <div>
   </div>
 
   </body>
+
 </html>

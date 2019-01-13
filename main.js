@@ -18,7 +18,7 @@ function onload(){
                 .attr('class', 'd3-tip')
                 .offset([-10, 0])
                 .html(function(d) {
-                  console.log(d)
+
                   return "<strong>Stad: </strong><span class='details'>" + d[3] + "<br></span>" + "<strong>Aantal studenten: </strong><span class='details'>" + d[0]+"</span>";
                 })
 
@@ -68,8 +68,6 @@ function onload(){
 
     var test = test()
 
-
-
     Promise.all(requests).then(function(response) {
       createHeatMap(response[0], response[1])
     }).catch(function(e){
@@ -117,6 +115,7 @@ function createHeatMap(dataMap, dataStud) {
     //           "Utrecht": 800,"Wageningen": 400, "Nijmegen": 300, "Enschede": 200, "Tilburg": 400}
 
     var dict = {}
+
 
     dataStud.forEach(function(d){
 
@@ -205,7 +204,7 @@ function createHeatMap(dataMap, dataStud) {
           .style("stroke-width",0.3);
         }
     })
-  
+
     var circle = svg.selectAll("circle")
                       .data(Object.values(dict))
                       .enter()
@@ -341,7 +340,7 @@ function createHeatMap(dataMap, dataStud) {
     //  .attr("y", 480);
 
     // set standard bargraph to the Netherlands
-    var graph = lineGraph()
+    var graph = lineGraph(dataStud)
 
 };
 
@@ -349,7 +348,7 @@ function circleXScale(x) {
 
   var scaled = ((5.6970977783203125 - x) / 0.00920278999983715)
 
-  return 375 - scaled  // The function returns the product of p1 and p2
+  return 375 - scaled
 }
 
 function circleYScale(y){
@@ -359,32 +358,106 @@ function circleYScale(y){
 
 }
 
-function lineGraph(){
-  var margin = {top: 50, right: 50, bottom: 50, left: 50}
+function lineGraph(dataStud){
+
+  //input
+  // UvA Bmw 2017
+  var instelling = "Leiden"
+  var opleiding = "Biomedische Wetenschappen"
+
+
+  // Set tooltips
+  var tip = d3.tip()
+              .attr('class', 'd3-tip')
+              .offset([-10, 0])
+              .html(function(d) {
+
+                return "<strong>Aantal studenten: </strong><span class='details'>"+ d.y +"</span>";
+              })
+
+  // svg
+  var margin = {top: 50, right: 50, bottom: 50, left: 50, yPadding: 10}
   , width = 500 - margin.left - margin.right // Use the window's width
   , height = 350 - margin.top - margin.bottom; // Use the window's height
 
-// The number of datapoints
-var n = 21;
 
-// 5. X scale will use the index of our data
+
+datapoints = []
+// get number of datapoints
+var keys = Object.keys(dataStud[0])
+
+keys.forEach(function(d){
+  var splitd = d.split(" ", d.length)
+  var year = parseInt(splitd[0])
+  if (isNaN(year) === false){
+    if (datapoints.includes(year) === false){
+    datapoints.push(year)
+    }
+  }
+})
+
+
+var n = datapoints.length;
+
+
+dataset = [];
+// get right dataset
+
+dataStud.forEach(function(d){
+    if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
+      if (d["INSTELLINGSNAAM ACTUEEL"].includes(instelling)){
+
+        // get data of all years
+        datapoints.forEach(function(a){
+          var jaar = a;
+          var vrouwen = parseInt((d[`${jaar} VROUW`]));
+          var mannen = parseInt((d[`${jaar} MAN`]));
+
+          // check for double data
+          var duplicate = false;
+          dataset.forEach(function(d, i) {
+            if (d.x === jaar){
+              d.y += (mannen + vrouwen)
+              duplicate = true;
+            }
+          })
+
+          // adds data to dataset
+          if (duplicate === false){
+          coordinates = {};
+          coordinates['x'] = jaar;
+          coordinates['y'] = mannen + vrouwen;
+          dataset.push(coordinates)
+          };
+        })
+      }
+    }
+  })
+
+  console.log(dataset)
+  // get mininma and maxima
+  let arr = []
+  Object.values(dataset).forEach(function(d) {
+            arr.push(d.y);
+  });
+  let min = Math.min(...arr);
+  let max = Math.max(...arr);
+
+// 5. X scale
 var xScale = d3.scaleLinear()
-    .domain([0, n-1]) // input
+    .domain([2013, 2017]) // input
     .range([0, width]); // output
 
-// 6. Y scale will use the randomly generate number
+// 6. Y scale
 var yScale = d3.scaleLinear()
-    .domain([0, 1]) // input
+    .domain([0, max + margin.yPadding]) // input
     .range([height, 0]); // output
 
 // 7. d3's line generator
 var line = d3.line()
-    .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+    .x(function(d, i) { return xScale(d.x); }) // set the x values for the line generator
     .y(function(d) { return yScale(d.y); }) // set the y values for the line generator
     .curve(d3.curveMonotoneX) // apply smoothing to the line
-
-// 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
-var dataset = d3.range(n).map(function(d) { return {"y": d3.randomUniform(1)() } })
 
 // 1. Add the SVG to the page and employ #2
 var svg = d3.select('.row')
@@ -397,11 +470,14 @@ var svg = d3.select('.row')
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+svg.call(tip);
+
 // 3. Call the x axis in a group tag
 svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+    .call(d3.axisBottom(xScale))
+     // Create an axis component with d3.axisBottom
 
 // 4. Call the y axis in a group tag
 svg.append("g")
@@ -419,14 +495,49 @@ svg.selectAll(".dot")
     .data(dataset)
   .enter().append("circle") // Uses the enter().append() method
     .attr("class", "dot") // Assign a class for styling
-    .attr("cx", function(d, i) { return xScale(i) })
+    .attr("cx", function(d, i) { return xScale(d.x) })
     .attr("cy", function(d) { return yScale(d.y) })
     .attr("r", 5)
-      .on("mouseover", function(a, b, c) {
+      .on("mouseover", function(d) {
 
-        this.attr('class', 'focus')
+        tip.show(d)
 		})
-      .on("mouseout", function() {  })
+      .on("mouseout", function(d) { tip.hide(d) })
+
+
+      // make dropdowns
+      var a = d3.select("#line")
+        .append("div")
+        .attr("class", "dropdown")
+        .append("button")
+        .attr("class", "btn btn-danger dropdown-toggle")
+        .attr("type", "button")
+        .attr("data-toggle", "dropdown")
+        .text("Instituut");
+
+      d3.select("#line")
+        .append("form")
+        .attr("autocomplete", "off")
+        .attr("action","/action_page.php" )
+
+        //
+        // <!--Make sure the form has the autocomplete function switched off:-->
+        // <form autocomplete="off" action="/action_page.php">
+        //   <div class="autocomplete" style="width:300px;">
+        //     <input id="myInput" type="text" name="myCountry" placeholder="Country">
+        //   </div>
+        //   <input type="submit">
+        // </form>
+      //   <div class="dropdown">
+      //   <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Kies jaartal
+      //   <span class="caret"></span></button>
+      //   <ul id="dropdown" class="dropdown-menu">
+      //     <li value="2014">2014</li>
+      //     <li value="2015">2015</li>
+      //     <li value="2016">2016</li>
+      //   </ul>
+      // </div>
+
 
       var barChartVar = barChart()
 
@@ -625,4 +736,11 @@ return 1
 
 
 
+}
+function sliderChange(val) {
+document.getElementById('myRange').innerHTML = val;
+
+}
+function makeDropdowns(dataStud){
+  
 }
