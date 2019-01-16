@@ -5,7 +5,7 @@
 
 ## Spaces Around Operators
 * Put spaces around operators: <br></br>
-* Put spaces around operators
+
 ``` a = b + c ```
 ## Code indentation (python)
 * Always use 1 tab for indentation of code blocks: <br></br>
