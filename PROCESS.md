@@ -37,4 +37,9 @@ verzamelen
   Nieuw idee: in plaats van het maken van nieuwe bar Graphs,
   nu de bars toevoegen aan de bestaande bargraph. Ipv gewone bargraph een grouped
   bargraph.
-  
+
+
+## DI 15/1/19
+* Een goed voorbeeld gevonden van een grouped bargraph, deze omgeschreven
+  naar een vorm die voor mij werkte
+* Geprobeerd data in te laden, lukt nog niet

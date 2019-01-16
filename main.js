@@ -24,8 +24,8 @@ function onload(){
 
     // set margins
     var margin = {top: 0, right: 0, bottom: 0, left: 0},
-                width = 600 - margin.left - margin.right,
-                height = 700 - margin.top - margin.bottom;
+                width = 600/1.5 - margin.left - margin.right,
+                height = 700/1.5 - margin.top - margin.bottom;
 
     // titles
     var title = d3.select(".container")
@@ -187,7 +187,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
     var dotSize = d3.scaleLinear()
                     .domain([0,max])
-                    .range([4,12]);
+                    .range([4,8]);
 
     // fill map with the right color
     d3.select('svg')
@@ -424,15 +424,15 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
 function circleXScale(x) {
 
-  var scaled = ((5.6970977783203125 - x) / 0.00920278999983715)
+  var scaled = ((5.6970977783203125 - x) / 0.00920278999983715)/1.5
 
-  return 375 - scaled
+  return 375/1.5 - scaled
 }
 
 function circleYScale(y){
-  var scaled = ((50.8506076217602 - y) / 0.005925835076440901)
+  var scaled = ((50.8506076217602 - y) / (0.005925835076440901))/1.5
 
-  return 543 + scaled
+  return 543/1.5 + scaled
 
 }
 
@@ -608,17 +608,17 @@ function barChart(dataStud) {
 
         if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
 
+
             var vrouwen = parseInt((d[`${jaar} VROUW`]));
             var mannen = parseInt((d[`${jaar} MAN`]));
 
-            barData.push(vrouwen);
-            barData.push(mannen);
+            barData.push({Instelling: instelling, Opleiding: opleiding, jaar:jaar, Man: mannen, Vrouw: vrouwen});
+
         }
       }
   })
 
 
-      dataformat = [{Aantal: 64, Geslacht:"Vrouw1"}, {Aantal: 28, Geslacht: "Man1"}, {Aantal: 99, Geslacht: "Vrouw2"}, {Aantal:80, Geslacht:"Man2"}]
       data2 = [{Instelling: "UvA", Opleiding: "bmw", jaar:'2017', Man: 200, Vrouw: 300},
               {Instelling: "UvA", Opleiding: "Bmw", jaar:'2016', Man: 150, Vrouw: 200}]
             // {Instelling: "rad", Opleiding: "bmw", jaar:'2017', Man: 10, Vrouw: 100}
@@ -631,7 +631,6 @@ function barChart(dataStud) {
           width = +svg.attr("width") - margin.left - margin.right,
           height = +svg.attr("height") - margin.top - margin.bottom,
           g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 
 
       // source: https://bl.ocks.org/mbostock/raw/3887051/
@@ -663,7 +662,7 @@ function barChart(dataStud) {
       //   return d;
       // }, function(error, data)
 
-        console.log(data2)
+
         // if (error) throw error;
 
         var keys = ["Vrouw", "Man"]
@@ -674,11 +673,11 @@ function barChart(dataStud) {
 
         x0.domain(data2.map(function(d) { return d.Instelling + d.Opleiding + d.jaar; }));
         x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-        y.domain([0, 300]).nice();
+        y.domain([0,d3.max(data2, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice()
 
 
         d3.select("#graph1 svg g")
-          // .append("svg")
+          .attr("id", "grid")
           .append("g")
           .selectAll("g")
           .data(data2)
@@ -688,28 +687,75 @@ function barChart(dataStud) {
           .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
           .enter().append("rect")
             .attr("x", function(d) { return x1(d.key); })
-            .attr("y", function(d) { return y(d.value); })
+            .attr("y", function(d) {return y(d.value); })
             .attr("width", x1.bandwidth())
             .attr("height", function(d) { return height - y(d.value); })
             .attr("fill", function(d) { return z(d.key); })
             .attr("class", "bar")
-            .on('mouseover', function(d) {
-
-              // make the chart diffently colored when mouse is on it
-              var self = this;
-              d3.selectAll(".bar").filter(function() {
-                return self!=this;
-              }).transition()
-              .style("opacity", .5)
+            .on('click', function(d) {
+              data1 = [{Instelling: "rad", Opleiding: "bmw", jaar:'2017', Man: 20, Vrouw: 30},
+                      {Instelling: "rad", Opleiding: "Bmw", jaar:'2016', Man: 120, Vrouw: 100}]
 
 
-              })
-              .on("mouseout", function(d) {
-                d3.selectAll(".bar")
+
+
+              d3.select("#grid g")
+
+              .selectAll("g")
+              .data(data1)
+              .enter().append("g")
+
+                .attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
+              .selectAll("rect")
+              .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+              .enter().append("rect")
                 .transition()
-                .style("opacity", 5);
+                .attr("x", function(d) { return x1(d.key); })
+                .attr("y", function(d) { return y(d.value); })
+                .attr("width", x1.bandwidth())
+                .attr("height", function(d) { return height - y(d.value); })
+                .attr("fill", function(d) { return z(d.key); })
+                .attr("class", "bar")
 
-              });;
+                // g.select('g').remove().transition();
+
+                g.select("g")
+                    .transition()
+                    .attr("class", "axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.axisBottom(x0));
+
+
+                g.select("g")
+                    .transition()
+                    .attr("class", "axis")
+                    .call(d3.axisLeft(y).ticks(null, "s"));
+                  // .append("text")
+                  //   .attr("x", 2)
+                  //   .attr("y", y(y.ticks().pop()) + 0.5)
+                  //   .attr("dy", "0.32em")
+                  //   .attr("fill", "#000")
+                  //   .attr("font-weight", "bold")
+                  //   .attr("text-anchor", "start")
+                  //   .text("Population");
+
+
+              // // make the chart diffently colored when mouse is on it
+              // var self = this;
+              // d3.selectAll(".bar").filter(function() {
+              //   return self!=this;
+              // }).transition()
+              // .style("opacity", .5)
+            //
+            //
+              })
+            //   .on("mouseout", function(d) {
+            //     d3.selectAll(".bar")
+            //     .transition()
+            //     .style("opacity", 5);
+            //
+            //   });;
+
 
 
         g.append("g")
@@ -767,14 +813,14 @@ function test(){
   for (i = 0; i < cities.length; i++) {
 
   // stad A
-  var xJsA = cities[4][2]
-  var yJsA = cities[4][3]
+  var xJsA = cities[4][2]/2
+  var yJsA = cities[4][3]/2
   var xGeoA = cities[4][0]
   var yGeoA = cities[4][1]
 
   // stad B
-  var xJsB = cities[i][2]
-  var yJsB = cities[i][3]
+  var xJsB = cities[i][2]/2
+  var yJsB = cities[i][3]/2
   var xGeoB = cities[i][0]
   var yGeoB = cities[i][1]
 
@@ -903,6 +949,25 @@ function makeDropdowns(dataStud){
 
 }
 
+function updateBar(opleiding, jaar, instelling, data2){
+
+  d3.select("#grid")
+  .append("g")
+  .selectAll("g")
+  .data(data2)
+  .enter().append("g")
+    .attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
+  .selectAll("rect")
+  .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+  .enter().append("rect")
+    .attr("x", function(d) { return x1(d.key); })
+    .attr("y", function(d) { return y(d.value); })
+    .attr("width", x1.bandwidth())
+    .attr("height", function(d) { return height - y(d.value); })
+    .attr("fill", function(d) { return z(d.key); })
+    .attr("class", "bar")
+
+}
 
 
 // Studentnummer : 12442690
