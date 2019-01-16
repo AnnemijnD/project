@@ -33,17 +33,25 @@ function onload(){
                 .append("h1")
                 .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland in 2017");
 
+
+    var slider = d3.select("#mapBlock")
+                  .append("div")
+                  .attr("class", "slidecontainer")
+                  .append("input")
+                  .attr("type", "range")
+                  .attr("min", "2013")
+                  .attr("max", "2017")
+                  .attr("value", "2017")
+                  .attr("class", "slider")
+                  .attr("id", "myRange")
+
     // create map
     var path = d3.geoPath();
 
     // make svg
-    var svg = d3.select(".container")
-                .append("div")
-                .attr("class", "row")
-                .append("div")
-                .attr("class", "col-sm-7")
-                .attr("id", "map")
+    var svg = d3.select("#mapBlock")
                 .append("svg")
+                .attr("id", "map")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 // .append('g')
@@ -68,14 +76,34 @@ function onload(){
 
     var test = test()
 
-    Promise.all(requests).then(function(response) {
-      createHeatMap(response[0], response[1])
-    }).catch(function(e){
-        throw(e);
-    });
 
 
-function createHeatMap(dataMap, dataStud) {
+
+          // document.getElementById('myRange').innerHTML = this.value
+          // console.log(document.getElementById("myRange"))
+          Promise.all(requests).then(function(response) {
+          //   if (isNaN(this.value)){
+          //     console.log("jeej")
+          //     jaartal = 2017
+          //   }
+          //   else {
+          //     jaartal = this.value
+          //
+          //   }
+
+            return createHeatMap(response[0], response[1], 2017)
+          }).catch(function(e){
+              throw(e);
+          });
+
+function createHeatMap(dataMap, dataStud, jaartal) {
+
+  // <div class="slidecontainer">
+  //     <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="sliderChange(this.value)">
+  // </div>
+
+
+
 
   dataset = [['KAMPEN',
               5.9161376953125,
@@ -110,9 +138,7 @@ function createHeatMap(dataMap, dataStud) {
                       52.214969674901404]]
     var dataById = {};
 
-    // var dict2 = {"Maastricht": 200, "Amsterdam": 1000, "Groningen": 500, "Leiden": 400, "Kampen": 100,
-    //             "Eindhoven": 100, "Apeldoorn": 200, "Breda": 100, "Rotterdam": 300, "Delft": 200,
-    //           "Utrecht": 800,"Wageningen": 400, "Nijmegen": 300, "Enschede": 200, "Tilburg": 400}
+
 
     var dict = {}
 
@@ -120,10 +146,10 @@ function createHeatMap(dataMap, dataStud) {
     dataStud.forEach(function(d){
 
         if (d["GEMEENTENAAM"] in dict === true ){
-              dict[d["GEMEENTENAAM"]][0] = dict[d["GEMEENTENAAM"]][0] + parseInt(d["2017 VROUW"]) + parseInt(d["2017 MAN"])
+              dict[d["GEMEENTENAAM"]][0] = dict[d["GEMEENTENAAM"]][0] + parseInt(d[`${jaartal} VROUW`]) + parseInt(d[`${jaartal} MAN`])
               }
         else {
-            dict[d["GEMEENTENAAM"]] = [parseInt(d["2017 VROUW"]) + parseInt(d["2017 MAN"])]
+            dict[d["GEMEENTENAAM"]] = [parseInt(d[`${jaartal} VROUW`]) + parseInt(d[`${jaartal} MAN`])]
 
         }
 
@@ -351,10 +377,48 @@ function createHeatMap(dataMap, dataStud) {
     //  .attr("x", 50)
     //  .attr("y", 480);
 
+    // makeDropdowns
+    var button = d3.select("#dropdownInst")
+        .append("div")
+        .attr("class", "dropdown")
+        .attr("id", 'dropLine-1')
+        .append("button")
+        .attr("class", "btn btn-default dropdown-toggle")
+        .attr("type", "button")
+        .attr("data-toggle", "dropdown")
+        .text("Instituut")
+        .append("span")
+        .attr("class", "caret")
+
+    var emptyDropLine = d3.select("#dropLine-1")
+                          .append("ul")
+                          .attr("id", "dropdown-instelling")
+                          .attr("class", "dropdown-menu")
+
+    // makeDropdowns
+    var button = d3.select("#dropdownOpl")
+        .append("div")
+        .attr("class", "dropdown")
+        .attr("id", 'dropLine-2')
+        .append("button")
+        .attr("class", "btn btn-default dropdown-toggle")
+        .attr("type", "button")
+        .attr("data-toggle", "dropdown")
+        .text("Opleiding")
+        .append("span")
+        .attr("class", "caret")
+
+    var emptyDropLine2 = d3.select("#dropLine-2")
+                          .append("ul")
+                          .attr("id", "dropdown-opleiding")
+                          .attr("class", "dropdown-menu")
+
+
     // set standard bargraph to the Netherlands
-    var linegraphvar = lineGraph(dataStud, "Amsterdam")
+    var linegraphvar = lineGraph(dataStud, "Amsterdam", "Biomedische Wetenschappen")
     var dropdowns = makeDropdowns(dataStud)
     var barChartVar = barChart(dataStud)
+    // var samsBarvar = samsBar()
 
 };
 
@@ -372,16 +436,16 @@ function circleYScale(y){
 
 }
 
-function lineGraph(dataStud, instelling){
+function lineGraph(dataStud, instelling, opleiding){
 
-  d3.select("#line svg")
+  d3.select("#line")
     .remove()
 
 
   //input
   // UvA Bmw 2017
   // var instelling = "Leiden"
-  var opleiding = "Recht"
+
 
 
   // Set tooltips
@@ -452,7 +516,7 @@ dataStud.forEach(function(d){
     }
   })
 
-  console.log(dataset)
+
   // get mininma and maxima
   let arr = []
   Object.values(dataset).forEach(function(d) {
@@ -463,7 +527,7 @@ dataStud.forEach(function(d){
 
 // 5. X scale
 var xScale = d3.scaleLinear()
-    .domain([2013, 2017]) // input
+    .domain([2013,2017]) // input
     .range([0, width]); // output
 
 // 6. Y scale
@@ -478,11 +542,9 @@ var line = d3.line()
     .curve(d3.curveMonotoneX) // apply smoothing to the line
 
 // 1. Add the SVG to the page and employ #2
-var svg = d3.select('.row')
-              .append("div")
-            .attr("class","col-sm-5")
-            .attr("id", "line")
+var svg = d3.select('#lineBlock')
             .append("svg")
+            .attr("id", "line")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -524,28 +586,6 @@ svg.selectAll(".dot")
 
 
 
-      d3.select("#line")
-        .append("form")
-        .attr("autocomplete", "off")
-        .attr("action","/action_page.php")
-
-        //
-        // <!--Make sure the form has the autocomplete function switched off:-->
-        // <form autocomplete="off" action="/action_page.php">
-        //   <div class="autocomplete" style="width:300px;">
-        //     <input id="myInput" type="text" name="myCountry" placeholder="Country">
-        //   </div>
-        //   <input type="submit">
-        // </form>
-      //   <div class="dropdown">
-      //   <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Kies jaartal
-      //   <span class="caret"></span></button>
-      //   <ul id="dropdown" class="dropdown-menu">
-      //     <li value="2014">2014</li>
-      //     <li value="2015">2015</li>
-      //     <li value="2016">2016</li>
-      //   </ul>
-      // </div>
 
 
 
@@ -554,140 +594,162 @@ svg.selectAll(".dot")
 
 function barChart(dataStud) {
   // load data for x and y axis
-  var data_lev = []
-  var data_pers = []
-
-  d3.json("pers_exp.json").then(function(root) {
-
-        root.forEach(function(element) {
-            if (parseInt(element["1-Personele exploitatie"]) > 2){
-
-            data_pers.push(parseInt(element["1-Personele exploitatie"]));
-            data_lev.push((element["Leveranciers"]));
-        };
-    })
-
-      // create SVG
-      var svgWidth = 800, svgHeight = 500, barPadding = 5;
-      var margin = { top: 150, right: 0, bottom: 50, left: 80};
-      var width = svgWidth - margin.left - margin.right;
-      var height = svgHeight - margin.top - margin.bottom;
-      var barWidth = (width / data_pers.length);
 
 
-      // set scales
-      var yScale = d3.scaleLinear()
-          .domain([0, d3.max(data_pers)])
-          .range([height, 0]);
+  var barData = []
+  var barDataY = ["Vrouw", "Man"]
+  var opleiding = "Biomedische Wetenschappen"
+  var instelling = "Universiteit van Amsterdam"
+  var jaar = "2017"
+
+  dataStud.forEach(function(d){
+
+      if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
+
+        if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
+
+            var vrouwen = parseInt((d[`${jaar} VROUW`]));
+            var mannen = parseInt((d[`${jaar} MAN`]));
+
+            barData.push(vrouwen);
+            barData.push(mannen);
+        }
+      }
+  })
 
 
-      var xScale = d3.scaleBand()
-          .domain(["Vrouw", "Man"])
-          .range([0, width]);
+      dataformat = [{Aantal: 64, Geslacht:"Vrouw1"}, {Aantal: 28, Geslacht: "Man1"}, {Aantal: 99, Geslacht: "Vrouw2"}, {Aantal:80, Geslacht:"Man2"}]
+      data2 = [{Instelling: "UvA", Opleiding: "bmw", jaar:'2017', Man: 200, Vrouw: 300},
+              {Instelling: "UvA", Opleiding: "Bmw", jaar:'2016', Man: 150, Vrouw: 200}]
+            // {Instelling: "rad", Opleiding: "bmw", jaar:'2017', Man: 10, Vrouw: 100}
+      // d3.select("#graph1")
+      //   .append("svg")
+      //   .attr("id", "barGraphSVG")
 
-      // set svg
-      var svg = d3.select("body").append("div")
-          .append('svg')
-          .attr("width", svgWidth)
-          .attr("height", svgHeight)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.bottom + ")");
-
-      // create tooltip, source: https://bl.ocks.org/alandunning/274bf248fd0f362d64674920e85c1eb7
-      var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-
-      // creat right axes
-      svg.append("g")
-        .attr("class", "x axis")
-        .attr('transform', "translate(0," + height + ")")
-        .call(d3.axisBottom(xScale)
-              .ticks(data_lev.length))
-
-        .selectAll("text")
-          .style("font-size", "6px")
-          .style("text-anchor", "end")
-          .attr("dx", "-.7em")
-          .attr("dy", ".14em")
-          .attr("transform", "translate(0, 0)rotate(-45)")
+      var svg = d3.select("#graph1 svg"),
+          margin = {top: 20, right: 20, bottom: 30, left: 40},
+          width = +svg.attr("width") - margin.left - margin.right,
+          height = +svg.attr("height") - margin.top - margin.bottom,
+          g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-    // title
-    svg.append("text")
-        .attr("y", -margin.bottom)
-        .attr("x",width/2)
-        .attr("dy", "2em")
-        .style("text-anchor", "middle")
-        .style("font-size", "20px")
-        .text("Aanmeldingen eerstejaarsstudenten bij [opleiding] aan [instituut] in [jaar]")
 
-      // text label for the y axis
-    svg.append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 10-margin.left)
-        .attr("x",0 - (height / 2))
-        .attr("dy", "2em")
-        .style("text-anchor", "middle")
-        .text("Aantal studenten")
+      // source: https://bl.ocks.org/mbostock/raw/3887051/
+      var x0 = d3.scaleBand()
+          .rangeRound([0, width])
+          .paddingInner(0.1);
 
 
-    // text label for the x axis
-    svg.append("text")
-        .attr("y", svgWidth/2)
-        .attr("x", width/2)
-        .attr("dy", "2em")
-        .style("text-anchor", "middle")
-        .text("[opleiding]")
+      var x1 = d3.scaleBand()
+          .padding(0.05);
+
+      var y = d3.scaleLinear()
+          .rangeRound([height, 0]);
+
+      var z = d3.scaleOrdinal()
+          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+      columns1 = ["Geslacht", "Aantal"];
+
+      columns_f = []
+
+      // // console.log(Object.keys(dataformat[0]))
+      // d3.csv("data_final.csv").then(function(d, i, columns)  {
+      //
+      //
+      //   for (var i = 1, n = d["columns"].length; i < n; ++i)
+      //   console.log(d[d.columns[i]]),
+      //   d[d.columns[i]] = +d[d.columns[i]];
+      //   return d;
+      // }, function(error, data)
+
+        console.log(data2)
+        // if (error) throw error;
+
+        var keys = ["Vrouw", "Man"]
+
+        // var keys = data.columns.slice(1);
 
 
-      // create right axes
-      svg.append("g")
-        .attr("class", "y axis")
-        .attr('transform', "translate(0," + 0 +")")
-        .call(d3.axisLeft(yScale));
+
+        x0.domain(data2.map(function(d) { return d.Instelling + d.Opleiding + d.jaar; }));
+        x1.domain(keys).rangeRound([0, x0.bandwidth()]);
+        y.domain([0, 300]).nice();
 
 
-    // make barchart
-    var barChart = svg.selectAll("rect")
-          .data(data_pers)
-          .enter()
-          .append("rect")
-          .attr("class", "bar")
-          .attr("y", function (d) {
-                    return yScale(d)
-          })
-          .attr("height", function(d) {
-            return height - yScale(d);
-          })
-          .attr("width", barWidth - barPadding)
-          .attr("transform", function (d,i) {
-            var translate = [barWidth * i, 0];
-            return "translate(" + translate + ")"})
-          .on('mouseover', function(d) {
+        d3.select("#graph1 svg g")
+          // .append("svg")
+          .append("g")
+          .selectAll("g")
+          .data(data2)
+          .enter().append("g")
+            .attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
+          .selectAll("rect")
+          .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+          .enter().append("rect")
+            .attr("x", function(d) { return x1(d.key); })
+            .attr("y", function(d) { return y(d.value); })
+            .attr("width", x1.bandwidth())
+            .attr("height", function(d) { return height - y(d.value); })
+            .attr("fill", function(d) { return z(d.key); })
+            .attr("class", "bar")
+            .on('mouseover', function(d) {
 
-            // set tooltip
-            tooltip
-              .style("left", d3.event.pageX - 20 + "px")
-              .style("top", d3.event.pageY - 70 + "px")
-              .style("display", "inline-block")
-              .html(d);
-
-            // make the chart diffently colored when mouse is on it
-            var self = this;
-            d3.selectAll(".bar").filter(function() {
-              return self!=this;
-            }).transition()
-            .style("opacity", .5)
+              // make the chart diffently colored when mouse is on it
+              var self = this;
+              d3.selectAll(".bar").filter(function() {
+                return self!=this;
+              }).transition()
+              .style("opacity", .5)
 
 
-          })
-          .on("mouseout", function(d) {
-            d3.selectAll(".bar")
-            .transition()
-            .style("opacity", 5);
+              })
+              .on("mouseout", function(d) {
+                d3.selectAll(".bar")
+                .transition()
+                .style("opacity", 5);
 
-            tooltip.style("display", "none");
-          });
-      });
+              });;
+
+
+        g.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x0));
+
+        g.append("g")
+            .attr("class", "axis")
+            .call(d3.axisLeft(y).ticks(null, "s"))
+          .append("text")
+            .attr("x", 2)
+            .attr("y", y(y.ticks().pop()) + 0.5)
+            .attr("dy", "0.32em")
+            .attr("fill", "#000")
+            .attr("font-weight", "bold")
+            .attr("text-anchor", "start")
+            .text("Population");
+
+        var legend = g.append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "end")
+          .selectAll("g")
+          .data(keys.slice().reverse())
+          .enter().append("g")
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+        legend.append("rect")
+            .attr("x", width - 19)
+            .attr("width", 19)
+            .attr("height", 19)
+            .attr("fill", z);
+
+
+        legend.append("text")
+            .attr("x", width - 24)
+            .attr("y", 9.5)
+            .attr("dy", "0.32em")
+            .text(function(d) { return d; });
 }
 
 function test(){
@@ -755,6 +817,7 @@ function makeDropdowns(dataStud){
 
   instituten = []
 
+
   dataStud.forEach(function(d){
   if (!(instituten.includes(d["INSTELLINGSNAAM ACTUEEL"]))){
     instituten.push(d["INSTELLINGSNAAM ACTUEEL"])
@@ -762,25 +825,7 @@ function makeDropdowns(dataStud){
 
   })
 
-
-        // make dropdowns
-      var button = d3.select("#line")
-          .append("div")
-          .attr("class", "dropdown")
-          .attr("id", 'dropLine')
-          .append("button")
-          .attr("class", "btn btn-default dropdown-toggle")
-          .attr("type", "button")
-          .attr("data-toggle", "dropdown")
-          .text("Instituut")
-          .append("span")
-          .attr("class", "caret")
-
-
-      var emptyDropLine = d3.select("#dropLine")
-                            .append("ul")
-                            .attr("id", "dropdown-id")
-                            .attr("class", "dropdown-menu")
+  var emptyDropLine = d3.select("#dropdown-instelling")
 
       emptyDropLine.selectAll("li")
                     .data(instituten)
@@ -802,44 +847,287 @@ function makeDropdowns(dataStud){
                       .style("color", "black")
                     })
                     .on("click", function(d){
-                      lineGraph(dataStud, d)
+                      d3.selectAll("#dropdown-opleiding li")
+                        .remove()
+
+                      d3.select("#dropLine-2")
+                        .select('button')
+                        .text("Opleiding")
+
+                      var instelling = d
+
+                      opleidingen = []
+
+
+                      d3.select("#dropLine-1 button")
+                      .text(instelling)
+                      dataStud.forEach(function(x){
+                        if(x["INSTELLINGSNAAM ACTUEEL"] === instelling){
+                          if (!(opleidingen.includes(x["OPLEIDINGSNAAM ACTUEEL"]))){
+                            opleidingen.push(x["OPLEIDINGSNAAM ACTUEEL"])
+                          }
+
+                        }
+                      })
+
+
+                      d3.select("#dropdown-opleiding")
+                        .selectAll("li")
+                        .data(opleidingen)
+                        .enter()
+                        .append("li")
+                        .attr("value", function(d){
+                          return d;
+                        })
+                        .text(function(d){
+                          return d;
+                        })
+                        .on("mouseover", function(d){
+                          d3.select(this)
+                          .style("color", "blue")
+
+                        })
+                        .on("mouseout", function(d){
+                          d3.select(this)
+                          .style("color", "black")
+                        })
+                        .on("click", function(d){
+                          opleiding = d
+                          d3.select("#dropLine-2 button")
+                          .text(opleiding)
+                          lineGraph(dataStud, instelling, opleiding)
+                        })
+
+
                     });
 
-
-          // <div class="dropdown">
-          // <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Instituut
-          // <ul id="dropdown-id" class="dropdown-menu">
-          // <li value="Theologische Universiteit Apeldoorn">Theologische Universiteit Apeldoorn</li>
-          // <li value="Radboud Universiteit Nijmegen">Radboud Universiteit Nijmegen</li>
-          // <li value="Wageningen University">Wageningen University</li>
-          // <li value="Rijksuniversiteit Groningen">Rijksuniversiteit Groningen</li>
-          // <li value="Universiteit Maastricht">Universiteit Maastricht</li>
-          // <li value="NHTV Internationale Hogeschool Breda">NHTV Internationale Hogeschool Breda</li>
-          // <li value="Technische Universiteit Eindhoven">Technische Universiteit Eindhoven</li>
-          // <li value="Tilburg University">Tilburg University</li>
-          // <li value="Protestantse Theologische Universiteit">Protestantse Theologische Universiteit</li>
-          // <li value="Universiteit van Amsterdam">Universiteit van Amsterdam</li>
-          // <li value="Vrije Universiteit Amsterdam">Vrije Universiteit Amsterdam</li>
-          // <li value="Universiteit Twente">Universiteit Twente</li>
-          // <li value="Theologische Universiteit Kampen">Theologische Universiteit Kampen</li>
-          // <li value="Universiteit voor Humanistiek">Universiteit voor Humanistiek</li>
-          // <li value="Universiteit Utrecht">Universiteit Utrecht</li>
-          // <li value="Technische Universiteit Delft">Technische Universiteit Delft</li>
-          // <li value="Universiteit Leiden">Universiteit Leiden</li>
-          // <li value="Erasmus Universiteit Rotterdam">Erasmus Universiteit Rotterdam</li>
-          // </ul>
-          // </button>
-          // </div>
-
-          //   <div class="dropdown">
-          //   <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Kies jaartal
-          //   <span class="caret"></span></button>
-          //   <ul id="dropdown" class="dropdown-menu">
-          //     <li value="2014">2014</li>
-          //     <li value="2015">2015</li>
-          //     <li value="2016">2016</li>
-          //   </ul>
-          // </div>
-
 }
+
+
+
+// Studentnummer : 12442690
+// Naam: Sam Kuilboer
+
+// Sources:
+// https://bl.ocks.org/lorenzopub/352ad2e6f577c4abf55e29e6d422535a
+// https://blockbuilder.org/guilhermesimoes/8913c15adf7dd2cab53a
+// https://bl.ocks.org/d3noob/4db972df5d7efc7d611255d1cc6f3c4f
+
+// function samsBar() {
+//
+//   var margin = {top: 50, right:50, bottom:100, left:50};
+//   var width = 960 - margin.left - margin.right;
+//   var height = 600 - margin.top - margin.bottom;
+//   var duration = 800;
+//
+//   var svg = d3.select("body")
+//       .append("svg")
+//       .attr("width", (width + margin.left + margin.right))
+//       .attr("height", (height + margin.top + margin.bottom))
+//   .append("g")
+//       .attr("transform", "translate(" + (margin.left + margin.right) + ")");
+//
+//   var g = svg.append("g")
+// 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+//
+//   var color = d3.scaleOrdinal()
+//       .domain(["Male", "Female"])
+//       .range(["blue", "red"])
+//
+//   d3.json("data_sam.json").then(function(data) {
+//     drawGroupedStackedBarChart(data);
+//   });
+//
+//
+//   function type(d) {
+//     d.year = new Date(d.year);
+//     d.population = +d.population;
+//     return d;
+//   }
+
+  // function drawGroupedStackedBarChart(data) {
+  //
+  //     var id = [];
+  //     var men = [];
+  //     var women = [];
+  //     for (i = 0; i < data.length; i++) {
+  //       var value = data[i].Country
+  //       var value1 = data[i].Male
+  //       var value2 = data[i].Female
+  //       id.push(value)
+  //       men.push(value1)
+  //       women.push(value2)
+  //     };
+  //
+  //     var x0 = d3.scaleBand()
+  //         .range([0, width - margin.left - margin.right], .2);
+  //     var x1 = d3.scaleBand()
+  //         .padding(0.2);
+  //     var y = d3.scaleLinear()
+  //         .range([height, 0]);
+  //     var xStack = d3.scaleBand()
+  //         .domain(id)
+  //         .range([0, width - margin.left - margin.right])
+  //         .align(0.1)
+  //         .padding(0.2);
+  //     var yStack = d3.scaleLinear()
+  //         .domain([0, (d3.max(women) + d3.max(men))])
+  //         .range([height, 0])
+  //
+  //     var xAxis = d3.axisBottom()
+  //         .ticks(id)
+  //         .scale(xStack)
+  //     var yAxis = d3.axisLeft()
+  //         .scale(yStack)
+  //
+  //     // drawing the x-axis
+  //     svg.append("g")
+  //         .attr("class", "x-axis")
+  //         .attr("transform", "translate(" + margin.left + "," + (height + margin.top) + ")")
+  //         .call(xAxis)
+  //       .selectAll("text")
+  //         .attr("x", -8)
+  //         .attr("y", 6)
+  //         .attr("transform", "rotate(-40)")
+  //         .style("text-anchor", "end");
+  //
+  //     // drawing the y-axis
+  //     svg.append("g")
+  //       .attr("class", "y-axis")
+  //       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  //       .call(yAxis)
+  //
+  //     svg.append("text")
+  //       .attr("class", "label")
+  //       .attr("x", 0-margin.left)
+  //       .attr("y", -50)
+  //       .attr("transform", "rotate(-90)")
+  //       .attr("dy", "1.5em")
+  //       .style("text-anchor", "end")
+  //       .text("Headcount population");
+  //
+  //     var keys = d3.keys(data[0]).slice(1);
+  //     var total = [];
+  //     data.forEach(function(d) {
+  //       total.push(d3.sum(keys,function(symbol) {return d[symbol];}))
+  //     })
+  //
+  //     x0.domain(data.map(function(d) {return d.Country}));
+  //
+  //     x1.domain(keys)
+  //         .range([0,x0.bandwidth()-10]);
+  //     y.domain([0,d3.max(data, function(d) {return d3.max(keys, function(symbol) {return d[symbol]})})]);
+  //
+  //     xStack.domain(data.map(function(d) {return d.Country}));
+  // 		yStack.domain([0,d3.max(total)]);
+  //     // console.log(d3.max(total));
+  //
+  //     var grouped = g.append("g")
+  //   			.selectAll("g")
+  //   			.data(d3.stack().keys(keys)(data))
+  //   			.enter()
+  //   			.append("g")
+  //   			.attr("fill",function(d) {return color(d.key)});
+  //
+  //     var rect = grouped.selectAll("rect")
+  //   			.data(function(d) {return d;})
+  //   			.enter()
+  //   			.append("rect")
+  //   			.attr("x",function(d) {console.log(d); return xStack(d.data.Country);})
+  //   			.attr("y",function(d) {return yStack(d[1]);})
+  //   			.attr("height",function(d) {return yStack(d[0]) - yStack(d[1]);})
+  //   			.attr("width",xStack.bandwidth());
+  //
+  //     d3.selectAll("input")
+  //         .on("change", changed);
+  //
+  //
+  //     function changed() {
+  //         if (this.value ==="grouped") GroupedBar();
+  //         else StackedBar();
+  //     }
+  //
+  //     function GroupedBar() {
+  // 				rect
+  // 				.transition()
+  // 				.duration(duration)
+  // 				.attr("width", x1.bandwidth())
+  // 				.transition()
+  // 				.duration(duration)
+  // 				.attr("x",function(d,i) {
+  // 					return x0(d.data.Country) + x1(this.parentNode.__data__.key);
+  // 				})
+  // 				.transition()
+  // 				.duration(duration)
+  // 				.attr("y",function(d) {return y(d[1]-d[0]);})
+  // 				.attr("height",function(d) {return y(0)-y(d[1]-d[0]);});
+  //
+  //         var yScaleGrouped = d3.scaleLinear()
+  //             .domain([0, d3.max(women)])
+  //             .range([height, 0])
+  //
+  //         d3.select(".y-axis")
+  //           .transition()
+  //           .duration(duration)
+  //           .call(d3.axisLeft(yScaleGrouped))
+  //     };
+  //
+  //     function StackedBar() {
+  //   				rect
+  //   				.transition()
+  //   				.duration(duration)
+  //   				.attr("y",function(d) {return yStack(d[1]-d[0]);})
+  //   				.attr("height",function(d){return yStack(d[0])-yStack(d[1]);})
+  //   				.transition()
+  //   				.duration(duration)
+  //   				.attr("y", function(d) {return yStack(d[1]);})
+  //   				.transition()
+  //   				.duration(duration)
+  //   				.attr("x",function(d) {return xStack(d.data.Country);})
+  //   				.attr("width",xStack.bandwidth());
+  //
+  //           var yScaleGrouped = d3.scaleLinear()
+  //               .domain([0, (d3.max(women) + d3.max(men))])
+  //               .range([height, 0])
+  //
+  //           d3.select(".y-axis")
+  //             .transition()
+  //             .duration(duration)
+  //             .call(d3.axisLeft(yScaleGrouped))
+  //   	};
+  //
+  //
+  //
+  // 	// positions the group and gives the class legend
+  // 	var legend = svg.selectAll(".legend")
+  // 	.data(color.domain())
+  // 	.enter()
+  // 	.append("g")
+  // 	.attr("class","legend")
+  // 	.attr("transform",function(d,i) {
+  // 		return "translate(0," + i * 15 + ")";
+  // 	});
+  //
+  // 	legend.append("path")
+  // 	.style("fill",function(d) {return color(d);})
+  // 	.attr("d", d3.symbol().type(d3.symbolSquare).size(120))
+  // 	.attr("transform",function(d) {
+  // 		return "translate (" + width/5 + "," + 10 +")";
+  // 	})
+  //
+  // 	legend.append("text")
+  // 	.attr("x",width/5 + 15)
+  // 	.attr("y",10)
+  // 	.attr("dy",".30em")
+  // 	.text(function(d) {return d;})
+  //
+  // 	svg.append("text")
+  // 	.attr("x",width/2 - 40)
+  // 	.attr("y",20)
+  // 	.attr("dy",".20em")
+  // 	.attr("font-size",25)
+  // 	.text("Population per Country")
+  // 	.attr("class","title")
+  // };
+
 }

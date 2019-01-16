@@ -28,7 +28,6 @@
       </ul>
     </div>
   </nav>
-
   <div class="container">
     <div class="jumbotron">
       <h1>Visualisaties</h1>
@@ -38,20 +37,24 @@
     <p>Hier komen de bargraphs</p>
     <p>HEH</p>
     <!-- Example single danger button -->
-    <div class="dropdown">
-      <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Kies jaartal
-      <span class="caret"></span></button>
-      <ul id="dropdown" class="dropdown-menu">
-        <li value="2014">2014</li>
-        <li value="2015">2015</li>
-        <li value="2016">2016</li>
-      </ul>
+  <div class="row">
+    <div class="col-sm-7" id="mapBlock">
     </div>
-    <div class="slidecontainer">
-        <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="sliderChange(this.value)">
+    <div class="col-sm-5" id="lineBlock">
+      <div class="row">
+        <div class="col-sm-6" id="dropdownInst">
+        </div>
+        <div class="col-sm-6" id="dropdownOpl">
+        </div>
+    </div>
 </div>
 </div>
-</div>
+
+  <div class="row" id="barGraphs">
+    <div class="col-sm-6" id="graph1">
+      <svg width="960" height="500"></svg>
+    </div>
+
   </div>
   <!--Make sure the form has the autocomplete function switched off:-->
 <!-- <form autocomplete="off" action="/action_page.php">
@@ -67,11 +70,11 @@
 		 <ul class="results" >
 			 <li><a href="index.html">Search Result #1<br /><span>Description...</span></a></li>
 			 <li><a href="index.html">Search Result #2<br /><span>Description...</span></a></li>
-	 		<!-- <li><a href="index.html">Search Result #3<br /><span>Description...</span></a></li> -->
-         	<li><a href="index.html">Search Result #4</a></li>
+	 		<!- <li><a href="index.html">Search Result #3<br /><span>Description...</span></a></li> -->
+         	<!-- <li><a href="index.html">Search Result #4</a></li> -->
 		 <!-- </ul>
 	 </form>
-</section> --> 
+</section> -->
 
   <div>
   </div>

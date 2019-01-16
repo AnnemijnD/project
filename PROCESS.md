@@ -27,3 +27,14 @@ verzamelen
 * Tooltips toegevoegd
 * Blijkbaar kan je bij .data() geen dictionary toevoegen maar alleen een lijst,
   hieromheen gewerkt
+
+## MA 14/1/19
+* Gelukt om data in te laden voor de lijngraiek en een dropdown te maken om
+  opleiding en instelling te kiezen. De lijn update alleen nog niet, maar
+  wordt geremoved. Dit ga ik laten aanpassen
+
+* Gewerkt aan de bargraph. Het lukt nog niet heolemaal zoals ik wil.
+  Nieuw idee: in plaats van het maken van nieuwe bar Graphs,
+  nu de bars toevoegen aan de bestaande bargraph. Ipv gewone bargraph een grouped
+  bargraph.
+  
