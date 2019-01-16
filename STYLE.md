@@ -5,10 +5,10 @@
 
 
 ## Spaces Around Operators
-* Put spaces around operators:
+* Put spaces around operators: <br></br>
 ``` a = b + c ```
 
-## Code indentation
+## Code indentation (python)
 * Always use 1 tab for indentation of code blocks: <br></br>
 ```javascript
 function toCelsius(fahrenheit) {
@@ -16,5 +16,9 @@ function toCelsius(fahrenheit) {
        } 
  ```
  
-## Statement rules
-*
+## Statement rules (javascript)
+* Always end simple statement with semicolons
+* Put the opening bracket at the end of the first line.
+* Use one space before the opening bracket.
+* Put the closing bracket on a new line, without leading spaces.
+* Do not end a complex statement with a semicolon.
