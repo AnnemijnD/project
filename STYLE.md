@@ -8,11 +8,13 @@
 * Put spaces around operators:
 ``` a = b + c ```
 
-### Code indentation
+## Code indentation
 Always use 1 tab for indentation of code blocks:
 ```
     function toCelsius(fahrenheit) {
-      return (5 / 9) * (fahrenheit - 32);
+        return (5 / 9) * (fahrenheit - 32);
        } ```
+
+
        
     
