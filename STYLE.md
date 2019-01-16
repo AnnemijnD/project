@@ -9,8 +9,12 @@
 ``` a = b + c ```
 
 ## Code indentation
-Always use 1 tab for indentation of code blocks:
-``` function toCelsius(fahrenheit) {
+* Always use 1 tab for indentation of code blocks: <br></br>
+```javascript
+function toCelsius(fahrenheit) {
         return (5 / 9) * (fahrenheit - 32);
        } 
- ## ddd
+ ```
+ 
+## Statement rules
+*
