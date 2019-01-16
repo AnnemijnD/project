@@ -2,6 +2,7 @@
 
 ## Variable Names
 * camelCase naming
+* Global variables written in UPPERCASE
 
 
 ## Spaces Around Operators
