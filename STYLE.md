@@ -21,8 +21,19 @@ function toCelsius(fahrenheit) {
 * Put the opening bracket at the end of the first line.
 * Use one space before the opening bracket.
 * Put the closing bracket on a new line, without leading spaces. 
-        <tab></tab>example: see code block in "code identation"
 * Do not end a complex statement with a semicolon. 
+```javascript
+function toCelsius(fahrenheit) {
+        return (5 / 9) * (fahrenheit - 32);
+       } 
+ ```
+ 
 * Each method on its own indented line:
-
+`
+```javascript
+var provinces = map.selectAll(".provinces")
+    .data(topojson.feature(europe, europe.objects.FranceProvinces).features)
+    .enter()
+    .append("g")
+ ```
 
