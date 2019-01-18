@@ -44,6 +44,9 @@ dataStud.forEach(function(d){
     if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
       if (d["INSTELLINGSNAAM ACTUEEL"].includes(instelling)){
 
+        var id = 0;
+
+
         // get data of all years
         datapoints.forEach(function(a){
           var jaar = a;
@@ -65,6 +68,9 @@ dataStud.forEach(function(d){
           coordinates['x'] = jaar;
           coordinates['y'] = mannen + vrouwen;
           dataset.push(coordinates)
+          lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
+                              jaar: jaar, mannen: mannen, vrouwen: vrouwen,
+                              totaal: mannen + vrouwen})
           };
         })
       }
@@ -195,6 +201,26 @@ function updateLine (dataStud, opleiding, instelling){
       if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
         if (d["INSTELLINGSNAAM ACTUEEL"].includes(instelling)){
 
+          var id = 0;
+          var finder = true;
+
+          // vind een ongebruikt id
+          while(finder){
+            var idUsed = false;
+            lineGraphData.forEach(function(d){
+              if (d.id === id){
+                idUsed = true;
+              }
+
+            })
+
+            if (idUsed === false){
+              finder = false
+            }
+            id++
+          }
+
+
           // get data of all years
           datapoints.forEach(function(a){
             var jaar = a;
@@ -216,6 +242,9 @@ function updateLine (dataStud, opleiding, instelling){
             coordinates['x'] = jaar;
             coordinates['y'] = mannen + vrouwen;
             dataset.push(coordinates)
+            lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
+                                jaar: jaar, mannen: mannen, vrouwen: vrouwen,
+                                totaal: mannen + vrouwen})
             };
           })
         }
@@ -269,4 +298,6 @@ function updateLine (dataStud, opleiding, instelling){
       .attr("cx", function(d, i) { return xScale(d.x) })
       .attr("cy", function(d) { return yScale(d.y) })
       .attr("value", function(d){return [instelling, opleiding]})
+
+  console.log(lineGraphData)
 }

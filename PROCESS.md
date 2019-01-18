@@ -56,3 +56,9 @@ verzamelen
 ## DO 17/1/19
 * Update maken voor bargraph lukt nog steeds niet, probeer nu in een ander voorbeeld
   eerst hetzelfde te doen, hier wel al stappen in gemaakt
+
+## VRIJ 18/1/19
+* Bar graph update is gelukt! Nu bezig te implementeren dat wanneer je klikt op een circle
+van de lijn grafiek, de bargraph update. Dit is tevens een nieuw plan.
+* Algemene variableen aangemaakt die de data zullen dragen zodat deze makkelijk bereikbaar
+zijn vanuit alle functies.
