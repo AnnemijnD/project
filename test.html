@@ -7,64 +7,60 @@
 
 </style>
 <svg width="960" height="500"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="d3/d3.js"></script>
 <script>
 
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var x0 = d3.scaleBand()
-    .rangeRound([0, width])
-    .paddingInner(0.1);
+var data = [{Instelling: "UvA", Opleiding: "bmw", jaar:'2017', Man: 200, Vrouw: 300},
+        {Instelling: "UvA", Opleiding: "Bmw", jaar:'2016', Man: 150, Vrouw: 200}]
 
-var x1 = d3.scaleBand()
-    .padding(0.05);
+  var svg = d3.select("svg"),
+      margin = {top: 20, right: 20, bottom: 30, left: 40},
+      width = +svg.attr("width") - margin.left - margin.right,
+      height = +svg.attr("height") - margin.top - margin.bottom,
+      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
+  // The scale spacing the groups:
+  var x0 = d3.scaleBand()
+      .rangeRound([0, width])
+      .paddingInner(0.1);
 
-var z = d3.scaleOrdinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+  // The scale for spacing each group's bar:
+  var x1 = d3.scaleBand()
+      .padding(0.05);
 
-d3.csv("data_final.csv", function(d, i, columns) {
+  var y = d3.scaleLinear()
+      .rangeRound([height, 0]);
 
+  var z = d3.scaleOrdinal()
+      .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-  for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = +d[columns[i]];
-
-  // dictionary met staat en integer data van elke bargraph van die staat
-
-  return d;
-}, function(error, data) {
-  if (error) throw error;
+  d3.csv("data/data_final.csv").then(function(response) {
 
 
-
-  // namen van de columns
-  var keys = data.columns.slice(1);
-
-  // alles op xas
-  x0.domain(data.map(function(d) {return d.State; }));
+  // var data = response
 
 
+  var keys = ["Vrouw", "Man"]
+
+  x0.domain(data.map(function(d) { return d.Instelling + d.Opleiding + d.jaar ; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-  y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
+  y.domain([0, 400]).nice();
 
-  g.append("g")
-    .selectAll("g")
-    .data(data)
-    .enter().append("g")
-      .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; })
-    .selectAll("rect")
-    .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
-    .enter().append("rect")
-      .attr("x", function(d) { return x1(d.key); })
-      .attr("y", function(d) { return y(d.value); })
-      .attr("width", x1.bandwidth())
-      .attr("height", function(d) { return height - y(d.value); })
-      .attr("fill", function(d) { return z(d.key); });
+g.append("g")
+  .selectAll("g")
+  .data(data)
+  .enter().append("g")
+  .attr("class","bar")
+  .attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
+  .selectAll("rect")
+  .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+  .enter().append("rect")
+    .attr("x", function(d) { return x1(d.key); })
+    .attr("y", function(d) { return y(d.value); })
+    .attr("width", x1.bandwidth())
+    .attr("height", function(d) { return height - y(d.value); })
+    .attr("fill", function(d) { return z(d.key); });
 
   g.append("g")
       .attr("class", "axis")
@@ -72,7 +68,7 @@ d3.csv("data_final.csv", function(d, i, columns) {
       .call(d3.axisBottom(x0));
 
   g.append("g")
-      .attr("class", "axis")
+      .attr("class", "y axis")
       .call(d3.axisLeft(y).ticks(null, "s"))
     .append("text")
       .attr("x", 2)
@@ -93,16 +89,138 @@ d3.csv("data_final.csv", function(d, i, columns) {
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
   legend.append("rect")
-      .attr("x", width - 19)
-      .attr("width", 19)
-      .attr("height", 19)
-      .attr("fill", z);
+      .attr("x", width - 17)
+      .attr("width", 15)
+      .attr("height", 15)
+      .attr("fill", z)
+      .attr("stroke", z)
+      .attr("stroke-width",2)
+      .on("click",function(d) { update(d) });
 
   legend.append("text")
       .attr("x", width - 24)
       .attr("y", 9.5)
       .attr("dy", "0.32em")
       .text(function(d) { return d; });
+
+  var filtered = [];
+
+  function update(d) {
+
+    // create extra data
+    var state = randomString()
+
+    // data.push({"State": state, "Under 5 Years": 737462, "5 to 13 Years": 500230,
+    // "14 to 17 Years": 600223,"18 to 24 Years": 500300, "25 to 44 Years": 400233,
+    //  "45 to 64 Years": 300400, "65 Years and Over": 200400})
+
+    data.push({Instelling: state, Opleiding: "bmw", jaar:'2017', Man: 120, Vrouw: 330})
+
+
+
+    // state the height
+    margin = {top: 20, right: 20, bottom: 30, left: 40}
+    width = +svg.attr("width") - margin.left - margin.right
+    height = +svg.attr("height") - margin.top - margin.bottom
+
+    // get the keys that are needed to get the data
+    var newKeys = ["Vrouw", "Man"];
+
+    // keys.forEach(function(d) {
+    //   if (filtered.indexOf(d) == -1 ) {
+    //     newKeys.push(d);
+    //   }
+    // })
+
+    // make scales for the axes
+    var x0 = d3.scaleBand()
+        .rangeRound([0, width])
+        .paddingInner(0.1);
+
+    var x1 = d3.scaleBand()
+        .padding(0.05);
+
+    var y = d3.scaleLinear()
+        .rangeRound([height, 0]);
+
+    x0.domain(data.map(function(d) { return d.Instelling + d.Opleiding + d.jaar; }));
+    x1.domain(newKeys).rangeRound([0, x0.bandwidth()]);
+    y.domain([0, 400]).nice();
+
+    // update the x axis
+    d3.select(".axis")
+      .transition()
+      .duration(500)
+      .call(d3.axisBottom(x0));
+
+    // update the y axis
+    svg.select(".y")
+    .transition()
+    .call(d3.axisLeft(y).ticks(null, "s"))
+    .duration(500);
+
+    // remove necessary groups
+    var groups = svg.selectAll(".bar").data(data)
+
+    groups.exit().remove()
+
+    // update the groups
+    groups.attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ")"; })
+
+    // update the newly inserted groups
+    d3.selectAll("#extra").attr("transform", function(d) { return "translate(" + (x0(d.Instelling + d.Opleiding + d.jaar) + margin.left) + "," + margin.top + ")"; })
+
+    // enter the new groups and rectangles
+    groups.enter().append("g")
+    .attr("class","bar")
+    .attr("id", "extra")
+    .attr("transform", function(d) { return "translate(" + (x0(d.Instelling + d.Opleiding + d.jaar) + margin.left)  + "," + margin.top + ")"; })
+    .selectAll("rect")
+    .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+    .enter().append("rect")
+
+      .attr("x", function(d) { console.log(d);return x1(d.key); })
+      .attr("y", function(d) { return y(0); })
+      .attr("height", "0")
+      .attr("width", x1.bandwidth())
+      .transition()
+      .duration(1000)
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .attr("fill", function(d) { return z(d.key); })
+
+
+    // check bar data
+    var bars = svg.selectAll(".bar").selectAll("rect")
+      .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+
+    // Adjust the remaining bars:
+    //
+    bars
+      .transition()
+      .attr("x", function(d) { return x1(d.key); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .attr("width", x1.bandwidth())
+      .attr("fill", function(d) { return z(d.key); })
+      .duration(500);
+
+  }
+
+  function randomString(){
+      var letters = "abcdefghijklmnopqrstuvwxyz"
+
+      var first = Math.floor(Math.random() * 26);
+      var second = Math.floor(Math.random() * 26);
+      var third = Math.floor(Math.random() * 26);
+
+      var randomString = letters[first] + letters[second] + letters[third]
+
+      return randomString
+  }
+
+}).catch(function(e){
+    throw(e);
 });
 
 </script>

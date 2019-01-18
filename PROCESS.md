@@ -44,10 +44,16 @@ verzamelen
   naar een vorm die voor mij werkte
 * Geprobeerd data in te laden voor de bargraph, lukt nog niet
 
-## Wo 16/1/19
+## WO 16/1/19
 * Werkende update functie gemaakt voor de lineGraph
 * Styleguide gecreeerd
 * BEzig met update functie voor Bargraph, werkt nog niet helemaal naar behoren,
   wel gelukt om de x en y as te laten updaten en om een extra group bar charts
   te kunnen aanmaken. Alleen de oude bars blijven nog staan  
 * werkomgeving een beetje opgeschoond
+
+
+## DO 17/1/19
+* Update maken voor bargraph lukt nog steeds niet, probeer nu in een ander voorbeeld
+  eerst hetzelfde te doen, hier wel al stappen in gemaakt
+  

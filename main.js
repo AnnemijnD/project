@@ -272,6 +272,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
                       })
                       .on('mouseout', function(d){
 
+
                           tip.hide(d);
                           d3.select(this)
                             .style("opacity", 0.8)
@@ -692,7 +693,7 @@ function updateLine (dataStud, opleiding, instelling){
       .datum(dataset) // 10. Binds data to the line
       .transition()
       .duration(duration)
-      .attr("d", function(d) {console.log(d); return line(d); })
+      .attr("d", function(d) { return line(d); })
 
   // 12. Appends a circle for each datapoint
   d3.selectAll(".dot")
@@ -801,6 +802,7 @@ function barChart(dataStud) {
           .selectAll("g")
           .data(data2)
           .enter().append("g")
+            .attr('class', "barG")
             .attr("transform", function(d, i) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
           .selectAll("rect")
           .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
@@ -1083,6 +1085,8 @@ function updateBar(opleiding, jaar, instelling, data2){
           {Instelling: "UvA", Opleiding: "Bmw", jaar:'2016', Man: 150, Vrouw: 200}, {Instelling: "Rad", Opleiding: "Wiskunde", jaar: '2015', Man: 245, Vrouw: 434},
         {Instelling: "Rad", Opleiding: "Wiskunde", jaar: '2014', Man: 245, Vrouw: 434}]
 
+  var extra2 = [{Instelling: "Rad", Opleiding: "Wiskunde", jaar: '2015', Man: 245, Vrouw: 434},
+        {Instelling: "Rad", Opleiding: "Wiskunde", jaar: '2014', Man: 245, Vrouw: 434}]
   width = +svg.attr("width") - margin.left - margin.right
 
   height = +svg.attr("height") - margin.top - margin.bottom
@@ -1108,6 +1112,15 @@ function updateBar(opleiding, jaar, instelling, data2){
 
   var keys = ["Vrouw", "Man"]
 
+  keyValue = []
+
+  extra.forEach(function(d){
+    keys.forEach(function(key){
+      return keyValue.push({key:key, value: d[key]})
+    })
+  })
+
+
   x0.domain(extra.map(function(d) { return d.Instelling + d.Opleiding + d.jaar; }));
   // x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
@@ -1125,55 +1138,155 @@ function updateBar(opleiding, jaar, instelling, data2){
     .duration(duration)
     .call(d3.axisBottom(x0));
 
+
+
+    var barGroups = d3.selectAll(".barG").data(extra);
+
+    console.log(barGroups)
+    barGroups.exit().remove();
+
+    // barGroups.enter().append("g").classed('layer', true)
+    //     .attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; });
+
+    console.log(barGroups)
+
+    var bars = d3.selectAll(".barG").selectAll("rect")
+        .data(keyValue)
+
+    console.log(bars)
+
+    bars.exit().remove();
+
+    // bars.enter().append("rect").attr("width", x1.bandwidth())
+    //     .attr("x", function(d) { return x1(d.key); })
+    //     .attr("fill", function(d) { return z(d.key); })
+    //     .transition().duration(duration)
+    //     .attr("y", function(d) { return y(d.value); })
+    //     .attr("height", function(d) { return height - y(d.value); });
+    //
+    // bars
+    //     .transition().duration(duration)
+    //     .attr("y", function(d) { return y(d.value); })
+    //     .attr("height", function(d) { return height - y(d.value); });
+
+
+
+
+
+      // var bars = d3.selectAll(".test")
+      //             .data(data)
+      //
+      // bars = bars.enter().append("g")
+      //         .attr("transform", function(d) { return "translate(" + x0(d.State) + ",0)"; })
+      //         .selectAll("rect")
+      //         .data(function(d) {
+      //             return keys.map(function(key) {
+      //                 return {key: key, value: d[key]};
+      //             });
+      //         })
+      // bars = bars
+      //   .enter().append("rect")
+      //     .attr("width", x1.bandwidth())
+      //     .attr("x", function(d) { return x1(d.key); })
+      //     .attr("fill", function(d) { return z(d.key); })
+      //     .merge(bars)
+      //
+      // bars.transition()
+      //     .duration(750)
+      //     .attr("y", function(d) { return y(d.value); })
+      //     .attr("height", function(d) { return height - y(d.value); });
+      //
+      // bars.exit().remove();
+    //
+    // d3.select(".bar")
+    //   .exit()
+    //   .remove()
+
+
+    // change formation of bars
+    // d3.selectAll(".barG")
+    //   .transition()
+    //   .duration(duration)
+    //   .attr("transform", function(d,i){return "translate(30,0)"})
+        // .data(keyValue)
+        // .transition()
+        // .duration(duration)
+        // .attr("x", function(d) {console.log(d);return x1(d.key);})
+        // .attr("y", function(d) {return y(d.value); })
+        // .attr("width", x1.bandwidth())
+        // .attr("height", function(d) { return height - y(d.value); })
+        // .attr("fill", function(d) { return z(d.key); })
+        // .attr("transform", "translate(200,0)")
+
+
+    //
+    // d3.selectAll(".barG")
+    //   .attr("transform", "translate(200,0)")
   // d3.select("#grid rect")
   //   .style("fill", "blue")
 
-  d3.select("#grid g")
-    .attr("class", "doe")
+  // d3.select(".doe")
+  //   .append('g')
+  //   .attr("class", "test")
 
-    d3.select(".doe")
-      .append("g")
-      .selectAll("g")
-      .data(extra)
-      .enter().append("g")
-        .attr("transform", function(d, i) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
-      .selectAll("rect")
-      .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
-      .enter().append("rect")
-        .transition()
-        .duration(duration)
-        .attr("x", function(d) { return x1(d.key); })
-        .attr("y", function(d) {return y(d.value); })
-        .attr("width", x1.bandwidth())
-        .attr("height", function(d) { return height - y(d.value); })
-        .attr("fill", function(d) { return z(d.key); })
-        .attr("class", "bar")
-        .attr("d", function(d){ return d})
+  //
+  // d3.select("#grid g")
+  //   .attr("class", "doe")
+  //
+  //   d3.selectAll(".doe")
+  //     .append('g')
+  //     .selectAll("g")
+  //     .data(extra2)
+  //     .enter()
+  //     .append("g")
+  //     .attr("class", "barG")
+  //     .attr("transform", function(d, i) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
+  //     .selectAll("rect")
+  //     .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+  //     .enter().append("rect")
+  //       .transition()
+  //       .duration(duration)
+  //       .attr("x", function(d) { return x1(d.key); })
+  //       .attr("y", function(d) {return y(d.value); })
+  //       .attr("width", x1.bandwidth())
+  //       .attr("height", function(d) { return height - y(d.value); })
+  //       .attr("fill", function(d) { return z(d.key); })
+  //       .attr("class", "bar")
+  //       .attr("d", function(d){ return d})
+  //
+  //      keyValue = []
+  //
+  //      extra.forEach(function(d){
+  //        keys.forEach(function(key){
+  //          return keyValue.push({key:key, value: d[key]})
+  //        })
+  //      })
+  //
+  //      console.log(keyValue)
 
-       keyValue = []
-
-       extra.forEach(function(d){
-         keys.forEach(function(key){
-           return keyValue.push({key:key, value: d[key]})
-         })
-       })
-
-       console.log(keyValue)
 
 
 
 
-    // 9. Append the path, bind the data, and call the line generator
-    d3.select(".bar")
-        .data(keyValue)
-        .transition()
-        .duration(duration)
-        .attr("x", function(d) {return x1(d.key);})
-        .attr("y", function(d) {return y(d.value); })
-        .attr("width", x1.bandwidth())
-        .attr("height", function(d) { return height - y(d.value); })
-        .attr("fill", function(d) { return z(d.key); })
-        // .attr("d", function(d) { return (d); })
+    // change formation of bars
+    // d3.selectAll(".barG")
+    //     .data(keyValue)
+    //     .transition()
+    //     .duration(duration)
+    //     .attr("x", function(d) {return x1(d.key);})
+    //     .attr("y", function(d) {return y(d.value); })
+    //     .attr("width", x1.bandwidth())
+    //     .attr("height", function(d) { return height - y(d.value); })
+    //     .attr("fill", function(d) { return z(d.key); })
+    //     .attr('transform', function(d, i) {
+    //       if (i === 0 ) {
+    //         return "translate(0,0)"
+    //       }
+    //       else{
+    //         return "translate(-2,0)"
+    //       }})
+
+
 
 
         //
