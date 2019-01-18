@@ -56,4 +56,3 @@ verzamelen
 ## DO 17/1/19
 * Update maken voor bargraph lukt nog steeds niet, probeer nu in een ander voorbeeld
   eerst hetzelfde te doen, hier wel al stappen in gemaakt
-  
