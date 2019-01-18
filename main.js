@@ -2,6 +2,11 @@
 // Annemijn Dijkhuis
 // 11149272
 
+var barGraphData = [];
+var lineGraphData = [];
+var mapData = [];
+var allData = [];
+
 function onload(){
     // d3.select("button")
     // .on("click", function(d){
@@ -77,10 +82,9 @@ function onload(){
     var test = test()
 
           // document.getElementById('myRange').innerHTML = this.value
-          // console.log(document.getElementById("myRange"))
+
           Promise.all(requests).then(function(response) {
           //   if (isNaN(this.value)){
-          //     console.log("jeej")
           //     jaartal = 2017
           //   }
           //   else {
@@ -99,7 +103,10 @@ function createHeatMap(dataMap, dataStud, jaartal) {
   //     <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="sliderChange(this.value)">
   // </div>
 
+  dataStud.forEach(function(d){
+    allData.push(d)
 
+  })
 
 
   dataset = [['KAMPEN',
@@ -161,7 +168,6 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
 
     // find data of countries
-    // dataMap.features.forEach(function(d){console.log(d['properties']['name'])})
     dataMap.features.forEach(function(d){ d.total = dataById[d.properties['name']]})
     dataMap.features.forEach(function(d){ if (typeof d.total === "undefined") {
                                               d.total = NaN
@@ -413,9 +419,10 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
 
     // set standard bargraph to the Netherlands
-    var linegraphvar = lineGraph(dataStud, "Amsterdam", "Biomedische Wetenschappen")
+    var linegraphvar = lineGraph(dataStud, "Universiteit van Amsterdam", "Biomedische Wetenschappen")
     var dropdowns = makeDropdowns(dataStud)
-    var barChartVar = barChart(dataStud)
+    // var barChartVar = barChart(dataStud)
+    var barGraphVar = barGraph()
     // var samsBarvar = samsBar()
 
 };
@@ -558,8 +565,12 @@ svg.append("g")
 // 9. Append the path, bind the data, and call the line generator
 svg.append("path")
     .datum(dataset) // 10. Binds data to the line
-    .attr("class", "line") // Assign a class for styling
-    .attr("d", line); // 11. Calls the line generator
+    .attr("class", "line")
+    .attr("id", "realline")
+   // 11. Calls the line generator // Assign a class for styling
+    .attr("d", line);
+
+
 
 // 12. Appends a circle for each datapoint
 svg.selectAll(".dot")
@@ -569,19 +580,16 @@ svg.selectAll(".dot")
     .attr("cx", function(d, i) { return xScale(d.x) })
     .attr("cy", function(d) { return yScale(d.y) })
     .attr("r", 5)
+    .attr("value", function(d){return [instelling, opleiding]})
       .on("mouseover", function(d) {
 
         tip.show(d)
 		})
-      .on("mouseout", function(d) { tip.hide(d) });
+      .on("mouseout", function(d) { tip.hide(d) })
+      .on("click", function(d) {
+        console.log(d3.select(this).select("value"))
 
-
-
-
-
-
-
-
+        return updateBarGraph(opleiding, instelling, `${d.x}`)});
 }
 
 function updateLine (dataStud, opleiding, instelling){
@@ -695,6 +703,7 @@ function updateLine (dataStud, opleiding, instelling){
       .duration(duration)
       .attr("d", function(d) { return line(d); })
 
+
   // 12. Appends a circle for each datapoint
   d3.selectAll(".dot")
       .data(dataset)
@@ -702,6 +711,10 @@ function updateLine (dataStud, opleiding, instelling){
       .duration(duration)
       .attr("cx", function(d, i) { return xScale(d.x) })
       .attr("cy", function(d) { return yScale(d.y) })
+      .attr("value", function(d){return [instelling, opleiding]})
+
+
+
 
 
 }
@@ -744,7 +757,7 @@ function barChart(dataStud) {
                   .attr("width", 600 - margin.left - margin.right)
                   .attr("height", 400 - margin.bottom - margin.top)
 
-      // console.log(+svg.attr("width"))
+
 
       width = +svg.attr("width") - margin.left - margin.right
 
@@ -772,12 +785,12 @@ function barChart(dataStud) {
 
       columns_f = []
 
-      // // console.log(Object.keys(dataformat[0]))
+
       // d3.csv("data_final.csv").then(function(d, i, columns)  {
       //
       //
       //   for (var i = 1, n = d["columns"].length; i < n; ++i)
-      //   console.log(d[d.columns[i]]),
+
       //   d[d.columns[i]] = +d[d.columns[i]];
       //   return d;
       // }, function(error, data)
@@ -818,7 +831,7 @@ function barChart(dataStud) {
                       {Instelling: "rad", Opleiding: "Bmw", jaar:'2016', Man: 120, Vrouw: 100}]
 
 
-              updateBar(opleiding, jaar, instelling, data2)
+              updateBarGraph(opleiding, instelling, jaar)
             })
 
             //   d3.select("#grid g")
@@ -1142,18 +1155,18 @@ function updateBar(opleiding, jaar, instelling, data2){
 
     var barGroups = d3.selectAll(".barG").data(extra);
 
-    console.log(barGroups)
+
     barGroups.exit().remove();
 
     // barGroups.enter().append("g").classed('layer', true)
     //     .attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; });
 
-    console.log(barGroups)
+
 
     var bars = d3.selectAll(".barG").selectAll("rect")
         .data(keyValue)
 
-    console.log(bars)
+
 
     bars.exit().remove();
 
@@ -1211,7 +1224,7 @@ function updateBar(opleiding, jaar, instelling, data2){
         // .data(keyValue)
         // .transition()
         // .duration(duration)
-        // .attr("x", function(d) {console.log(d);return x1(d.key);})
+        // .attr("x", function(d) {return x1(d.key);})
         // .attr("y", function(d) {return y(d.value); })
         // .attr("width", x1.bandwidth())
         // .attr("height", function(d) { return height - y(d.value); })
@@ -1262,7 +1275,7 @@ function updateBar(opleiding, jaar, instelling, data2){
   //        })
   //      })
   //
-  //      console.log(keyValue)
+
 
 
 
@@ -1295,9 +1308,9 @@ function updateBar(opleiding, jaar, instelling, data2){
         //   .selectAll("g")
         //   .data(extra)
         //   .enter().append("g")
-        //     .attr("transform", function(d) { console.log(d); return "translate(" + 2 * 170 + ",0)"; })
+        //     .attr("transform", function(d) {  return "translate(" + 2 * 170 + ",0)"; })
         //   .selectAll("rect")
-        //   .data(function(d) { console.log(d); return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+        //   .data(function(d) {  return keys.map(function(key) { return {key: key, value: d[key]}; }); })
         //   .enter().append("rect")
         //     .transition()
         //     .duration(duration)
