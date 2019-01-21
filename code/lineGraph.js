@@ -1,4 +1,6 @@
-function lineGraph(dataStud, instelling, opleiding){
+function lineGraph(instelling, opleiding){
+
+  dataStud = allData
 
   d3.select("#line")
     .remove()
@@ -40,11 +42,11 @@ var n = datapoints.length;
 dataset = [];
 // get right dataset
 
+var id = 0;
 dataStud.forEach(function(d){
     if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
       if (d["INSTELLINGSNAAM ACTUEEL"].includes(instelling)){
 
-        var id = 0;
 
 
         // get data of all years
@@ -130,7 +132,7 @@ svg.append("g")
 svg.append("path")
     .datum(dataset) // 10. Binds data to the line
     .attr("class", "line")
-    .attr("id", "realline")
+    .attr("id", id)
    // 11. Calls the line generator // Assign a class for styling
     .attr("d", line);
 
@@ -138,8 +140,10 @@ svg.append("path")
 
 // 12. Appends a circle for each datapoint
 svg.selectAll(".dot")
+
     .data(dataset)
   .enter().append("circle") // Uses the enter().append() method
+  .attr("id", id)
     .attr("class", "dot") // Assign a class for styling
     .attr("cx", function(d, i) { return xScale(d.x) })
     .attr("cy", function(d) { return yScale(d.y) })
@@ -152,11 +156,30 @@ svg.selectAll(".dot")
       .on("mouseout", function(d) { tip.hide(d) })
       .on("click", function(d) {
 
+        jaar = d.x
+        id = this.id
+
+        lineGraphData.forEach(function(d){
+
+          if (parseInt(id) === parseInt(d.id)){
+            opleiding = d.Opleiding
+            instelling = d.Instelling
+          }
+        })
+
+
+
 
         return updateBarGraph(opleiding, instelling, `${d.x}`)});
 }
 
-function updateLine (dataStud, opleiding, instelling){
+function updateLine (opleiding, instelling){
+
+
+
+  dataStud = allData
+
+
 
   // svg
   var margin = {top: 50, right: 50, bottom: 50, left: 50, yPadding: 10}
@@ -198,60 +221,83 @@ function updateLine (dataStud, opleiding, instelling){
   dataset = [];
   // get right dataset
 
+  var id = 0;
+
+  if (opleiding === "Alles"){
+    uniData.forEach(function(d){
+      if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
+
+        // // get data of all years
+        datapoints.forEach(function(a){
+          var jaar = a
+          var totaal = parseInt((d[`TOTAAL ${jaar}`]));
+
+          coordinates = {};
+          coordinates['x'] = jaar;
+          coordinates['y'] = totaal
+          dataset.push(coordinates)
+
+
+      })
+    }})
+  }
   dataStud.forEach(function(d){
       if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
         if (d["INSTELLINGSNAAM ACTUEEL"].includes(instelling)){
 
-          var id = 0;
-          var finder = true;
 
-          // vind een ongebruikt id
-          while(finder){
-            var idUsed = false;
-            lineGraphData.forEach(function(d){
-              if (d.id === id){
-                idUsed = true;
+            var finder = true;
+
+            // vind een ongebruikt id
+
+            // zolang als dat die niet is gevonden, zoek
+            while(finder){
+
+              // als dit iD is gebruikt, word ie true
+              var idUsed = false;
+
+              // zoek door de data naar de verschillende id's
+              lineGraphData.forEach(function(d){
+
+                // als dit iD is gebruikt, word true
+                if (d.id === id){
+                  idUsed = true;
+                }
+
+              })
+
+              // als dit id niet is gebruikt, wordt finder false en stop de zoektocht
+              if (idUsed === false){
+                finder = false
+
               }
+
+              else {
+              id++
+              }
+            }
+
+
+
+            // // get data of all years
+            datapoints.forEach(function(a){
+              var jaar = a
+              var totaal = parseInt((d[`TOTAAL ${jaar}`]));
+
+              coordinates = {};
+              coordinates['x'] = jaar;
+              coordinates['y'] = totaal
+              dataset.push(coordinates)
+
+
 
             })
 
-            if (idUsed === false){
-              finder = false
-            }
-            id++
+            lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
+
           }
 
-
-
-          // get data of all years
-          datapoints.forEach(function(a){
-            var jaar = a;
-            var vrouwen = parseInt((d[`${jaar} VROUW`]));
-            var mannen = parseInt((d[`${jaar} MAN`]));
-
-            // check for double data
-            var duplicate = false;
-            dataset.forEach(function(d, i) {
-              if (d.x === jaar){
-                d.y += (mannen + vrouwen)
-                duplicate = true;
-              }
-            })
-
-            // adds data to dataset
-            if (duplicate === false){
-            coordinates = {};
-            coordinates['x'] = jaar;
-            coordinates['y'] = mannen + vrouwen;
-            dataset.push(coordinates)
-
-            };
-          })
-          lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
-
-          console.log(datapoints)
         }
-      }
     })
 
 
@@ -287,6 +333,7 @@ function updateLine (dataStud, opleiding, instelling){
 
   // 9. Append the path, bind the data, and call the line generator
   d3.select(".line")
+      .attr("id", id)
       .datum(dataset) // 10. Binds data to the line
       .transition()
       .duration(duration)
@@ -295,6 +342,7 @@ function updateLine (dataStud, opleiding, instelling){
 
   // 12. Appends a circle for each datapoint
   d3.selectAll(".dot")
+      .attr("id", id)
       .data(dataset)
       .transition()
       .duration(duration)
@@ -302,6 +350,5 @@ function updateLine (dataStud, opleiding, instelling){
       .attr("cy", function(d) { return yScale(d.y) })
       .attr("value", function(d){return [instelling, opleiding]})
 
-  console.log(lineGraphData)
 
 }

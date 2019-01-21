@@ -6,15 +6,9 @@ var barGraphData = [];
 var lineGraphData = [];
 var mapData = [];
 var allData = [];
+var uniData = [];
 
 function onload(){
-    // d3.select("button")
-    // .on("click", function(d){
-  //   d3.select('#dropdown li').on('click', function(){
-  //     var a = $(this).val();
-
-  // });
-
 
     var format = d3.format(",");
 
@@ -75,9 +69,10 @@ function onload(){
 
     // load data
     var ned = "data/nederland.json"
-    var data = "data/eerstejaars.json"
+    var dataEerstejaars = "data/eerstejaars.json"
+    var dataUni = "data/instellingen.json"
 
-    var requests = [d3.json(ned), d3.json(data)];
+    var requests = [d3.json(ned), d3.json(dataEerstejaars), d3.json(dataUni)];
 
     var test = test()
 
@@ -91,7 +86,7 @@ function onload(){
           //     jaartal = this.value
           //
           //   }
-
+            uniData = response[2]
             return createHeatMap(response[0], response[1], 2017)
           }).catch(function(e){
               throw(e);
@@ -419,7 +414,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
 
     // set standard bargraph to the Netherlands
-    var linegraphvar = lineGraph(dataStud, "Universiteit van Amsterdam", "Biomedische Wetenschappen")
+    var linegraphvar = lineGraph("Universiteit van Amsterdam", "Biomedische Wetenschappen")
     var dropdowns = makeDropdowns(dataStud)
     // var barChartVar = barChart(dataStud)
     var barGraphVar = barGraph()
@@ -439,221 +434,6 @@ function circleYScale(y){
 
   return 543/1.5 + scaled + 50
 
-}
-
-
-function barChart(dataStud) {
-  // load data for x and y axis
-
-
-  var barData = []
-  var barDataY = ["Vrouw", "Man"]
-  var opleiding = "Biomedische Wetenschappen"
-  var instelling = "Universiteit van Amsterdam"
-  var jaar = "2017"
-
-  dataStud.forEach(function(d){
-
-      if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
-
-        if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
-
-
-            var vrouwen = parseInt((d[`${jaar} VROUW`]));
-            var mannen = parseInt((d[`${jaar} MAN`]));
-
-            barData.push({Instelling: instelling, Opleiding: opleiding, jaar:jaar, Man: mannen, Vrouw: vrouwen});
-
-        }
-      }
-  })
-
-
-      data2 = [{Instelling: "UvA", Opleiding: "bmw", jaar:'2017', Man: 200, Vrouw: 300},
-              {Instelling: "UvA", Opleiding: "Bmw", jaar:'2016', Man: 150, Vrouw: 200}]
-            // {Instelling: "rad", Opleiding: "bmw", jaar:'2017', Man: 10, Vrouw: 100}
-      // d3.select("#graph1")
-      //   .append("svg")
-      //   .attr("id", "barGraphSVG")
-
-      margin = {top: 20, right: 20, bottom: 30, left: 40}
-      var svg = d3.select("#graph1 svg")
-                  .attr("width", 600 - margin.left - margin.right)
-                  .attr("height", 400 - margin.bottom - margin.top)
-
-
-
-      width = +svg.attr("width") - margin.left - margin.right
-
-      height = +svg.attr("height") - margin.top - margin.bottom
-
-      var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-      // source: https://bl.ocks.org/mbostock/raw/3887051/
-      var x0 = d3.scaleBand()
-          .rangeRound([0, width])
-          .paddingInner(0.1);
-
-
-      var x1 = d3.scaleBand()
-          .padding(0.05);
-
-      var y = d3.scaleLinear()
-          .rangeRound([height, 0]);
-
-      var z = d3.scaleOrdinal()
-          .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-      columns1 = ["Geslacht", "Aantal"];
-
-      columns_f = []
-
-
-      // d3.csv("data_final.csv").then(function(d, i, columns)  {
-      //
-      //
-      //   for (var i = 1, n = d["columns"].length; i < n; ++i)
-
-      //   d[d.columns[i]] = +d[d.columns[i]];
-      //   return d;
-      // }, function(error, data)
-
-
-        // if (error) throw error;
-
-        var keys = ["Vrouw", "Man"]
-
-        // var keys = data.columns.slice(1);
-
-
-
-        x0.domain(data2.map(function(d) { return d.Instelling + d.Opleiding + d.jaar; }));
-        // x0.domain([0,1]);
-        // x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-        x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-        y.domain([0,d3.max(data2, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice()
-        d3.select("#graph1 svg g")
-          .attr("id", "grid")
-          .append("g")
-          .selectAll("g")
-          .data(data2)
-          .enter().append("g")
-            .attr('class', "barG")
-            .attr("transform", function(d, i) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
-          .selectAll("rect")
-          .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
-          .enter().append("rect")
-            .attr("x", function(d) { return x1(d.key); })
-            .attr("y", function(d) {return y(d.value); })
-            .attr("width", x1.bandwidth())
-            .attr("height", function(d) { return height - y(d.value); })
-            .attr("fill", function(d) { return z(d.key); })
-            .attr("class", "bar")
-            .on('click', function(d) {
-              data1 = [{Instelling: "rad", Opleiding: "bmw", jaar:'2017', Man: 20, Vrouw: 30},
-                      {Instelling: "rad", Opleiding: "Bmw", jaar:'2016', Man: 120, Vrouw: 100}]
-
-
-              updateBarGraph(opleiding, instelling, jaar)
-            })
-
-            //   d3.select("#grid g")
-            //   .selectAll("g")
-            //   .data(data1)
-            //   .enter().append("g")
-            //     .attr("transform", function(d) { return "translate(" + x0(d.Instelling + d.Opleiding + d.jaar) + ",0)"; })
-            //   .selectAll("rect")
-            //   .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
-            //   .enter().append("rect")
-            //     .transition()
-            //     .attr("x", function(d) { return x1(d.key); })
-            //     .attr("y", function(d) { return y(d.value); })
-            //     .attr("width", x1.bandwidth())
-            //     .attr("height", function(d) { return height - y(d.value); })
-            //     .attr("fill", function(d) { return z(d.key); })
-            //     .attr("class", "bar")
-            //
-            //     g.select('g').remove().transition();
-            //
-            //     g.select("g")
-            //         .transition()
-            //         .attr("class", "xAxisB")
-            //         .attr("transform", "translate(0," + height + ")")
-            //         .call(d3.axisBottom(x0));
-            //
-            //
-            //     g.select("g")
-            //         .transition()
-            //         .attr("class", "yAxisB")
-            //         .call(d3.axisLeft(y).ticks(null, "s"))
-            //       // .append("text")
-            //       //   .attr("x", 2)
-            //       //   .attr("y", y(y.ticks().pop()) + 0.5)
-            //       //   .attr("dy", "0.32em")
-            //       //   .attr("fill", "#000")
-            //       //   .attr("font-weight", "bold")
-            //       //   .attr("text-anchor", "start")
-            //       //   .text("Population");
-            //
-            //
-            //   // // make the chart diffently colored when mouse is on it
-            //   // var self = this;
-            //   // d3.selectAll(".bar").filter(function() {
-            //   //   return self!=this;
-            //   // }).transition()
-            //   // .style("opacity", .5)
-            // //
-            // //
-            //   })
-            //   .on("mouseout", function(d) {
-            //     d3.selectAll(".bar")
-            //     .transition()
-            //     .style("opacity", 5);
-            //
-            //   });;
-
-
-
-        g.append("g")
-            .attr("class", "xAxisB")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x0));
-
-        g.append("g")
-            .attr("class", "axis")
-            .attr("id", "yAxisB")
-            .call(d3.axisLeft(y).ticks(null, "s"))
-          .append("text")
-            .attr("x", 2)
-            .attr("y", y(y.ticks().pop()) + 0.5)
-            .attr("dy", "0.32em")
-            .attr("fill", "#000")
-            .attr("font-weight", "bold")
-            .attr("text-anchor", "start")
-            .text("Population");
-
-        var legend = g.append("g")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", 10)
-            .attr("text-anchor", "end")
-          .selectAll("g")
-          .data(keys.slice().reverse())
-          .enter().append("g")
-            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-        legend.append("rect")
-            .attr("x", width - 19)
-            .attr("width", 19)
-            .attr("height", 19)
-            .attr("fill", z);
-
-
-        legend.append("text")
-            .attr("x", width - 24)
-            .attr("y", 9.5)
-            .attr("dy", "0.32em")
-            .text(function(d) { return d; });
 }
 
 function test(){
@@ -721,7 +501,6 @@ function makeDropdowns(dataStud){
 
   instituten = []
 
-
   dataStud.forEach(function(d){
   if (!(instituten.includes(d["INSTELLINGSNAAM ACTUEEL"]))){
     instituten.push(d["INSTELLINGSNAAM ACTUEEL"])
@@ -760,11 +539,12 @@ function makeDropdowns(dataStud){
 
                       var instelling = d
 
-                      opleidingen = []
+                      opleidingen = ["Alles"]
 
 
                       d3.select("#dropLine-1 button")
                       .text(instelling)
+
                       dataStud.forEach(function(x){
                         if(x["INSTELLINGSNAAM ACTUEEL"] === instelling){
                           if (!(opleidingen.includes(x["OPLEIDINGSNAAM ACTUEEL"]))){
@@ -798,10 +578,12 @@ function makeDropdowns(dataStud){
                         .on("click", function(d){
 
                           opleiding = d
-                          console.log(instelling, opleiding)
+
                           d3.select("#dropLine-2 button")
                           .text(opleiding)
-                          updateLine(dataStud, opleiding, instelling)
+                          console.log(opleiding)
+                          clicked("dropdown", instelling, opleiding)
+
                         })
 
 

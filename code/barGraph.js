@@ -27,8 +27,10 @@ function barGraph(){
       .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
 
-  var keys = ["Vrouw", "Man"]
+  var keys = ["Vrouw", "Man", "Totaal"]
   updateBarGraph("Biomedische Wetenschappen", "Universiteit van Amsterdam", "2016")
+
+
 
   x0.domain(barGraphData.map(function(d) { return `${d.Opleiding}, ${d.Instelling} ${d.jaar}`; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
@@ -94,9 +96,11 @@ function barGraph(){
 
               var vrouwen = parseInt((d[`${jaar} VROUW`]));
               var mannen = parseInt((d[`${jaar} MAN`]));
+              var totaal = mannen + vrouwen
+              // console.log(vrouwen + mannen)
 
               barGraphData.push({Instelling: instelling, Opleiding: opleiding,
-                jaar:jaar, Man: mannen, Vrouw: vrouwen});
+                jaar:jaar, Man: mannen, Vrouw: vrouwen, Totaal: totaal});
 
           }
         }
@@ -113,7 +117,7 @@ function barGraph(){
     height = +svg.attr("height") - margin.top - margin.bottom
 
     // get the keys that are needed to get the data
-    var keys = ["Vrouw", "Man"]
+    var keys = ["Vrouw", "Man", "Totaal"]
 
     // make scales for the axes
     var x0 = d3.scaleBand()
@@ -134,6 +138,8 @@ function barGraph(){
     x1.domain(keys).rangeRound([0, x0.bandwidth()]);
     y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
+    // console.log("Max:")
+    // console.log(d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); }))
     // update the x axis
     d3.select(".axis")
       .transition()

@@ -62,3 +62,12 @@ verzamelen
 van de lijn grafiek, de bargraph update. Dit is tevens een nieuw plan.
 * Algemene variableen aangemaakt die de data zullen dragen zodat deze makkelijk bereikbaar
 zijn vanuit alle functies.
+
+## MA 19/1/19
+* Bar graph update wanneer er op een circle wordt geklikt
+* Veel data opnieuw geprocessed naar een format waarmee meer kan
+* Een "alles" optie geimplementeerd voor de line graph
+* Bestuurskunde Groningen doet raar, morgen naar kijken
+* Alle stippen en linegraphs een id gegeven aan de hand waarvan kan worden teruggevonden
+  welke data er is gebruikt in de algemene lijsten.
+  
