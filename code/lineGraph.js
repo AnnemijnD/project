@@ -68,11 +68,12 @@ dataStud.forEach(function(d){
           coordinates['x'] = jaar;
           coordinates['y'] = mannen + vrouwen;
           dataset.push(coordinates)
-          lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
-                              jaar: jaar, mannen: mannen, vrouwen: vrouwen,
-                              totaal: mannen + vrouwen})
+
           };
         })
+
+        lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
+
       }
     }
   })
@@ -221,6 +222,7 @@ function updateLine (dataStud, opleiding, instelling){
           }
 
 
+
           // get data of all years
           datapoints.forEach(function(a){
             var jaar = a;
@@ -242,11 +244,12 @@ function updateLine (dataStud, opleiding, instelling){
             coordinates['x'] = jaar;
             coordinates['y'] = mannen + vrouwen;
             dataset.push(coordinates)
-            lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
-                                jaar: jaar, mannen: mannen, vrouwen: vrouwen,
-                                totaal: mannen + vrouwen})
+
             };
           })
+          lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
+
+          console.log(datapoints)
         }
       }
     })
@@ -300,4 +303,5 @@ function updateLine (dataStud, opleiding, instelling){
       .attr("value", function(d){return [instelling, opleiding]})
 
   console.log(lineGraphData)
+
 }

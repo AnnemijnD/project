@@ -84,7 +84,6 @@ function barGraph(){
 
   function updateBarGraph(opleiding, instelling, jaar) {
 
-    console.log(opleiding, instelling, jaar)
 
     allData.forEach(function(d){
 

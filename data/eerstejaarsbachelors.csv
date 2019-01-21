@@ -1,0 +1,640 @@
+PROVINCIE,GEMEENTENAAM,TYPE HOGER ONDERWIJS,INSTELLINGSNAAM ACTUEEL,OPLEIDINGSCODE ACTUEEL,OPLEIDINGSNAAM ACTUEEL,2013 MAN,2013 VROUW,2014 MAN,2014 VROUW,2015 MAN,2015 VROUW,2016 MAN,2016 VROUW,2017 MAN,2017 VROUW
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,57084,B Wijsbegeerte van een Bepaald Wetenschapsgebied,0,0,0,1,0,1,0,0,1,0
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56823,B Algemene Cultuurwetenschappen,7,24,12,65,14,79,18,85,19,68
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56081,B Wijsbegeerte,3,5,8,7,6,4,7,6,10,8
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56081,B Wijsbegeerte,7,1,3,2,1,1,2,2,0,0
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56034,B Geschiedenis,23,5,19,10,22,24,31,16,26,23
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,50393,B Liberal Arts and Sciences,26,49,27,61,41,63,55,126,81,128
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56827,B Fiscaal Recht,24,17,34,27,41,23,31,28,44,30
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56827,B Fiscaal Recht,0,0,0,0,0,0,5,1,2,1
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,50700,B Rechtsgeleerdheid,87,142,125,175,124,183,122,198,137,218
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,50700,B Rechtsgeleerdheid,2,6,4,10,13,9,1,10,3,7
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56553,B Gezondheidswetenschappen,31,94,24,71,25,65,10,64,33,81
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56551,B Geneeskunde,112,204,109,213,112,229,98,271,121,261
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56627,B Bestuurskunde,24,31,35,28,29,26,52,77,53,101
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56607,B Pedagogische Wetenschappen,3,73,3,74,2,55,2,52,5,46
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56604,B Psychologie,51,156,74,187,65,209,59,233,68,237
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56601,B Sociologie,11,26,12,19,9,13,8,13,4,13
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56469,B Criminologie,19,78,17,46,20,59,18,69,10,81
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,50374,B International Bachelor's Programme in Communication and Media,36,112,32,110,37,113,40,121,40,171
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56833,B Econometrie en Operationele Research,157,51,158,58,185,93,190,68,216,97
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,56402,B Fiscale Economie,46,15,37,19,43,18,32,16,40,20
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,50952,B International Business Administration,214,202,254,205,299,243,282,237,268,231
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,50950,B Economie en Bedrijfseconomie,467,209,402,179,418,186,470,224,466,229
+Zuid-Holland,ROTTERDAM,bachelor,Erasmus Universiteit Rotterdam,50645,B Bedrijfskunde,419,217,357,211,335,181,414,175,491,222
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56824,B Kunstgeschiedenis,3,21,3,11,0,13,1,24,6,35
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56824,B Kunstgeschiedenis,0,0,0,2,4,6,1,5,1,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56824,B Kunstgeschiedenis,1,2,0,0,1,2,0,6,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56821,B Afrikaanse talen en culturen,1,3,0,2,0,2,1,2,0,1
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56820,B Koreastudies,5,24,2,20,6,15,6,15,4,16
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56819,B Japanstudies,18,37,15,28,14,44,19,39,13,24
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56819,B Japanstudies,0,0,0,0,0,0,1,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56818,B Chinastudies,16,26,14,33,8,21,14,24,17,15
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56818,B Chinastudies,0,1,0,0,0,0,0,1,0,1
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56809,B Italiaanse Taal en Cultuur,2,5,3,3,0,4,0,2,0,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56809,B Italiaanse Taal en Cultuur,0,0,0,0,0,0,0,1,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56808,B Franse Taal en Cultuur,3,15,3,9,1,3,2,9,2,4
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56808,B Franse Taal en Cultuur,0,0,0,0,0,0,0,0,0,1
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56808,B Franse Taal en Cultuur,0,0,0,0,0,0,0,1,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56806,B Engelse Taal en Cultuur,13,46,12,41,8,41,5,51,15,41
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56806,B Engelse Taal en Cultuur,0,3,0,4,0,3,1,2,0,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56806,B Engelse Taal en Cultuur,0,0,0,1,0,2,0,1,0,1
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56806,B Engelse Taal en Cultuur,0,0,0,0,0,2,0,0,0,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56805,B Duitse Taal en Cultuur,1,4,3,5,1,7,3,6,2,3
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56805,B Duitse Taal en Cultuur,1,0,0,1,0,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56804,B Nederlandse Taal en Cultuur,5,9,4,16,2,13,2,14,4,15
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56804,B Nederlandse Taal en Cultuur,0,0,0,0,1,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56803,B Taalwetenschap,8,22,13,27,13,18,9,22,8,27
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56803,B Taalwetenschap,0,3,0,1,1,0,0,4,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56703,B Archeologie,23,31,16,31,25,24,23,22,26,30
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56703,B Archeologie,0,1,1,1,1,3,0,3,2,7
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56123,B Oude Culturen van de Mediterrane Wereld,2,7,1,4,1,7,1,7,9,6
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56123,B Oude Culturen van de Mediterrane Wereld,1,1,0,0,0,1,0,1,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56120,B Islamstudies,1,0,0,0,0,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56099,B Zuid- en Zuidoost-Aziestudies,2,5,4,7,4,3,3,7,0,1
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56099,B Zuid- en Zuidoost-Aziestudies,1,2,2,2,1,3,1,1,3,1
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56098,B Midden-Oostenstudies,5,9,4,5,3,5,3,9,3,9
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56098,B Midden-Oostenstudies,0,1,0,4,2,1,1,3,5,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56081,B Wijsbegeerte,9,8,16,11,13,8,11,11,31,14
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56081,B Wijsbegeerte,1,0,0,0,1,3,3,0,2,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56081,B Wijsbegeerte,2,1,1,0,1,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56081,B Wijsbegeerte,0,0,0,0,0,0,1,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56055,B Nederlandkunde/Dutch Studies,3,10,0,6,1,9,3,8,1,14
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56055,B Nederlandkunde/Dutch Studies,0,1,0,0,0,0,0,1,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56052,B Latijns-Amerikastudies,3,20,3,21,2,14,1,9,2,4
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56052,B Latijns-Amerikastudies,0,0,0,0,0,0,0,1,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56034,B Geschiedenis,81,69,89,55,79,46,67,42,72,47
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56034,B Geschiedenis,9,7,6,7,7,5,2,0,1,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56034,B Geschiedenis,1,1,0,0,0,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56003,B Griekse en Latijnse Taal en Cultuur,10,16,1,14,9,11,5,10,8,12
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56003,B Griekse en Latijnse Taal en Cultuur,0,0,1,0,0,1,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50902,B Religiewetenschappen,0,0,0,5,1,0,2,6,0,4
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50902,B Religiewetenschappen,0,0,0,1,1,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50855,B Russische Studies,3,5,2,8,8,3,6,4,5,6
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50414,B Film- en Literatuurwetenschap,6,12,5,18,8,17,3,15,7,7
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50414,B Film- en Literatuurwetenschap,0,0,0,0,1,0,2,5,2,5
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50202,B Wereldgodsdiensten,3,4,0,0,0,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50201,B Hebreeuwse en Joodse Studies,0,1,0,0,0,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,59320,B Security Studies,0,0,0,0,0,0,0,0,30,16
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,59316,B International Studies,0,0,0,0,0,0,172,300,140,238
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,59316,B International Studies,0,0,130,237,149,241,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,55010,B Life Science and Technology (joint degree),0,0,0,0,0,0,0,1,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,55009,B Molecular Science and Technology (joint degree),0,0,0,0,0,0,90,43,109,46
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50429,B Liberal Arts and Sciences: Global Challenges,217,356,60,122,52,123,63,146,59,144
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50429,B Liberal Arts and Sciences: Global Challenges,0,0,0,0,0,0,1,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56828,B Notarieel Recht,5,16,9,13,7,21,17,26,15,25
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56828,B Notarieel Recht,0,0,0,0,0,0,0,1,0,1
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56827,B Fiscaal Recht,33,29,43,20,30,20,25,19,31,16
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50700,B Rechtsgeleerdheid,195,343,176,264,189,280,164,275,214,311
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50700,B Rechtsgeleerdheid,0,0,0,0,0,1,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50700,B Rechtsgeleerdheid,2,3,1,2,2,5,1,0,4,3
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50700,B Rechtsgeleerdheid,0,0,1,0,0,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,59308,B Molecular Science and Technology,26,14,37,11,76,24,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56980,B Wiskunde,28,12,4,1,34,12,34,16,27,13
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56978,B Informatica,55,6,55,6,49,7,50,6,67,13
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56860,B Biologie,50,38,63,52,52,51,49,41,50,51
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56286,B Life Science and Technology,21,28,35,28,56,50,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50207,B Bio-Farmaceutische Wetenschappen,51,101,70,101,79,147,95,131,67,128
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50206,B Natuurkunde,35,5,35,5,54,3,50,15,52,14
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50205,B Sterrenkunde,23,12,40,20,18,4,42,27,48,28
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50205,B Sterrenkunde,0,0,0,0,0,0,0,0,1,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50205,B Sterrenkunde,0,0,1,0,0,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56990,B Biomedische Wetenschappen,12,48,14,45,13,52,17,50,19,48
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56990,B Biomedische Wetenschappen,0,3,0,2,1,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56551,B Geneeskunde,73,148,90,133,89,159,70,201,92,190
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56551,B Geneeskunde,0,0,0,0,1,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56627,B Bestuurskunde,98,81,63,50,43,46,45,44,62,39
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56627,B Bestuurskunde,3,5,4,4,6,4,6,12,1,12
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56607,B Pedagogische Wetenschappen,6,130,5,111,2,73,0,70,1,74
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56607,B Pedagogische Wetenschappen,0,3,0,1,0,3,0,3,0,3
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56606,B Politicologie,106,107,105,100,107,78,100,99,207,281
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56604,B Psychologie,84,332,82,287,71,273,61,232,116,390
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56604,B Psychologie,1,1,1,8,0,3,2,3,0,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56604,B Psychologie,2,0,0,2,0,1,2,2,0,2
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56469,B Criminologie,32,79,18,80,25,79,17,89,20,122
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56469,B Criminologie,0,0,0,2,1,0,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,56469,B Criminologie,0,0,0,0,0,1,0,0,0,0
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50035,B Culturele Antropologie en Ontwikkelingssociologie,11,41,10,42,5,35,12,52,5,36
+Zuid-Holland,LEIDEN,bachelor,Universiteit Leiden,50035,B Culturele Antropologie en Ontwikkelingssociologie,1,0,0,0,0,1,0,1,1,1
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,59308,B Molecular Science and Technology,54,14,43,17,45,21,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56995,B Technische Bestuurskunde,93,60,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56995,B Technische Bestuurskunde,0,1,94,57,88,53,76,54,85,55
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56966,B Werktuigbouwkunde,459,43,1,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56966,B Werktuigbouwkunde,0,1,388,49,456,57,455,59,424,41
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56965,B Technische Wiskunde,65,29,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56965,B Technische Wiskunde,0,0,46,35,69,31,77,41,69,37
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56964,B Technische Informatica,130,9,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56964,B Technische Informatica,0,0,158,14,160,8,184,19,278,27
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56962,B Technische Natuurkunde,157,16,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56962,B Technische Natuurkunde,0,0,146,32,154,28,199,45,177,23
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56959,B Technische Aardwetenschappen,63,18,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56959,B Technische Aardwetenschappen,0,0,63,32,61,16,49,20,39,21
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56957,B Maritieme Techniek,77,11,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56957,B Maritieme Techniek,1,0,85,10,68,14,51,12,60,17
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56956,B Luchtvaart- en Ruimtevaarttechniek,320,46,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56956,B Luchtvaart- en Ruimtevaarttechniek,0,2,324,52,349,50,333,64,374,36
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56955,B Industrieel Ontwerpen,153,111,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56955,B Industrieel Ontwerpen,0,0,132,130,128,118,103,131,140,166
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56953,B Electrical Engineering,111,6,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56953,B Electrical Engineering,1,0,112,10,142,8,120,10,125,9
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56952,B Civiele Techniek,251,78,1,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56952,B Civiele Techniek,0,0,256,72,208,66,189,57,254,84
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56951,B Bouwkunde,101,113,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56951,B Bouwkunde,2,1,113,120,140,147,150,158,176,187
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,56286,B Life Science and Technology,32,51,26,33,34,26,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,55003,B Nanobiologie (joint degree),30,31,0,0,0,0,0,0,0,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,55003,B Nanobiologie (joint degree),0,0,38,26,45,32,47,60,57,33
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,55010,B Life Science and Technology (joint degree),0,0,0,0,0,0,64,69,68,70
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,55009,B Molecular Science and Technology (joint degree),0,0,0,0,0,0,1,0,1,0
+Zuid-Holland,DELFT,bachelor,Technische Universiteit Delft,55007,B Klinische Technologie (joint degree),0,0,29,38,20,58,25,58,31,60
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56826,B Communicatie- en Informatiewetenschappen,20,76,17,63,13,54,10,45,20,41
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56824,B Kunstgeschiedenis,5,18,4,19,1,11,2,18,3,16
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56824,B Kunstgeschiedenis,0,2,0,0,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56810,B Spaanse Taal en Cultuur,2,9,2,15,0,5,2,4,1,7
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56809,B Italiaanse Taal en Cultuur,1,2,1,7,0,1,5,4,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56808,B Franse Taal en Cultuur,1,14,5,8,5,19,3,15,5,12
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56806,B Engelse Taal en Cultuur,13,60,14,58,10,41,12,46,14,63
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56805,B Duitse Taal en Cultuur,1,6,2,5,2,7,2,11,1,5
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56804,B Nederlandse Taal en Cultuur,4,25,5,23,4,16,2,26,3,24
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56804,B Nederlandse Taal en Cultuur,0,2,0,0,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56803,B Taalwetenschap,6,20,5,16,1,17,3,21,4,13
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56802,B Literatuurwetenschap,4,15,1,9,3,11,2,11,0,14
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56801,B Taal- en Cultuurstudies,15,89,11,41,9,42,5,58,8,49
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56700,B Muziekwetenschap,7,11,14,10,8,8,2,6,6,9
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56100,B Godgeleerdheid,0,3,0,0,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56100,B Godgeleerdheid,1,0,0,0,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56091,B Keltische Talen en Cultuur,2,5,2,2,0,5,1,5,0,5
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56081,B Wijsbegeerte,15,15,11,12,10,8,10,10,16,14
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56081,B Wijsbegeerte,1,1,0,0,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56041,B Islam en Arabisch,2,0,0,3,1,1,1,1,1,1
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56034,B Geschiedenis,82,45,62,37,47,24,81,42,118,77
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56034,B Geschiedenis,0,2,0,0,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50906,B Media en Cultuur,0,0,0,0,18,56,19,50,17,49
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50902,B Religiewetenschappen,0,0,0,4,1,0,0,2,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50001,"B Theater-, Film- en Televisiewetenschap",16,45,20,60,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56987,B Global Sustainability Science,0,0,0,0,0,0,63,63,57,72
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50393,B Liberal Arts and Sciences,186,341,163,356,188,359,171,364,166,405
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50700,B Rechtsgeleerdheid,186,317,229,355,211,345,218,330,182,307
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56988,B Milieu-natuurwetenschappen,15,13,8,6,5,6,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56986,B Aardwetenschappen,85,46,104,48,87,46,76,41,59,32
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56984,B Natuur- en Sterrenkunde,67,8,45,10,61,10,58,15,66,22
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56982,B Natuurwetenschap en Innovatiemanagement,64,24,54,21,41,16,54,21,75,25
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56981,B Kunstmatige Intelligentie,21,10,14,11,33,23,39,24,87,52
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56980,B Wiskunde,37,16,40,26,36,14,41,18,47,20
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56978,B Informatica,127,9,125,7,128,14,122,9,100,10
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56860,B Biologie,85,95,88,100,68,99,92,132,111,134
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56857,B Scheikunde,36,24,56,41,62,35,70,46,56,40
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56842,B Informatiekunde,50,8,66,7,66,24,73,26,52,27
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56157,B Farmacie,77,126,59,112,61,143,58,139,43,114
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56990,B Biomedische Wetenschappen,51,99,57,98,47,99,43,121,44,126
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56570,B Diergeneeskunde,37,142,34,125,32,145,32,147,29,139
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56551,B Geneeskunde,68,171,48,119,63,116,57,155,69,140
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56839,B Milieu-maatschappijwetenschappen,14,12,9,14,5,14,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56838,B Sociale Geografie en Planologie,77,59,80,61,79,67,86,49,93,56
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56631,B Algemene Sociale Wetenschappen,17,123,22,120,20,104,24,113,13,85
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56613,B Onderwijskunde,5,26,5,27,4,28,2,38,2,28
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56613,B Onderwijskunde,0,0,0,1,0,0,0,0,0,0
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56607,B Pedagogische Wetenschappen,3,145,0,115,4,113,5,82,3,82
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56604,B Psychologie,73,296,57,249,44,254,62,254,47,235
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,56601,B Sociologie,10,33,10,25,15,35,17,32,21,23
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50035,B Culturele Antropologie en Ontwikkelingssociologie,15,50,7,40,8,47,7,59,5,38
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50007,B Bestuurs- en Organisatiewetenschap,36,48,30,49,33,45,41,45,34,42
+Utrecht,UTRECHT,bachelor,Universiteit Utrecht,50950,B Economie en Bedrijfseconomie,221,89,180,85,160,78,158,71,129,62
+Utrecht,UTRECHT,bachelor,Universiteit voor Humanistiek,56105,B Humanistiek,9,40,5,34,5,25,11,34,7,25
+Overijssel,KAMPEN,bachelor,Theologische Universiteit Kampen,56109,B Theologie,0,0,4,2,0,0,0,0,0,0
+Overijssel,KAMPEN,bachelor,Theologische Universiteit Kampen,56109,B Theologie,4,3,0,0,4,0,5,2,0,2
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56994,B Technische Bedrijfskunde,73,19,54,13,46,22,64,16,71,21
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56966,B Werktuigbouwkunde,106,8,111,8,118,10,97,6,123,8
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56965,B Technische Wiskunde,21,9,11,10,19,11,31,7,36,14
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56964,B Technische Informatica,62,4,57,1,49,3,86,8,110,10
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56962,B Technische Natuurkunde,56,7,67,11,55,7,50,8,44,9
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56960,B Scheikundige Technologie,40,6,49,8,38,13,34,7,41,8
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56955,B Industrieel Ontwerpen,52,40,53,39,39,39,54,27,64,55
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56953,B Electrical Engineering,51,0,54,6,73,5,47,6,76,6
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56952,B Civiele Techniek,56,9,56,12,50,7,62,16,77,9
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56226,B Biomedische Technologie,29,36,35,25,37,41,43,49,40,51
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56066,B Bedrijfsinformatie-technologie,22,5,26,2,26,0,31,7,31,13
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,50447,B Creative Technology,40,27,58,21,51,28,53,34,65,44
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,50002,B Advanced Technology,64,9,63,11,54,12,56,8,46,13
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,50427,B Technology and Liberal Arts & Sciences,15,11,10,12,29,5,27,22,29,17
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56553,B Gezondheidswetenschappen,10,28,8,14,5,17,2,15,5,23
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,50033,B Klinische Technologie,49,62,44,68,40,84,37,84,38,78
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56654,B European Public Administration,33,50,50,72,29,40,25,40,28,47
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56615,B Communicatiewetenschap,15,46,12,28,14,23,16,43,15,56
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,56604,B Psychologie,43,119,52,107,25,59,105,237,83,141
+Overijssel,ENSCHEDE,bachelor,Universiteit Twente,50952,B International Business Administration,99,64,84,52,85,53,79,39,73,28
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56826,B Communicatie- en Informatiewetenschappen,4,28,7,18,3,21,7,25,5,29
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56704,B Oudheidwetenschappen,1,3,0,0,2,3,3,1,6,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56703,B Archeologie,3,3,1,3,1,0,4,1,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56114,B Religie en Levensbeschouwing,3,6,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56114,B Religie en Levensbeschouwing,1,0,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56081,B Wijsbegeerte,4,3,7,3,7,6,5,1,0,1
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56081,B Wijsbegeerte,0,0,2,1,1,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56034,B Geschiedenis,10,5,4,5,9,3,8,9,3,5
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56003,B Griekse en Latijnse Taal en Cultuur,2,2,1,1,1,4,1,1,0,3
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,55823,B Literatuur en Samenleving,2,6,1,6,0,7,8,27,12,23
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,55822,"B Media, Kunst, Design en Architectuur",6,24,4,16,4,25,2,22,6,16
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,55004,B Theologie (joint degree),1,2,7,4,3,0,3,0,3,2
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,55004,B Theologie (joint degree),0,0,0,1,1,1,1,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50902,B Religiewetenschappen,0,0,2,3,0,0,2,1,2,3
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50902,B Religiewetenschappen,0,0,1,0,0,1,0,0,3,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,55002,B Liberal Arts and Sciences (joint degree),45,86,33,67,42,66,37,93,35,82
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,54999,"B Philosophy, Politics and Economics",0,0,0,0,0,0,24,16,46,38
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56828,B Notarieel Recht,2,9,5,11,4,17,5,14,11,12
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56828,B Notarieel Recht,0,1,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50700,B Rechtsgeleerdheid,57,88,34,75,51,74,48,68,35,60
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50700,B Rechtsgeleerdheid,0,1,1,2,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56989,B Farmaceutische Wetenschappen,21,34,27,36,36,34,28,38,18,22
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56986,B Aardwetenschappen,29,15,27,26,39,26,40,20,39,22
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56984,B Natuur- en Sterrenkunde,11,3,3,0,8,1,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56983,B Lifestyle Informatics,18,17,14,16,6,8,10,11,8,21
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56980,B Wiskunde,6,4,5,6,9,6,5,3,4,4
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56980,B Wiskunde,0,0,1,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56869,"B Informatie, Multimedia en Management",31,8,45,10,26,15,28,9,25,8
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56860,B Biologie,5,4,5,8,4,9,7,9,1,7
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56857,B Scheikunde,15,2,4,2,7,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56856,B Business Analytics,24,12,38,14,33,18,46,26,47,31
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56856,B Business Analytics,0,0,1,1,1,0,2,2,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,55013,B Natuur- en Sterrenkunde (joint degree),0,0,0,0,0,0,0,0,5,2
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,55012,B Scheikunde (joint degree),0,0,0,0,0,0,0,0,5,1
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50800,B Medische Natuurwetenschappen,29,33,22,30,20,25,18,32,21,42
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50670,"B Science, Business & Innovation",46,8,44,22,36,24,53,24,47,24
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50668,B Aarde en Economie,40,18,44,16,26,13,39,17,26,20
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50426,B Computer Science,42,7,52,4,43,10,90,16,117,28
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56990,B Biomedische Wetenschappen,56,90,36,70,36,67,31,39,70,138
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56950,B Bewegingswetenschappen,94,75,66,62,53,64,46,67,66,84
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56560,B Tandheelkunde,10,23,13,18,9,31,15,37,10,36
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56553,B Gezondheidswetenschappen,18,112,14,88,3,50,18,67,9,68
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56551,B Geneeskunde,96,187,82,205,78,191,79,177,58,213
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50509,B Gezondheid en Leven,42,215,53,241,14,114,29,160,30,190
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56615,B Communicatiewetenschap,15,60,11,45,7,34,7,26,6,17
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56607,B Pedagogische Wetenschappen,0,43,1,28,1,22,0,36,0,23
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56606,B Politicologie,13,12,22,10,15,10,11,14,12,13
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56604,B Psychologie,39,156,40,118,26,114,31,102,70,212
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56601,B Sociologie,8,5,4,7,2,6,2,6,0,6
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56469,B Criminologie,16,55,10,42,18,79,13,85,16,73
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56469,B Criminologie,0,0,2,1,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50035,B Culturele Antropologie en Ontwikkelingssociologie,0,15,6,13,3,12,2,13,2,9
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50007,B Bestuurs- en Organisatiewetenschap,65,87,41,66,36,38,24,38,27,25
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,56833,B Econometrie en Operationele Research,35,15,36,13,32,18,29,9,52,20
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50952,B International Business Administration,73,51,59,63,67,63,94,69,76,65
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50950,B Economie en Bedrijfseconomie,90,58,79,26,63,30,60,13,73,31
+Noord-Holland,AMSTERDAM,bachelor,Vrije Universiteit Amsterdam,50645,B Bedrijfskunde,119,84,109,81,112,53,100,52,111,52
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56825,B Archeologie en Prehistorie,2,8,4,7,1,2,3,2,2,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56824,B Kunstgeschiedenis,12,47,5,50,7,22,3,22,6,21
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56824,B Kunstgeschiedenis,1,1,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56824,B Kunstgeschiedenis,2,2,3,3,1,2,2,1,1,1
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56824,B Kunstgeschiedenis,0,1,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56823,B Algemene Cultuurwetenschappen,3,15,0,9,1,4,1,11,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56823,B Algemene Cultuurwetenschappen,0,0,1,1,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56816,B Latijnse Taal en Cultuur,0,0,2,1,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56816,B Latijnse Taal en Cultuur,1,1,0,0,0,0,0,1,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56814,B Nieuwgriekse Taal en Cultuur,1,2,0,0,0,1,0,1,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56814,B Nieuwgriekse Taal en Cultuur,0,0,0,0,1,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56814,B Nieuwgriekse Taal en Cultuur,0,0,0,1,0,0,0,0,0,1
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56813,B Slavische Talen en Culturen,3,5,0,2,0,9,1,0,1,4
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56813,B Slavische Talen en Culturen,0,2,1,0,0,1,0,0,1,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56810,B Spaanse Taal en Cultuur,5,8,2,8,0,2,5,3,1,3
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56810,B Spaanse Taal en Cultuur,0,2,0,0,1,1,0,1,0,1
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56809,B Italiaanse Taal en Cultuur,3,2,2,5,1,0,2,1,1,2
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56809,B Italiaanse Taal en Cultuur,0,1,0,1,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56808,B Franse Taal en Cultuur,1,1,2,5,0,10,0,6,2,7
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56808,B Franse Taal en Cultuur,0,0,0,1,0,1,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56807,B Scandinavische Talen en Culturen,3,7,1,5,2,5,1,7,2,5
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56807,B Scandinavische Talen en Culturen,0,0,0,0,0,0,0,1,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56806,B Engelse Taal en Cultuur,10,31,11,38,7,32,9,15,7,16
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56806,B Engelse Taal en Cultuur,1,1,0,0,2,0,1,1,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56805,B Duitse Taal en Cultuur,1,3,0,9,2,3,5,5,1,1
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56805,B Duitse Taal en Cultuur,0,0,0,0,0,0,0,1,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56804,B Nederlandse Taal en Cultuur,10,48,6,54,8,23,6,15,6,19
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56804,B Nederlandse Taal en Cultuur,0,0,1,1,0,1,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56803,B Taalwetenschap,1,10,3,11,3,9,0,5,15,37
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56803,B Taalwetenschap,0,0,0,0,0,0,0,2,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56802,B Literatuurwetenschap,1,8,3,11,0,5,11,39,14,48
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56802,B Literatuurwetenschap,0,0,0,0,0,0,0,0,1,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56702,B Theaterwetenschap,11,20,1,11,3,12,4,18,3,23
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56702,B Theaterwetenschap,0,0,0,0,0,2,1,0,2,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56700,B Muziekwetenschap,12,11,13,6,5,5,4,6,9,10
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56700,B Muziekwetenschap,0,1,0,1,1,1,2,0,0,2
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56700,B Muziekwetenschap,0,0,0,0,0,0,0,0,1,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56081,B Wijsbegeerte,28,31,28,23,20,25,18,17,22,26
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56081,B Wijsbegeerte,1,0,2,0,1,0,1,2,1,4
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56051,B Europese Studies,29,59,25,41,55,86,61,117,41,90
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56051,B Europese Studies,0,0,0,0,0,0,0,0,0,1
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56040,B Arabische Taal en Cultuur,1,4,2,1,3,1,2,9,3,3
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56040,B Arabische Taal en Cultuur,0,0,0,0,0,1,0,1,0,1
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56034,B Geschiedenis,69,41,56,26,24,28,37,32,31,38
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56034,B Geschiedenis,4,2,2,1,2,2,1,0,4,1
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56034,B Geschiedenis,0,0,0,0,0,0,0,0,1,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56003,B Griekse en Latijnse Taal en Cultuur,6,2,0,9,3,6,3,6,5,6
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50906,B Media en Cultuur,75,149,40,103,28,54,30,67,14,47
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50902,B Religiewetenschappen,1,6,0,1,0,1,1,1,1,5
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50902,B Religiewetenschappen,0,0,0,1,0,1,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50901,B Hebreeuwse Taal en Cultuur,0,0,1,2,0,1,0,1,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50901,B Hebreeuwse Taal en Cultuur,0,0,0,0,1,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50010,B Media en informatie,1,0,0,2,1,1,15,21,36,66
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50010,B Media en informatie,0,0,0,0,0,1,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50010,B Media en informatie,0,0,1,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50004,B Cultuurwetenschappen,0,0,0,0,0,0,0,0,2,3
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,59312,"B Politics, Psychology, Law and Economics",0,0,37,38,50,88,71,120,78,140
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,55002,B Liberal Arts and Sciences (joint degree),41,80,60,108,55,108,47,123,49,141
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50425,B Future Planet Studies,68,48,82,69,58,47,71,54,57,72
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56828,B Notarieel Recht,1,6,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56827,B Fiscaal Recht,16,12,19,11,12,8,15,8,29,17
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56827,B Fiscaal Recht,0,0,0,0,1,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50700,B Rechtsgeleerdheid,1,2,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50700,B Rechtsgeleerdheid,102,185,100,148,110,173,113,189,109,191
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50700,B Rechtsgeleerdheid,0,3,1,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56984,B Natuur- en Sterrenkunde,85,12,66,19,57,12,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56981,B Kunstmatige Intelligentie,47,9,42,15,46,12,81,24,89,30
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56980,B Wiskunde,32,18,33,7,39,11,30,10,19,8
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56978,B Informatica,2,0,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56978,B Informatica,50,3,49,5,53,3,64,5,57,5
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56860,B Biologie,20,16,27,21,20,20,22,26,22,20
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56857,B Scheikunde,22,14,50,13,25,16,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56842,B Informatiekunde,40,10,36,7,40,14,23,17,42,8
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,55013,B Natuur- en Sterrenkunde (joint degree),0,0,0,0,0,0,82,25,74,22
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,55012,B Scheikunde (joint degree),0,0,0,0,0,0,40,24,25,20
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50250,B Beta-gamma,46,60,61,60,39,49,49,46,36,47
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50014,B Psychobiologie,77,214,40,134,38,123,37,130,35,156
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56990,B Biomedische Wetenschappen,6,5,5,9,1,1,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56990,B Biomedische Wetenschappen,49,98,59,82,43,95,40,80,45,64
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56573,B Medische Informatiekunde,11,20,22,17,22,19,10,21,6,18
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56560,B Tandheelkunde,13,21,13,26,10,40,20,41,9,47
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56551,B Geneeskunde,0,1,0,1,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56551,B Geneeskunde,78,100,52,132,70,120,77,138,75,151
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56838,B Sociale Geografie en Planologie,42,38,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56838,B Sociale Geografie en Planologie,0,0,37,29,29,29,42,52,44,38
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56631,B Algemene Sociale Wetenschappen,19,60,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56631,B Algemene Sociale Wetenschappen,0,0,12,40,14,48,12,46,13,65
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56615,B Communicatiewetenschap,47,192,43,150,41,109,86,253,96,302
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56613,B Onderwijskunde,0,5,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56613,B Onderwijskunde,0,0,0,6,1,5,1,5,1,11
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56607,B Pedagogische Wetenschappen,5,58,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56607,B Pedagogische Wetenschappen,0,2,0,53,2,24,0,26,0,26
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56606,B Politicologie,55,77,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56606,B Politicologie,0,0,72,42,33,33,54,37,101,119
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56604,B Psychologie,94,243,87,217,48,161,64,150,52,138
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56604,B Psychologie,0,1,0,1,0,1,1,0,3,2
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56601,B Sociologie,23,40,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56601,B Sociologie,0,0,13,34,7,26,8,26,7,23
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50035,B Culturele Antropologie en Ontwikkelingssociologie,21,71,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50035,B Culturele Antropologie en Ontwikkelingssociologie,0,1,10,52,5,39,14,36,8,37
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,59318,B Economics and Business Economics,0,0,0,0,0,0,0,0,275,144
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56833,B Econometrie en Operationele Research,71,26,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56833,B Econometrie en Operationele Research,0,0,63,25,64,32,89,42,106,50
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56411,B Actuariele Wetenschappen,6,3,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56411,B Actuariele Wetenschappen,0,0,4,2,5,2,5,12,14,12
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56402,B Fiscale Economie,19,7,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,56402,B Fiscale Economie,0,0,18,12,30,8,15,10,26,8
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50905,B Economie en Bedrijfskunde,453,242,0,0,0,0,0,0,0,0
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50905,B Economie en Bedrijfskunde,3,9,426,224,345,212,412,261,5,4
+Noord-Holland,AMSTERDAM,bachelor,Universiteit van Amsterdam,50897,B Business Administration,0,0,0,0,0,0,0,0,371,267
+Noord-Holland,AMSTERDAM,bachelor,Protestantse Theologische Universiteit,55004,B Theologie (joint degree),1,0,4,3,0,0,2,1,1,3
+Noord-Holland,AMSTERDAM,bachelor,Protestantse Theologische Universiteit,55004,B Theologie (joint degree),0,0,0,0,0,0,0,0,0,2
+Noord-Brabant,TILBURG,bachelor,Tilburg University,55018,B Data Science (joint degree),0,0,0,0,0,0,0,0,23,9
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56826,B Communicatie- en Informatiewetenschappen,18,50,19,48,14,48,13,68,42,76
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56826,B Communicatie- en Informatiewetenschappen,0,0,0,1,0,1,0,1,0,0
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56823,B Algemene Cultuurwetenschappen,1,5,2,14,1,18,2,21,5,29
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56823,B Algemene Cultuurwetenschappen,0,0,0,0,0,0,0,0,0,1
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56109,B Theologie,3,3,3,1,2,2,1,0,3,1
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56109,B Theologie,1,1,0,2,3,1,0,2,2,1
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56081,B Wijsbegeerte,1,9,6,3,3,3,8,4,4,1
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56081,B Wijsbegeerte,2,0,0,0,1,0,1,0,0,0
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50393,B Liberal Arts and Sciences,34,37,25,45,21,44,22,43,25,60
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56827,B Fiscaal Recht,19,7,9,15,8,11,13,15,13,17
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56475,B Global Law,9,16,25,47,24,49,27,59,40,61
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50753,B Ondernemingsrecht,9,6,0,0,0,0,0,0,0,0
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50700,B Rechtsgeleerdheid,85,87,65,90,46,77,47,76,49,73
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56627,B Bestuurskunde,19,7,25,15,21,19,14,18,24,23
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56604,B Psychologie,49,145,42,124,29,123,57,184,94,255
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56601,B Sociologie,11,18,2,13,4,4,2,6,5,19
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50755,B Personeelwetenschappen,18,53,14,48,15,49,8,48,12,43
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50754,B Organisatiewetenschappen,12,40,27,28,40,69,39,59,26,55
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56833,B Econometrie en Operationele Research,75,29,47,15,66,27,60,35,93,38
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56402,B Fiscale Economie,35,19,23,12,31,9,19,11,38,16
+Noord-Brabant,TILBURG,bachelor,Tilburg University,56401,B Economie,22,7,26,18,49,24,41,27,34,15
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50952,B International Business Administration,80,83,100,64,144,78,162,101,160,108
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50950,B Economie en Bedrijfseconomie,61,19,48,12,35,15,74,24,101,29
+Noord-Brabant,TILBURG,bachelor,Tilburg University,50750,B Bedrijfseconomie,249,121,230,84,266,107,246,96,259,104
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56994,B Technische Bedrijfskunde,174,48,175,52,170,55,139,44,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56994,B Technische Bedrijfskunde,1,0,0,0,0,0,1,0,184,55
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56966,B Werktuigbouwkunde,204,13,227,14,227,16,234,16,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56966,B Werktuigbouwkunde,0,0,0,0,0,0,0,0,264,24
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56965,B Technische Wiskunde,33,12,35,13,37,22,66,35,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56965,B Technische Wiskunde,0,0,0,1,0,0,0,0,61,23
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56964,B Technische Informatica,94,3,119,10,159,22,222,30,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56964,B Technische Informatica,0,0,3,2,1,1,1,1,236,36
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56962,B Technische Natuurkunde,103,16,141,19,128,11,155,18,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56962,B Technische Natuurkunde,0,0,0,0,0,0,0,0,134,23
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56960,B Scheikundige Technologie,53,16,58,24,69,23,59,27,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56960,B Scheikundige Technologie,0,0,0,0,0,0,0,0,67,28
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56953,B Electrical Engineering,122,8,132,10,250,17,188,14,1,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56953,B Electrical Engineering,1,0,1,0,1,0,0,0,204,23
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56951,B Bouwkunde,82,45,69,50,69,65,67,47,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56951,B Bouwkunde,0,0,0,0,1,0,0,0,94,72
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56265,B Technische Innovatiewetenschappen,52,36,71,41,62,42,57,48,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56265,B Technische Innovatiewetenschappen,0,0,0,0,0,1,0,0,62,64
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56226,B Biomedische Technologie,88,73,95,105,83,120,91,134,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,56226,B Biomedische Technologie,0,0,0,0,0,0,0,0,104,118
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,55018,B Data Science (joint degree),0,0,0,0,0,0,21,4,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,55018,B Data Science (joint degree),0,0,0,0,0,0,0,0,27,5
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,50441,B Industrial Design,87,68,82,53,81,72,78,96,0,0
+Noord-Brabant,EINDHOVEN,bachelor,Technische Universiteit Eindhoven,50441,B Industrial Design,3,3,0,0,2,1,1,2,115,106
+Noord-Brabant,BREDA,bachelor,NHTV Internationale Hogeschool Breda,55001,B Tourism (joint degree),4,12,0,0,0,0,1,0,0,0
+Noord-Brabant,BREDA,bachelor,NHTV Internationale Hogeschool Breda,50756,B Vrijetijdwetenschappen,2,15,2,14,2,6,2,8,1,4
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50004,B Cultuurwetenschappen,40,91,25,62,24,69,28,67,24,65
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50393,B Liberal Arts and Sciences,83,151,94,180,113,185,101,172,132,274
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56827,B Fiscaal Recht,22,11,13,7,8,8,12,9,11,7
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50700,B Rechtsgeleerdheid,26,50,37,67,38,65,24,60,41,57
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50017,B European Law School,94,156,113,199,125,184,119,248,131,232
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50300,B Data Science and Knowledge Engineering,40,9,32,4,54,19,49,8,80,19
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56990,B Biomedische Wetenschappen,92,117,58,76,67,89,100,183,127,247
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56553,B Gezondheidswetenschappen,38,191,36,180,30,174,22,143,19,153
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56551,B Geneeskunde,59,144,52,141,77,164,66,174,68,155
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50296,B European Public Health,37,48,19,65,23,79,17,69,18,55
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56604,B Psychologie,50,185,73,184,120,333,80,296,92,285
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56051,B Europese Studies,124,167,130,150,117,144,119,138,109,134
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56833,B Econometrie en Operationele Research,49,25,40,24,44,23,25,16,44,36
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,56402,B Fiscale Economie,35,12,33,15,14,11,26,9,15,5
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50950,B Economie en Bedrijfseconomie,186,85,189,93,160,80,166,87,163,98
+Limburg,MAASTRICHT,bachelor,Universiteit Maastricht,50019,B International Business,325,250,342,295,350,331,363,311,355,282
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56994,B Technische Bedrijfskunde,107,24,92,18,80,17,90,25,80,16
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56994,B Technische Bedrijfskunde,0,0,0,1,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56965,B Technische Wiskunde,5,3,7,1,8,2,15,1,16,4
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56962,B Technische Natuurkunde,24,2,37,2,28,4,34,3,30,7
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56960,B Scheikundige Technologie,18,5,42,8,32,18,39,15,54,22
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,57084,B Wijsbegeerte van een Bepaald Wetenschapsgebied,0,0,0,0,0,0,0,0,1,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,57084,B Wijsbegeerte van een Bepaald Wetenschapsgebied,0,0,1,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56826,B Communicatie- en Informatiewetenschappen,10,36,12,21,6,30,4,12,1,8
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56826,B Communicatie- en Informatiewetenschappen,0,0,0,0,0,0,0,1,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56824,B Kunstgeschiedenis,3,5,1,7,2,10,0,9,3,20
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56824,B Kunstgeschiedenis,0,0,0,0,0,0,0,0,1,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56804,B Nederlandse Taal en Cultuur,2,19,5,13,5,17,1,12,3,13
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56804,B Nederlandse Taal en Cultuur,0,0,0,0,0,0,0,1,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56803,B Taalwetenschap,1,22,1,21,1,15,2,24,2,16
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56803,B Taalwetenschap,0,0,0,0,0,1,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56703,B Archeologie,4,6,2,7,4,6,6,12,5,12
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56124,B Europese Talen en Culturen,19,51,15,36,21,72,24,62,20,84
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56124,B Europese Talen en Culturen,0,0,0,0,0,2,0,0,0,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56109,B Theologie,3,1,2,8,3,3,3,4,4,2
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56109,B Theologie,1,0,1,1,0,1,0,1,0,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56109,B Theologie,0,0,1,0,0,0,0,0,1,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56109,B Theologie,1,1,0,1,0,0,0,0,1,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56104,B Godsdienstwetenschap,2,12,0,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56098,B Midden-Oostenstudies,3,3,3,3,9,9,5,8,6,10
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56081,B Wijsbegeerte,8,11,16,12,15,2,12,12,9,12
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56081,B Wijsbegeerte,0,0,3,0,1,0,0,0,1,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56034,B Geschiedenis,68,42,44,27,32,27,42,24,42,30
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56034,B Geschiedenis,0,0,0,0,0,0,0,0,0,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56034,B Geschiedenis,1,0,0,1,0,0,2,0,0,2
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56034,B Geschiedenis,0,0,1,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56012,B Minorities & Multilingualism,0,0,1,4,6,6,3,8,2,11
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56003,B Griekse en Latijnse Taal en Cultuur,3,6,2,6,1,8,2,8,2,4
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50906,B Media en Cultuur,0,0,0,0,4,10,19,43,27,39
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50902,B Religiewetenschappen,0,0,2,5,1,3,2,4,3,15
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50629,"B Kunsten, Cultuur en Media",5,25,10,32,21,50,12,54,26,54
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50629,"B Kunsten, Cultuur en Media",0,0,0,1,0,0,1,1,0,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50627,B Internationale Betrekkingen en Internationale Organisatie,59,91,89,108,93,105,79,122,72,139
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50627,B Internationale Betrekkingen en Internationale Organisatie,1,2,6,1,3,4,1,8,17,13
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50623,B American Studies,33,49,25,37,12,12,15,17,9,17
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50290,B English Language and Culture,16,41,8,69,14,50,12,54,12,38
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50290,B English Language and Culture,0,0,0,1,0,1,0,1,0,2
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50393,B Liberal Arts and Sciences,0,0,9,18,7,13,28,53,29,72
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56829,B Internationaal en Europees Recht,27,43,29,37,38,63,47,70,57,124
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56829,B Internationaal en Europees Recht,2,1,1,1,0,0,0,1,1,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56827,B Fiscaal Recht,2,0,0,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50700,B Rechtsgeleerdheid,110,178,152,190,145,193,118,181,122,198
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50700,B Rechtsgeleerdheid,0,0,4,4,7,3,5,1,3,4
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50700,B Rechtsgeleerdheid,0,1,0,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50700,B Rechtsgeleerdheid,4,5,1,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56981,B Kunstmatige Intelligentie,50,7,69,20,65,21,65,25,75,31
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56980,B Wiskunde,16,10,21,7,26,13,27,19,39,21
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56980,B Wiskunde,0,0,0,0,0,0,0,0,1,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56978,B Informatica,34,5,38,5,60,5,60,8,70,10
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56860,B Biologie,63,74,54,63,63,63,55,72,62,79
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56860,B Biologie,1,0,0,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56857,B Scheikunde,32,17,35,17,47,21,41,27,47,22
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56857,B Scheikunde,1,0,0,0,1,1,0,1,1,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56842,B Informatiekunde,24,5,17,6,19,3,18,8,17,2
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56286,B Life Science and Technology,57,85,35,59,51,71,30,57,40,85
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56286,B Life Science and Technology,0,0,0,0,0,0,0,1,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56157,B Farmacie,56,78,41,65,55,59,50,65,53,89
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50206,B Natuurkunde,43,8,61,4,34,8,53,23,47,16
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50206,B Natuurkunde,1,0,0,0,2,0,0,1,1,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50205,B Sterrenkunde,14,3,25,7,12,6,31,13,33,10
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56950,B Bewegingswetenschappen,72,83,41,76,32,58,43,50,33,77
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56950,B Bewegingswetenschappen,0,0,0,0,0,0,0,0,0,1
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56560,B Tandheelkunde,13,21,6,26,9,26,9,33,3,29
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56551,B Geneeskunde,91,234,96,218,75,248,106,248,108,238
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56551,B Geneeskunde,18,13,7,5,13,11,2,2,19,5
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56838,B Sociale Geografie en Planologie,48,26,42,16,35,16,23,27,43,20
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56838,B Sociale Geografie en Planologie,0,0,0,0,0,0,1,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56607,B Pedagogische Wetenschappen,11,137,3,107,3,68,5,78,8,76
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56604,B Psychologie,156,392,175,373,129,332,160,364,98,273
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56604,B Psychologie,0,1,1,5,1,1,0,1,5,4
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56601,B Sociologie,18,35,22,30,6,22,13,29,11,30
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56601,B Sociologie,0,1,0,0,0,0,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56194,B Technische Planologie,27,2,32,9,42,11,37,10,43,22
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56194,B Technische Planologie,0,0,0,0,0,1,0,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56833,B Econometrie en Operationele Research,77,38,45,28,58,23,52,22,91,45
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,56833,B Econometrie en Operationele Research,6,3,0,2,0,0,2,0,0,0
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50950,B Economie en Bedrijfseconomie,171,52,175,66,114,40,181,89,188,76
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50950,B Economie en Bedrijfseconomie,7,4,5,6,4,2,8,9,8,4
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50645,B Bedrijfskunde,240,124,221,119,157,77,168,82,197,105
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50645,B Bedrijfskunde,11,9,9,14,17,15,7,14,11,14
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50019,B International Business,143,113,150,133,197,113,172,155,267,188
+Groningen,GRONINGEN,bachelor,Rijksuniversiteit Groningen,50019,B International Business,19,16,13,25,28,30,20,26,25,41
+Gelderland,WAGENINGEN,bachelor,Wageningen University,55001,B Tourism (joint degree),2,3,10,23,3,12,4,21,4,26
+Gelderland,WAGENINGEN,bachelor,Wageningen University,59304,B Moleculaire Levenswetenschappen,31,22,31,25,55,33,53,25,37,34
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56973,B Levensmiddelentechnologie,27,69,53,69,38,87,41,90,62,98
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56968,"B Bodem, Water, Atmosfeer",36,22,33,15,37,24,47,21,35,29
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56868,B Voeding en Gezondheid,23,129,14,100,15,117,9,128,9,137
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56860,B Biologie,52,50,58,64,70,47,73,71,73,63
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56849,B Dierwetenschappen,28,90,21,74,14,54,13,60,14,75
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56848,B Landschapsarchitectuur en ruimtelijke planning,26,13,30,22,27,23,25,30,37,34
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56841,B Biotechnologie,49,32,52,19,69,30,84,38,60,27
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56837,B Internationale Ontwikkelingsstudies,20,62,11,77,15,48,15,61,16,53
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56836,B Bedrijfs- en Consumentenwetenschappen,66,75,51,67,72,78,63,75,68,58
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56835,B Plantenwetenschappen,12,7,29,21,31,29,27,28,46,39
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56831,B Agrotechnologie,33,2,34,4,23,4,30,4,32,6
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56283,B Milieuwetenschappen,21,9,13,19,11,14,19,32,21,31
+Gelderland,WAGENINGEN,bachelor,Wageningen University,56219,B Bos- en Natuurbeheer,29,21,20,36,32,21,30,30,38,36
+Gelderland,WAGENINGEN,bachelor,Wageningen University,50101,B Economie en Beleid,16,5,20,9,22,12,28,17,34,17
+Gelderland,WAGENINGEN,bachelor,Wageningen University,50100,B Internationaal Land- en Waterbeheer,34,23,28,20,36,18,38,29,36,28
+Gelderland,WAGENINGEN,bachelor,Wageningen University,50018,B Gezondheid en Maatschappij,5,53,6,48,10,57,4,49,4,43
+Gelderland,WAGENINGEN,bachelor,Wageningen University,50016,B Communicatie en Life Sciences,2,10,0,5,2,7,6,17,4,18
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56826,B Communicatie- en Informatiewetenschappen,10,90,24,77,7,63,27,56,34,81
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56826,B Communicatie- en Informatiewetenschappen,0,1,0,2,0,1,0,1,0,2
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56824,B Kunstgeschiedenis,0,7,6,7,3,6,2,8,3,6
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56824,B Kunstgeschiedenis,0,0,0,0,0,0,0,0,0,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56823,B Algemene Cultuurwetenschappen,5,14,4,14,3,14,1,27,2,34
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56823,B Algemene Cultuurwetenschappen,0,0,0,0,0,3,0,3,2,7
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56806,B Engelse Taal en Cultuur,21,55,12,55,23,37,11,42,11,34
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56806,B Engelse Taal en Cultuur,0,2,1,1,0,1,1,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56805,B Duitse Taal en Cultuur,3,14,6,11,3,5,4,6,5,14
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56804,B Nederlandse Taal en Cultuur,4,27,2,18,3,9,5,11,2,7
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56803,B Taalwetenschap,3,20,4,14,1,11,6,9,1,12
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56803,B Taalwetenschap,0,0,1,1,0,0,0,0,0,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56109,B Theologie,0,0,0,1,0,0,0,2,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56109,B Theologie,0,0,0,0,0,0,0,0,0,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56109,B Theologie,0,0,0,0,0,0,0,1,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56081,B Wijsbegeerte,11,8,12,11,14,6,12,9,10,9
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56081,B Wijsbegeerte,1,0,0,1,2,0,1,1,0,3
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56074,B Romaanse Talen en Culturen,5,21,8,19,8,11,2,8,4,6
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56074,B Romaanse Talen en Culturen,0,1,0,0,0,0,0,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56034,B Geschiedenis,49,17,38,26,42,19,26,18,39,16
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56034,B Geschiedenis,0,0,1,1,0,0,0,0,1,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56003,B Griekse en Latijnse Taal en Cultuur,13,16,8,6,7,8,4,7,6,10
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50902,B Religiewetenschappen,0,9,1,4,1,3,1,5,1,11
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50902,B Religiewetenschappen,0,0,0,0,0,0,0,1,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50902,B Religiewetenschappen,0,0,0,0,0,0,1,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50902,B Religiewetenschappen,0,0,2,2,0,1,0,1,1,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56828,B Notarieel Recht,4,22,0,9,3,12,6,21,12,22
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56828,B Notarieel Recht,0,0,0,0,0,1,0,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50700,B Rechtsgeleerdheid,121,162,106,161,113,162,110,156,103,154
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50700,B Rechtsgeleerdheid,0,0,0,0,0,0,0,0,1,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50700,B Rechtsgeleerdheid,1,0,1,2,1,1,1,0,0,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50017,B European Law School,18,33,25,45,21,38,22,43,15,35
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,59304,B Moleculaire Levenswetenschappen,27,27,22,17,24,30,31,40,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,59304,B Moleculaire Levenswetenschappen,0,0,0,0,0,0,1,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56984,B Natuur- en Sterrenkunde,68,12,63,8,52,12,39,16,61,18
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56984,B Natuur- en Sterrenkunde,0,0,0,0,1,0,0,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56981,B Kunstmatige Intelligentie,43,20,36,18,58,30,83,39,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56980,B Wiskunde,21,11,31,8,34,16,20,8,32,14
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56978,B Informatica,47,1,52,5,52,8,46,4,55,6
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56978,B Informatica,1,0,0,0,1,0,0,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56948,B Science,20,8,16,13,17,14,19,7,14,12
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56945,B Artificial Intelligence,0,0,0,0,0,0,0,0,91,52
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56944,B Molecular Life Sciences,0,0,0,0,0,0,0,0,27,52
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56943,B Chemistry,0,0,0,0,0,0,0,0,26,20
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56943,B Chemistry,0,0,0,0,0,0,0,0,0,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56860,B Biologie,79,121,67,90,64,99,62,97,60,127
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56860,B Biologie,1,0,1,1,0,2,0,0,2,2
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56857,B Scheikunde,22,11,30,13,19,18,27,9,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56857,B Scheikunde,0,1,0,0,1,0,0,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56990,B Biomedische Wetenschappen,30,60,30,68,27,67,29,69,34,63
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56560,B Tandheelkunde,16,40,13,41,14,38,18,41,19,35
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56551,B Geneeskunde,91,184,98,180,80,175,90,169,78,187
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56551,B Geneeskunde,0,0,0,0,0,0,1,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56947,"B Geografie, Planologie en Milieu",47,22,39,24,39,21,30,20,43,20
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56947,"B Geografie, Planologie en Milieu",0,0,0,0,0,1,1,7,2,15
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56627,B Bestuurskunde,39,27,36,23,26,17,22,20,34,35
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56627,B Bestuurskunde,1,0,0,0,2,0,0,0,1,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56615,B Communicatiewetenschap,17,48,17,38,12,36,12,37,13,41
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56615,B Communicatiewetenschap,0,1,0,0,0,1,0,1,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56607,B Pedagogische Wetenschappen,7,154,5,105,6,73,1,52,7,97
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56607,B Pedagogische Wetenschappen,0,1,0,0,0,1,0,0,0,1
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56606,B Politicologie,45,28,46,21,41,20,42,17,40,25
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56606,B Politicologie,0,0,1,0,2,2,3,7,5,4
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56604,B Psychologie,79,286,69,238,61,197,160,424,88,265
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56604,B Psychologie,0,1,0,2,0,1,0,1,1,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56601,B Sociologie,9,33,14,22,10,15,4,25,6,18
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,56601,B Sociologie,0,0,0,0,0,0,0,1,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50035,B Culturele Antropologie en Ontwikkelingssociologie,3,38,9,24,6,23,3,22,6,27
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50035,B Culturele Antropologie en Ontwikkelingssociologie,0,0,0,0,1,0,0,0,0,0
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50950,B Economie en Bedrijfseconomie,99,34,100,39,97,31,92,42,107,44
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50950,B Economie en Bedrijfseconomie,3,2,4,4,4,3,5,8,10,5
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50645,B Bedrijfskunde,164,107,146,92,117,75,139,95,198,125
+Gelderland,NIJMEGEN,bachelor,Radboud Universiteit Nijmegen,50645,B Bedrijfskunde,1,5,1,2,1,4,2,6,5,10
+Gelderland,APELDOORN,bachelor,Theologische Universiteit Apeldoorn,56109,B Theologie,5,3,6,3,1,1,2,3,5,3
