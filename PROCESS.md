@@ -70,4 +70,14 @@ zijn vanuit alle functies.
 * Bestuurskunde Groningen doet raar, morgen naar kijken
 * Alle stippen en linegraphs een id gegeven aan de hand waarvan kan worden teruggevonden
   welke data er is gebruikt in de algemene lijsten.
-  
+
+## DI 20/1/19
+* Verder data opnieuw gepreprocessed
+* Wat layout dingen gedaan
+* Probleem met Groningen op gelost
+* Wat nog moet worden gedaan: een deleteknop en zorgen dat de lijngrafiek update
+  bij het klikken op de kaart
+
+## WO 21/1/19
+* Gewerkt aan een deleteknop
+* In de updatefunctie een delete optie aangemaakt

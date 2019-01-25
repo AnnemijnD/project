@@ -44,10 +44,8 @@ dataset = [];
 
 var id = 0;
 dataStud.forEach(function(d){
-    if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
-      if (d["INSTELLINGSNAAM ACTUEEL"].includes(instelling)){
-
-
+    if (d["OPLEIDINGSNAAM ACTUEEL"] === opleiding){
+      if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
 
         // get data of all years
         datapoints.forEach(function(a){
@@ -170,7 +168,7 @@ svg.selectAll(".dot")
 
 
 
-        return updateBarGraph(opleiding, instelling, `${d.x}`)});
+        return updateBarGraph(opleiding, instelling, `${d.x}`, "Append")});
 }
 
 function updateLine (opleiding, instelling){
@@ -222,6 +220,36 @@ function updateLine (opleiding, instelling){
   // get right dataset
 
   var id = 0;
+  var finder = true;
+
+  // vind een ongebruikt id
+
+  // zolang als dat die niet is gevonden, zoek
+  while(finder){
+
+    // als dit iD is gebruikt, word ie true
+    var idUsed = false;
+
+    // zoek door de data naar de verschillende id's
+    lineGraphData.forEach(function(d){
+
+      // als dit iD is gebruikt, word true
+      if (d.id === id){
+        idUsed = true;
+      }
+
+    })
+
+    // als dit id niet is gebruikt, wordt finder false en stop de zoektocht
+    if (idUsed === false){
+      finder = false
+
+    }
+
+    else {
+    id++
+    }
+  }
 
   if (opleiding === "Alles"){
     uniData.forEach(function(d){
@@ -239,43 +267,13 @@ function updateLine (opleiding, instelling){
 
 
       })
+
+        lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
     }})
   }
   dataStud.forEach(function(d){
-      if (d["OPLEIDINGSNAAM ACTUEEL"].includes(opleiding)){
-        if (d["INSTELLINGSNAAM ACTUEEL"].includes(instelling)){
-
-
-            var finder = true;
-
-            // vind een ongebruikt id
-
-            // zolang als dat die niet is gevonden, zoek
-            while(finder){
-
-              // als dit iD is gebruikt, word ie true
-              var idUsed = false;
-
-              // zoek door de data naar de verschillende id's
-              lineGraphData.forEach(function(d){
-
-                // als dit iD is gebruikt, word true
-                if (d.id === id){
-                  idUsed = true;
-                }
-
-              })
-
-              // als dit id niet is gebruikt, wordt finder false en stop de zoektocht
-              if (idUsed === false){
-                finder = false
-
-              }
-
-              else {
-              id++
-              }
-            }
+      if (d["OPLEIDINGSNAAM ACTUEEL"] === opleiding){
+        if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
 
 
 
@@ -299,7 +297,6 @@ function updateLine (opleiding, instelling){
 
         }
     })
-
 
     // get mininma and maxima
     let arr = []

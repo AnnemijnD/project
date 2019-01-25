@@ -101,11 +101,12 @@ def convert_csv_json():
     for i in range(len(rows)):
 
         university = rows[i]["INSTELLINGSNAAM ACTUEEL"]
+        city = rows[i]["GEMEENTENAAM"]
         new_university = True
 
         if rows[i]["OPLEIDINGSNAAM ACTUEEL"].split()[0] == "B":
             rows[i]["OPLEIDINGSNAAM ACTUEEL"] = rows[i]["OPLEIDINGSNAAM ACTUEEL"].replace("B ", "")
-        
+
 
         for j in range(len(new_file_rows)):
 
@@ -141,6 +142,7 @@ def convert_csv_json():
              #  ])
 
             d["INSTELLINGSNAAM ACTUEEL"] = rows[i]["INSTELLINGSNAAM ACTUEEL"]
+            d["GEMEENTENAAM"] = city
             d["2013 MAN"] = rows[i]["2013 MAN"]
             d["2013 VROUW"] = rows[i]["2013 VROUW"]
             d["2014 MAN"] = rows[i]["2014 MAN"]
