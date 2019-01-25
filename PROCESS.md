@@ -63,7 +63,7 @@ van de lijn grafiek, de bargraph update. Dit is tevens een nieuw plan.
 * Algemene variableen aangemaakt die de data zullen dragen zodat deze makkelijk bereikbaar
 zijn vanuit alle functies.
 
-## MA 19/1/19
+## MA 21/1/19
 * Bar graph update wanneer er op een circle wordt geklikt
 * Veel data opnieuw geprocessed naar een format waarmee meer kan
 * Een "alles" optie geimplementeerd voor de line graph
@@ -71,13 +71,23 @@ zijn vanuit alle functies.
 * Alle stippen en linegraphs een id gegeven aan de hand waarvan kan worden teruggevonden
   welke data er is gebruikt in de algemene lijsten.
 
-## DI 20/1/19
+## DI 22/1/19
 * Verder data opnieuw gepreprocessed
 * Wat layout dingen gedaan
 * Probleem met Groningen op gelost
 * Wat nog moet worden gedaan: een deleteknop en zorgen dat de lijngrafiek update
   bij het klikken op de kaart
 
-## WO 21/1/19
+## WO 23/1/19
 * Gewerkt aan een deleteknop
 * In de updatefunctie een delete optie aangemaakt
+
+## DO 24/1/19
+* Hackaton
+
+## VRIJ 25/1/19
+* Deleteknop gemaakt door te kunnnen klikken op de bars, je ziet nu in de tooltip
+"Klik hier om te verwijderen"
+* Main functie is nu slechts het laden van data en starten van functies
+* Een linearGradient agenda gemaakt. Wordt gebruikt voor de kaart.
+* Bargraph is nu breed en kort zodat hij tegelijk zichtbaar is met linechart

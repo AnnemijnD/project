@@ -16,10 +16,10 @@ function barGraph(){
               })
 
   var svg = d3.select("#graph1 svg")
-              .attr("width", 800)
+              .attr("width", 1100)
               .attr("height", 300)
 
-      margin = {top: 20, right: 20, bottom: 30, left: 40}
+      margin = {top: 20, right: 100, bottom: 30, left: 40}
       width = +svg.attr("width") - margin.left - margin.right
       height = +svg.attr("height") - margin.top - margin.bottom
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -40,7 +40,7 @@ function barGraph(){
       .rangeRound([height, 0]);
 
   var z = d3.scaleOrdinal()
-      .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#98abc5", "#8a89a6", "#7b6888"]);
 
 
   var keys = ["Vrouw", "Man", "Totaal"]
@@ -74,33 +74,45 @@ function barGraph(){
       .attr("text-anchor", "start")
       .text("Population");
 
-  var legend = g.append("g")
+  var legend = svg.append("g")
+      .attr("transform", function(d) {return "translate(20,0)"})
       .attr("font-family", "sans-serif")
       .attr("font-size", 10)
       .attr("text-anchor", "end")
     .selectAll("g")
-    .data(keys.slice().reverse())
+    .data(keys.slice())
     .enter().append("g")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+      .attr("transform", function(d, i) { console.log(d); return "translate(0," + i * 20 + ")"; });
 
   legend.append("rect")
-      .attr("x", width - 17)
+      .attr("x", width + margin.right)
       .attr("width", 15)
       .attr("height", 15)
       .attr("fill", z)
       .attr("stroke", z)
       .attr("stroke-width",2)
-      .on("click",function(d) {
-                    updateBarGraph("Biomedische Wetenschappen",
-                                    "Universiteit van Amsterdam", "2017", "Append")});
 
   legend.append("text")
-      .attr("x", width - 24)
+      .attr("x", width + margin.right - 7)
       .attr("y", 9.5)
       .attr("dy", "0.32em")
       .text(function(d) { return d; });
 
-  var filtered = [];
+  // legend = svg.append("g")
+  //   .attr("class","legend")
+  //   .attr("transform","translate(50,30)")
+  //   .style("font-size","12px")
+  //   .call(d3.legend(keys))
+  //
+  //
+  //   setTimeout(function() {
+  //   legend
+  //     .style("font-size","20px")
+  //     .attr("data-style-padding",10)
+  //     .call(d3.legend(keys))
+  // },1000)
+
+
 
 
 }
@@ -112,7 +124,6 @@ function barGraph(){
                 .attr('class', 'd3-tip')
                 .offset([-10, 0])
                 .html(function(d) {
-                  console.log(d)
                   return "<strong>" + d.key + "</strong><span class='details'>" +
                   "<br></span>" +
 
@@ -205,7 +216,7 @@ function barGraph(){
     var svg = d3.select("#graph1 svg")
 
     // state the height
-    margin = {top: 20, right: 20, bottom: 30, left: 40}
+    margin = {top: 20, right: 100, bottom: 30, left: 40}
     width = +svg.attr("width") - margin.left - margin.right
     height = +svg.attr("height") - margin.top - margin.bottom
 
@@ -269,8 +280,7 @@ function barGraph(){
     .duration(100)
     .attr("transform", function(d) { return "translate(" + (x0(`${d.Opleiding}, ${d.Instelling} ${d.jaar}`) + margin.left) + "," + margin.top + ")"; })
 
-    var yDelete;
-    var xDelete;
+
     // enter the new groups and rectangles
     groups.enter().append("g")
     .attr("class","bar")
@@ -298,93 +308,12 @@ function barGraph(){
       .attr("width", x1.bandwidth())
       .transition()
       .duration(100)
-      .attr("y", function(d, i) {
-          if (i%3 === 0){
-            yDelete = y(d.value)
-          }
+      .attr("y", function(d){
             return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
       .attr("fill", function(d) { return z(d.key); })
-      .attr("x", function(d, i) {
-        if (i%3 === 0){
-          xDelete = x1(d.key)
-        }
+      .attr("x", function(d) {
         return x1(d.key); })
-
-
-
-        // // console.log(x1(xDelete))
-        // // make text
-        // d3.selectAll('.bar')
-        //   .append("text")
-        //   .attr("x", function(){
-        //     console.log((xDelete));
-        //     return xDelete - 15
-        //   })
-        //   .attr("y", function(){
-        //     return y(yDelete) + 5
-        //   })
-        //   .text("X")
-        //   .style("fill", "red")
-        //   // .style()
-        //   .style("font-size", 15)
-        //
-        //   // make circle
-        //   d3.selectAll(".bar").append("ellipse")
-        //     .attr("class", "deletebutton")
-        //     .attr("cx", function(d){
-        //       return x1(xDelete)
-        //     })
-        //     .attr("cy", function(d){
-        //       return y(yDelete)
-        //     })
-        //     .attr("rx", 10)
-        //     .attr("ry", 10)
-        //     .style("fill", "white")
-        //     .style("opacity", 0.5)
-        //     .style('stroke', 'red')
-        //     .style('stroke-width', 1.5)
-        //     .on("click",function(d) {
-        //                   updateBarGraph(d.Opleiding,
-        //                                   d.Instelling, d.jaar, "Delete")})
-
-    // d3.selectAll(".bar")
-    //
-    //   .append("text")
-    //   .attr("x", function(d){
-    //     return x1(d.key)
-    //   })
-    //   .attr("y", function(d){
-    //     return y(d.value)
-    //   })
-    //   .text("X")
-    //   .style("fill", "red")
-    //   // .style()
-    //   .style("font-size", 20)
-    //
-    //   d3.selectAll(".bar").append("ellipse")
-    //     // .data(data)
-    //     .attr("class", "deletebutton")
-    //     .attr("cx", function(d){
-    //       return ellipseX
-    //     })
-    //     .attr("cy", function(d){
-    //       return ellipseY
-    //     })
-    //     .attr("rx", 20)
-    //     .attr("ry", 20)
-    //     .style("fill", "white")
-    //     .style("opacity", 0.5)
-    //     .style('stroke', 'red')
-    //     .style('stroke-width', 1.5)
-    //     .on("click",function(d) {
-    //                   updateBarGraph(d.Opleiding,
-    //                                   d.Instelling, d.jaar, "Delete")})
-
-
- //    <ellipse cx="100" cy="70" rx="85" ry="55"  />
- // <text fill="#ffffff" font-size="45" font-family="Verdana"
- // x="80" y="80">X</text>
 
     // check bar data
     var bars = svg.selectAll(".bar").selectAll("rect")

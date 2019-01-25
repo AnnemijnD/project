@@ -1,9 +1,34 @@
+var geoData = [];
+
 function createHeatMap(dataMap, dataStud, jaartal) {
 
   // set margins
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
               width = 600/1.5 - margin.left - margin.right,
               height = 700/1.5 - margin.top - margin.bottom;
+
+  // titles
+  var title = d3.select(".container")
+
+              .append("h1")
+              .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland in 2017");
+
+
+  var slider = d3.select("#mapBlock")
+                .append("div")
+                .attr("class", "slidecontainer")
+                .append("input")
+                .attr("type", "range")
+                .attr("min", "2013")
+                .attr("max", "2017")
+                .attr("value", "2017")
+                .attr("class", "slider")
+                .attr("id", "myRange")
+                .on("input", function(d){
+                  return console.log(this.value)
+                })
+
+  
 
   // Set tooltips
   var tip = d3.tip()
@@ -41,9 +66,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
   svg.call(tip);
 
-  // <div class="slidecontainer">
-  //     <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="sliderChange(this.value)">
-  // </div>
+
 
   dataStud.forEach(function(d){
     allData.push(d)
@@ -149,7 +172,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
     .style("fill", function(d) {
                                       return '#4D80B3'
 
-                                  })                      
+                                  })
     .style("opacity",0.8)
     .style("position", "relative")
     .style('z-index', "-1")
@@ -241,74 +264,76 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
 
 
-    // // width and height of legendbar
-    // var w = 300, h = 50;
-    //
-    // // set legendsvg
-    // var key = d3.select("svg")
-    //    .append("svg")
-    //    .attr("height", 200)
-    //    .attr("width", w + 10)
-    //    .attr("x", 20)
-    //    .attr("y", 400);
-    //
-    // // set linear gradient
-    //  var legend = key.append("defs")
-    //    .append("svg:linearGradient")
-    //    .attr("id", "gradient")
-    //    .attr("x1", "0%")
-    //    .attr("y1", "100%")
-    //    .attr("x2", "100%")
-    //    .attr("y2", "100%")
-    //    .attr("spreadMethod", "pad");
-    //
-    // // bar color gradients
-    //  legend.append("stop")
-    //    .data(dataMap.features)
-    //    .attr("stop-color", "rgb("+ color(min) + ",0," + -(color(min) - 255) +")")
-    //    .attr("stop-opacity", 0.8);
-    //
-    //  legend.append("stop")
-    //    .attr("offset", "33%")
-    //    .attr("stop-color", "rgb("+ color(max*0.33) + ",0," + -(color(max*0.33) - 255) +")")
-    //    .attr("stop-opacity", 0.8);
-    //
-    //  legend.append("stop")
-    //    .attr("offset", "66%")
-    //    .attr("stop-color", "rgb("+ color(max*0.66) + ",0," + -(color(max*0.66) - 255) +")")
-    //    .attr("stop-opacity", 0.8);
-    //
-    //  legend.append("stop")
-    //    .attr("offset", "100%")
-    //    .attr("stop-color", "rgb("+ color(max) + ",0," + -(color(max) - 255) +")")
-    //    .attr("stop-opacity", 0.8);
-    //
-    // // make bar
-    //  key.append("rect")
-    //    .attr("width", w)
-    //    .attr("height", h -30)
-    //    .style("fill", "url(#gradient)")
-    //    .attr("transform", "translate(0, 15)");
-    //
-    // key.append("text")
-    //    .attr("x", 0)
-    //    .attr("y", h-5)
-    //    .text(0)
-    //    .style("font-size", "10px");
-    //
-    //  key.append("text")
-    //     .attr("x", w-30)
-    //     .attr("y", h-5)
-    //     .text(40000000)
-    //     .style("font-size", "10px");
-    //
-    //  // Title legend
-    //  key.append("text")
-    //  .attr("x", 0)
-    //  .attr("y", 10)
-    //  .text("Number of people working in bioeconomics")
-    //  .style("font-size", "10px");
-    //
+    // width and height of legendbar
+    var w = 300, h = 50;
+
+    // set legendsvg
+    var key = d3.select("svg")
+       .append("svg")
+       .attr("height", 200)
+       .attr("width", w + 10)
+       .attr("x", 20)
+       .attr("y", 400);
+
+
+    // source: https://bl.ocks.org/duspviz-mit/9b6dce37101c30ab80d0bf378fe5e583
+    // set linear gradient
+     var legend = key.append("defs")
+       .append("svg:linearGradient")
+       .attr("id", "gradient")
+       .attr("x1", "0%")
+       .attr("y1", "100%")
+       .attr("x2", "100%")
+       .attr("y2", "100%")
+       .attr("spreadMethod", "pad");
+
+    // bar color gradients
+     legend.append("stop")
+       .data(dataMap.features)
+       .attr("stop-color", "rgb("+ color(min) + ",0," + -(color(min) - 255) +")")
+       .attr("stop-opacity", 0.8);
+
+     legend.append("stop")
+       .attr("offset", "33%")
+       .attr("stop-color", "rgb("+ color(max*0.33) + ",0," + -(color(max*0.33) - 255) +")")
+       .attr("stop-opacity", 0.8);
+
+     legend.append("stop")
+       .attr("offset", "66%")
+       .attr("stop-color", "rgb("+ color(max*0.66) + ",0," + -(color(max*0.66) - 255) +")")
+       .attr("stop-opacity", 0.8);
+
+     legend.append("stop")
+       .attr("offset", "100%")
+       .attr("stop-color", "rgb("+ color(max) + ",0," + -(color(max) - 255) +")")
+       .attr("stop-opacity", 0.8);
+
+    // make bar
+     key.append("rect")
+       .attr("width", w/2)
+       .attr("height", h -30)
+       .style("fill", "url(#gradient)")
+       .attr("transform", "translate(0, 15)");
+
+    key.append("text")
+       .attr("x", 0)
+       .attr("y", h-5)
+       .text(0)
+       .style("font-size", "10px");
+
+     key.append("text")
+        .attr("x", w/2 -10)
+        .attr("y", h-5)
+        .text(max)
+        .style("font-size", "10px");
+
+     // Title legend
+     key.append("text")
+     .attr("x", 0)
+     .attr("y", 10)
+     .text("Aantal studenten")
+     .style("font-size", "10px");
+
     //  // make grey block to define countries without data
     //  d3.select("svg")
     //  .append('rect')
