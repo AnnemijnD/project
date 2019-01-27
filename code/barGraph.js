@@ -40,7 +40,7 @@ function barGraph(){
       .rangeRound([height, 0]);
 
   var z = d3.scaleOrdinal()
-      .range(["#98abc5", "#8a89a6", "#7b6888"]);
+        .range(["#884444", "#444488", "#448844"])
 
 
   var keys = ["Vrouw", "Man", "Totaal"]
@@ -82,7 +82,7 @@ function barGraph(){
     .selectAll("g")
     .data(keys.slice())
     .enter().append("g")
-      .attr("transform", function(d, i) { console.log(d); return "translate(0," + i * 20 + ")"; });
+      .attr("transform", function(d, i) {  return "translate(0," + i * 20 + ")"; });
 
   legend.append("rect")
       .attr("x", width + margin.right)
@@ -213,6 +213,7 @@ function barGraph(){
 
     var data = barGraphData
 
+
     var svg = d3.select("#graph1 svg")
 
     // state the height
@@ -236,7 +237,8 @@ function barGraph(){
 
 
     var z = d3.scaleOrdinal()
-              .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+              // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+              .range(["#884444", "#444488", "#448844"])
 
     x0.domain(data.map(function(d) { return `${d.Opleiding}, ${d.Instelling} ${d.jaar}`; }));
     x1.domain(keys).rangeRound([0, x0.bandwidth()]);
@@ -296,13 +298,37 @@ function barGraph(){
       .on("mouseover", function(d){
 
         tip.show(d);
+        console.log(this)
+        var self = this;
+
+        d3.select(this)
+          .style("opacity", 1.5)
+          .style("fill", "#ffab00")
+        //
+        // d3.selectAll(".bar")
+        //   .filter(function(){
+        //     if (self != this){
+        //       return this
+        //     }
+        //   })
+        //   .transition()
+        //   .style("opacity", .5);
+        // var self = this;
+        // d3.selectAll(".bar").filter(function() {
+        //   return self!=this;
+        // }).transition()
+        // .style("opacity", .5)
+
       })
       .on("mouseout", function(d){
         tip.hide(d);
+        d3.select(this)
+          .style("fill", function(d) { return z(d.key); })
       })
       .on("click", function(d){
         tip.hide(d);
       })
+
       .attr("y", function(d) { return y(0); })
       .attr("height", "0")
       .attr("width", x1.bandwidth())

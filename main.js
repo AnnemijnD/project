@@ -8,6 +8,8 @@ var mapData = [];
 var allData = [];
 var uniData = [];
 var geoData = [];
+var firstYear = 2013;
+var lastYear = 2017;
 
 function onload(){
 
@@ -27,7 +29,7 @@ function onload(){
 
     uniData = response[2]
     geoData = response[3]
-    console.log(geoData)
+    allData = response[1]
      createHeatMap(response[0], response[1], 2013)
      makeDropdowns(allData)
     return

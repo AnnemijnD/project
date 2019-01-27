@@ -1,4 +1,37 @@
-var geoData = [];
+// Set tooltips
+
+// fix get max!
+
+var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function(d) {
+
+              // alle instellingen worden benoemd in tooltip
+              var instellingen = "";
+              d["INSTELLINGEN"].forEach(function(a){
+                instellingen += "<strong>"
+                instellingen += (`${a["INSTELLINGSNAAM ACTUEEL"]}: </strong>`)
+                instellingen += "<span class='details'>"
+                instellingen += `${a["TOTAAL INSTELLING"]}`
+                instellingen += ("<br></span>")
+              });
+
+              if (d["INSTELLINGEN"].length > 1){
+                tekst =   "<strong>Totaal: </strong><span class='details'>" +
+                  d[`TOTAAL`]+"</span>" + "<br>"
+
+              }
+              else{
+                tekst = ""
+              }
+              // stad en totaal aantal studenten in tooltip
+              return "<strong>Stad: </strong><span class='details'>" +
+               d["GEMEENTENAAM"]+ "<br></span>"  + instellingen + tekst
+
+            })
+
+
 
 function createHeatMap(dataMap, dataStud, jaartal) {
 
@@ -25,35 +58,23 @@ function createHeatMap(dataMap, dataStud, jaartal) {
                 .attr("class", "slider")
                 .attr("id", "myRange")
                 .on("input", function(d){
-                  return console.log(this.value)
+                  console.log(this.value)
+                  return updateMap(this.value)
                 })
 
-  
+    // make svg
+    var svg = d3.select("#mapBlock")
+                .append("svg")
+                .attr("id", "map")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                // .append('g')
+                // .attr('class', 'map')
 
-  // Set tooltips
-  var tip = d3.tip()
-              .attr('class', 'd3-tip')
-              .offset([-10, 0])
-              .html(function(d) {
 
 
-                return "<strong>Stad: </strong><span class='details'>" +
-                d[3] + "<br></span>" +
-
-                "<strong>Aantal studenten: </strong><span class='details'>" +
-                d[0]+"</span>";
-              })
 
   var path = d3.geoPath();
-
-  // make svg
-  var svg = d3.select("#mapBlock")
-              .append("svg")
-              .attr("id", "map")
-              .attr("width", width + margin.left + margin.right)
-              .attr("height", height + margin.top + margin.bottom)
-              // .append('g')
-              // .attr('class', 'map')
 
 
   var projection = d3.geoMercator()
@@ -65,204 +86,70 @@ function createHeatMap(dataMap, dataStud, jaartal) {
   var path = d3.geoPath().projection(projection);
 
   svg.call(tip);
+  // fill map with the right color
+  d3.select('svg')
+  .append("g")
+  .attr("class", "provincies")
+  .selectAll("path")
+  .data(dataMap.features)
+  .enter().append("path")
+  .attr("d", path)
+  .style("fill", function(d) {
+                                    return '#4D80B3'
 
+                                })
+  .style("opacity",0.8)
+  .style("position", "relative")
+  .style('z-index', "-1")
 
+  // tooltips
+  .style("stroke","white")
+  .style('stroke-width', 0.3)
+  .on('mouseover',function(d){
+    if ((isNaN(d.total)) === false){
+        tip.show(d);
 
-  dataStud.forEach(function(d){
-    allData.push(d)
-
+      d3.select(this)
+        .style("opacity", 1)
+        .style("stroke","white")
+        .style("stroke-width",3);
+      }
+  })
+  .on('mouseout', function(d){
+    if ((isNaN(d.total)) === false){
+      tip.hide(d);
+      d3.select(this)
+        .style("opacity", 0.8)
+        .style("stroke","white")
+        .style("stroke-width",0);
+      }
   })
 
+  updateMap("2017")
 
-  dataset = [['KAMPEN',
-              5.9161376953125,
-                      52.558820799874695],
-            ['GRONINGEN', 6.558837890625,
-                      53.216723950863425],
-            ['MAASTRICHT', 5.6970977783203125,
-                      50.8506076217602],
-            ['AMSTERDAM', 4.898529052734375,
-                      52.37224556866933],
-            ['ROTTERDAM', 4.464225769042969,
-                      51.9228847853886],
-            ['LEIDEN', 4.481563568115234,
-                      52.16055986368401],
-            ['DELFT', 4.3581390380859375,
-                      52.01119693084988],
-            ['UTRECHT', 5.110015869140625,
-                      52.095327821920584],
-            ['ENSCHEDE', 6.892890930175781,
-                      52.220228214941905],
-            ['TILBURG', 5.0846099853515625,
-                      51.558716715617386],
-            ['EINDHOVEN', 5.480461120605469,
-                      51.43902871975925],
-            ['BREDA', 4.7756195068359375,
-                      51.58944283871291],
-            ['WAGENINGEN', 5.664825439453125,
-                      51.974624029877454],
-            ['NIJMEGEN', 5.8632659912109375,
-                      51.84214142542858],
-            ['APELDOORN', 5.967979431152344,
-                      52.214969674901404]]
-
-    var dataById = {};
-
-
-
-    var dict = {}
-
-
-    uniData.forEach(function(d){
-
-        if ((d["GEMEENTENAAM"] in dict === true) ){
-              dict[d["GEMEENTENAAM"]][0] = dict[d["GEMEENTENAAM"]][0] + parseInt(d[`TOTAAL ${jaartal}`])
-              }
-        else {
-            dict[d["GEMEENTENAAM"]] = [parseInt(d[`TOTAAL ${jaartal}`])]
-
-        }
-
-      })
-
-    dataset.forEach(function(d){
-
-      dict[d[0]].push(d[1])
-      dict[d[0]].push(d[2])
-      dict[d[0]].push(d[0])
-    })
-
-    mapData = dataset
-
-
-
-    // find data of countries
-    dataMap.features.forEach(function(d){ d.total = dataById[d.properties['name']]})
-    dataMap.features.forEach(function(d){ if (typeof d.total === "undefined") {
-                                              d.total = NaN
-                                              }
-    });
-    // find minima and maxima
-
-    let arr = []
-        Object.values(dict).forEach(function(d) {
-              arr.push(d[0])
-    });
-
-    let min = Math.min(...arr);
-    let max = Math.max(...arr);
-
-    // set color scale
-    var color = d3.scaleLinear()
-        .domain([0,max])
-        .range([255,0]);
-
-    var dotSize = d3.scaleLinear()
-                    .domain([0,max])
-                    .range([4,9]);
-
-    // fill map with the right color
-    d3.select('svg')
-    .append("g")
-    .attr("class", "provincies")
-    .selectAll("path")
-    .data(dataMap.features)
-    .enter().append("path")
-    .attr("d", path)
-    .style("fill", function(d) {
-                                      return '#4D80B3'
-
-                                  })
-    .style("opacity",0.8)
-    .style("position", "relative")
-    .style('z-index', "-1")
-
-    // tooltips
-    .style("stroke","white")
-    .style('stroke-width', 0.3)
-    .on('mouseover',function(d){
-      if ((isNaN(d.total)) === false){
-          tip.show(d);
-
-        d3.select(this)
-          .style("opacity", 1)
-          .style("stroke","white")
-          .style("stroke-width",3);
-        }
-    })
-    .on('mouseout', function(d){
-      if ((isNaN(d.total)) === false){
-        tip.hide(d);
-        d3.select(this)
-          .style("opacity", 0.8)
-          .style("stroke","white")
-          .style("stroke-width",0);
-        }
-    })
-
-
-    var circle = svg.selectAll("circle")
-                      .data(Object.values(dict))
-                      .enter()
-                      .append("circle")
-
-                      .attr("cx", function(d) {
-
-                        return circleXScale(d[1]);
-                      })
-                      .attr("cy", function(d) {
-                        return circleYScale(d[2]);
-                      })
-                      // // .scale([ width*10])
-                      .attr("id", function(d){
-
-                              return d[3]
-                      })
-
-                      .attr("r", function(d){
-                        return  dotSize(d[0]);
-                      })
-                      .attr("class", "circle")
-                      .style("position", "relative")
-                      .style("z-index", "1000")
-                      .style("fill", function(d) {
-                                                    return "rgb("+ color(d[0]) + ",0," + -(color(d[0]) - 255) +")"
-                                                  })
-                      .on('mouseover',function(d){
-
-                          tip.show(d);
-
-                          d3.select(this)
-                            .style("opacity", 1)
-                            .style("stroke","white")
-                            .style("stroke-width",3);
-
-                            var self = this;
-                            d3.selectAll(".circle").filter(function() {
-                              return self!=this;
-                            }).transition()
-                            .style("opacity", .5)
-
-                      })
-                      .on('mouseout', function(d){
-
-
-                          tip.hide(d);
-                          d3.select(this)
-                            .style("opacity", 0.8)
-                            .style("stroke","white")
-                            .style("stroke-width",0);
-
-                            var self = this;
-                            d3.selectAll(".circle").filter(function() {
-                              return self!=this;
-                            }).transition()
-                            .style("opacity", 1)
-
-                      });
-
-
-
+  // uniData.forEach(function(d){
+  //   var counter = 0;
+  //   if (!(d["GEMEENTENAAM"] in findMax)){
+  //     findMax[d["GEMEENTENAAM"] ] = 0
+  //   }
+  //   for (var i = firstYear; i < lastYear + 1; i++){
+  //     findMax[d["GEMEENTENAAM"]] += d[`TOTAAL ${i}`]
+  //   }
+  // })
+  //   // var allData_max = d
+  //   // find minima and maxima
+  //   var arr = []
+  //       Object.values(geoData).forEach(function(d) {
+  //               arr.push(d[`TOTAAL`]);
+  //
+  //   });
+  //
+  //   console.log(findMax)
+  //
+  //   var minAll = Math.min(...arr);
+  //   var maxAll = Math.max(...arr);
+  var minAll = 0;
+  var maxAll = 8115;
 
     // width and height of legendbar
     var w = 300, h = 50;
@@ -275,6 +162,10 @@ function createHeatMap(dataMap, dataStud, jaartal) {
        .attr("x", 20)
        .attr("y", 400);
 
+   // set color scale
+   var color = d3.scaleLinear()
+       .domain([0,maxAll])
+       .range([255,0]);
 
     // source: https://bl.ocks.org/duspviz-mit/9b6dce37101c30ab80d0bf378fe5e583
     // set linear gradient
@@ -289,23 +180,22 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
     // bar color gradients
      legend.append("stop")
-       .data(dataMap.features)
-       .attr("stop-color", "rgb("+ color(min) + ",0," + -(color(min) - 255) +")")
+       .attr("stop-color", "rgb("+ color(minAll) + ",0," + -(color(minAll) - 255) +")")
        .attr("stop-opacity", 0.8);
 
      legend.append("stop")
        .attr("offset", "33%")
-       .attr("stop-color", "rgb("+ color(max*0.33) + ",0," + -(color(max*0.33) - 255) +")")
+       .attr("stop-color", "rgb("+ color(maxAll*0.33) + ",0," + -(color(maxAll*0.33) - 255) +")")
        .attr("stop-opacity", 0.8);
 
      legend.append("stop")
        .attr("offset", "66%")
-       .attr("stop-color", "rgb("+ color(max*0.66) + ",0," + -(color(max*0.66) - 255) +")")
+       .attr("stop-color", "rgb("+ color(maxAll*0.66) + ",0," + -(color(maxAll*0.66) - 255) +")")
        .attr("stop-opacity", 0.8);
 
      legend.append("stop")
        .attr("offset", "100%")
-       .attr("stop-color", "rgb("+ color(max) + ",0," + -(color(max) - 255) +")")
+       .attr("stop-color", "rgb("+ color(maxAll) + ",0," + -(color(maxAll) - 255) +")")
        .attr("stop-opacity", 0.8);
 
     // make bar
@@ -324,7 +214,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
      key.append("text")
         .attr("x", w/2 -10)
         .attr("y", h-5)
-        .text(max)
+        .text(maxAll)
         .style("font-size", "10px");
 
      // Title legend
@@ -388,14 +278,159 @@ function createHeatMap(dataMap, dataStud, jaartal) {
                           .attr("class", "dropdown-menu")
 
 
+
+
     // set standard bargraph to the Netherlands
     var linegraphvar = lineGraph("Universiteit van Amsterdam", "Biomedische Wetenschappen")
-    var dropdowns = makeDropdowns(dataStud)
+    var dropdowns = makeDropdowns(allData)
     // var barChartVar = barChart(dataStud)
     var barGraphVar = barGraph()
     // var samsBarvar = samsBar()
+}
+
+function updateMap(jaartal){
+
+  console.log("hoi")
+
+  var svg = d3.select("#map")
+
+  // allData = dataStud
+    var maxStudenten = 0;
+    geoData.forEach(function(geo){
+      geo["INSTELLINGEN"] = [];
+      var totaalStudenten = 0;
+
+
+      uniData.forEach(function(d){
+        if (d["GEMEENTENAAM"] === geo["GEMEENTENAAM"]){
+          totaalStudenten += d[`TOTAAL ${jaartal}`];
+          instellingenDict = {"INSTELLINGSNAAM ACTUEEL": d["INSTELLINGSNAAM ACTUEEL"],
+                              "TOTAAL INSTELLING": d[`TOTAAL ${jaartal}`]};
+          geo["INSTELLINGEN"].push(instellingenDict);
+        }
+
+      if (maxStudenten < totaalStudenten){
+        maxStudenten = totaalStudenten;
+      }
+      geo["TOTAAL"] = totaalStudenten;
+      })
+    })
+
+    // find minima and maxima
+    var arr = []
+        Object.values(geoData).forEach(function(d) {
+                arr.push(d[`TOTAAL`]);
+
+    });
+
+    var min = 0;
+    var max = 8155;
+
+
+    // set color scale
+    var color = d3.scaleLinear()
+        .domain([0,max])
+        .range([255,0]);
+
+    var dotSize = d3.scaleLinear()
+                    .domain([0,max])
+                    .range([2,30]);
+
+
+
+
+
+    var circle = svg.selectAll("circle")
+                      // .enter()
+                      .data(geoData)
+
+
+    //
+    // circle.exit().remove();
+
+      // circle.transition().duration()
+
+      circle
+      .enter()
+      .append("circle")
+      .on('mouseover',function(d){
+
+          tip.show(d);
+
+          d3.select(this)
+            .style("opacity", 1)
+            .style("stroke","white")
+            .style("stroke-width",3);
+
+            var self = this;
+            d3.selectAll(".circle").filter(function() {
+              return self!=this;
+            }).transition()
+            .style("opacity", .5)
+
+      })
+      .on('mouseout', function(d){
+          tip.hide(d);
+          d3.select(this)
+            .style("opacity", 0.8)
+            .style("stroke","white")
+            .style("stroke-width",0);
+
+            var self = this;
+            d3.selectAll(".circle").filter(function() {
+              return self!=this;
+            }).transition()
+            .style("opacity", 1)
+
+      })
+      // .transition()
+      .attr("cx", function(d) {
+        return circleXScale(d.X);
+      })
+      .attr("cy", function(d) {
+        return circleYScale(d.Y);
+      })
+      .attr("id", function(d){
+              return d["GEMEENTENAAM"]
+      })
+
+      .attr("r", function(d){
+        return  dotSize(d[`TOTAAL`]);
+      })
+      .attr("class", "circle")
+      .style("position", "relative")
+      .style("z-index", "1000")
+      // .style("fill", function(d) {
+      //                               return "rgb("+ color(d[`TOTAAL`]) + ",0," + -(color(d[`TOTAAL`]) - 255) +")"
+      //                             })
+      .style("fill", function(d){
+        console.log("in fill")
+        if ((jaartal % 2) === 0){
+          return "black"
+        }
+        else{
+            return "rgb("+ color(d[`TOTAAL`]) + ",0," + -(color(d[`TOTAAL`]) - 255) +")"
+        }
+      })
+
+      // look at existing circles
+      circle
+      .transition()
+      .duration(800)
+      .attr("r", function(d){
+        return  dotSize(d[`TOTAAL`]);
+      })
+     .style("fill", function(d){
+
+          return "rgb("+ color(d[`TOTAAL`]) + ",0," + -(color(d[`TOTAAL`]) - 255) +")"
+        })
+
+
+
+
 
 };
+
 
 function circleXScale(x) {
 
@@ -408,11 +443,5 @@ function circleYScale(y){
   var scaled = ((50.8506076217602 - y) / (0.005925835076440901))/1.5
 
   return 543/1.5 + scaled + 50
-
-}
-
-function updateMap(jaar){
-
-
 
 }

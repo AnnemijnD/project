@@ -1,9 +1,11 @@
 function lineGraph(instelling, opleiding){
 
+  duration = 800
+
   dataStud = allData
 
-  d3.select("#line")
-    .remove()
+  // d3.select("#line")
+  //   .remove()
 
   // Set tooltips
   var tip = d3.tip()
@@ -19,6 +21,7 @@ function lineGraph(instelling, opleiding){
   , width = 500 - margin.left - margin.right // Use the window's width
   , height = 350 - margin.top - margin.bottom; // Use the window's height
 
+dataStud = allData
 
 
 datapoints = []
@@ -87,6 +90,9 @@ dataStud.forEach(function(d){
   let min = Math.min(...arr);
   let max = Math.max(...arr);
 
+  // var max = 50;
+  // dataset = [[{x: 2013, y: 100}, {x: 2014, y: 120}, {x: 2015, y: 80}, {x:2017, y:98}],
+  //             [{x: 2013, y: 130}, {x: 2014, y: 150}, {x: 2015, y: 100}, {x:2017, y:120}]]
 // 5. X scale
 var xScale = d3.scaleLinear()
     .domain([2013,2017]) // input
@@ -126,7 +132,7 @@ svg.append("g")
     .attr("class", "yAxis")
     .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
 
-// 9. Append the path, bind the data, and call the line generator
+//9. Append the path, bind the data, and call the line generator
 svg.append("path")
     .datum(dataset) // 10. Binds data to the line
     .attr("class", "line")
@@ -134,47 +140,138 @@ svg.append("path")
    // 11. Calls the line generator // Assign a class for styling
     .attr("d", line);
 
+    max = 150;
+    dataset2 = [[{x: 2013, y: 100}, {x: 2014, y: 120}, {x: 2015, y: 80}, {x:2017, y:98}],
+                [{x: 2013, y: 130}, {x: 2014, y: 150}, {x: 2015, y: 100}, {x:2017, y:120}]]
+
+    var line = d3.line()
+              .x(function(d) {return xScale(d.x); }) // set the x values for the line generator
+              .y(function(d) { return yScale(d.y); }) // set the y values for the line generator
+              .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+    var lines = svg.append('g')
+                   .attr('class', 'lines')
+                   .datum(dataset2)
+                     .append('g')
+                     .attr('class', 'line-group')
+                       .append('path')
+                       .attr('class', 'line')
+                       .attr("id", id)
+                       .attr("d", line) // 11. Calls the line generator
 
 
-// 12. Appends a circle for each datapoint
-svg.selectAll(".dot")
+    svg.select(".lines").data(dataset2)
+          .append('g')
+         .attr("class", "circle-group")
+         .selectAll(".dot")
+         .data(function(d){return d})
+            .enter().append("circle") // Uses the enter().append() method
+            .attr("class", "dot") // Assign a class for styling
+            .attr("id", id)
+            .attr("cx", function(d) {
+              return xScale(d.x)})
+             .attr("cy", function(d) { return yScale(d.y) })
+             .attr("r", 5)
+             .on("mouseover", function(d) {
+               d3.select(this)
+               .style("fill", "#000000")
+               tip.show(d)
+             })
+             .on("mouseout", function() {
+                d3.select(this)
+                .style("fill", "#ffab00")
+                tip.hide()
+             })
 
-    .data(dataset)
-  .enter().append("circle") // Uses the enter().append() method
-  .attr("id", id)
-    .attr("class", "dot") // Assign a class for styling
-    .attr("cx", function(d, i) { return xScale(d.x) })
-    .attr("cy", function(d) { return yScale(d.y) })
-    .attr("r", 5)
-    .attr("value", function(d){return [instelling, opleiding]})
-      .on("mouseover", function(d) {
+    // dataset.forEach(function(d){
+      //
+      // svg.append("path")
+      //     .datum(dataset) // 10. Binds data to the line
+      //     .attr("class", "line")
+      //     // .attr("id", id)
+      //    // 11. Calls the line generator // Assign a class for styling
+      //     .attr("d", line);
+      //
+      //     // })
 
-        tip.show(d)
-		})
-      .on("mouseout", function(d) { tip.hide(d) })
-      .on("click", function(d) {
+    //
+    //
+    // // 12. Appends a circle for each datapoint
+    //
+    // svg.selectAll(".dot")
+    //     .data(dataset)
+    //     .enter()
+    //     .append("circle")
+    //     .attr("id", id)
+    //     // .attr("cx", function(d, i) { return xScale(d.x) })
+    //     // .attr("cy", function(d) { return yScale(d.y) })
+    //     // .attr("value", function(d){return [instelling, opleiding]})
+    //     .attr("class", "dot") // Assign a class for styling
+    //     .attr("cx", function(d, i) { return xScale(d.x) })
+    //     .attr("cy", function(d) { return yScale(d.y) })
+    //     .attr("r", 5)
+    //     .attr("value", function(d){return [instelling, opleiding]})
+    //       .on("mouseover", function(d) {
+    //
+    //         tip.show(d)
+    // 		})
+    //       .on("mouseout", function(d) { tip.hide(d) })
+    //       .on("click", function(d) {
+    //
+    //         jaar = d.x
+    //         id = this.id
+    //
+    //         lineGraphData.forEach(function(d){
+    //
+    //           if (parseInt(id) === parseInt(d.id)){
+    //             opleiding = d.Opleiding
+    //             instelling = d.Instelling
+    //             clicked("bargraph", instelling, opleiding, jaar, id)
+    //           }
+    //         })
+    //
+    //       })
 
-        jaar = d.x
-        id = this.id
-
-        lineGraphData.forEach(function(d){
-
-          if (parseInt(id) === parseInt(d.id)){
-            opleiding = d.Opleiding
-            instelling = d.Instelling
-          }
-        })
 
 
+// keys = ["x", "y"]
+// // 12. Appends a circle for each datapoint
+// svg.selectAll(".lineG").data(dataset)
+//   .enter().append("g")
+//     .attr("class", "lineG")
+//     .selectAll(".dot")
+//     .data(function(d){ return keys.map(function(key) { console.log(d);return {key: key, value: d[key]}; }); })
+//   .enter().append("circle") // Uses the enter().append() method
+//   .attr("id", id)
+//     .attr("class", "dot") // Assign a class for styling
+//     .attr("cx", function(d, i) { return xScale(d.key) })
+//     .attr("cy", function(d) { return yScale(d.value) })
+//     .attr("r", 5)
+//     .attr("value", function(d){return [instelling, opleiding]})
+//       .on("mouseover", function(d) {
+//
+//         tip.show(d)
+// 		})
+//       .on("mouseout", function(d) { tip.hide(d) })
+//       .on("click", function(d) {
+//
+//         jaar = d.x
+//         id = this.id
+//
+//         lineGraphData.forEach(function(d){
+//
+//           if (parseInt(id) === parseInt(d.id)){
+//             opleiding = d.Opleiding
+//             instelling = d.Instelling
+//           }
+//         })
 
-
-        return updateBarGraph(opleiding, instelling, `${d.x}`, "Append")});
 }
 
 function updateLine (opleiding, instelling){
 
 
-
+  duration = 800
   dataStud = allData
 
 
@@ -237,20 +334,18 @@ function updateLine (opleiding, instelling){
       if (d.id === id){
         idUsed = true;
       }
-
     })
 
     // als dit id niet is gebruikt, wordt finder false en stop de zoektocht
     if (idUsed === false){
       finder = false
-
     }
-
     else {
     id++
     }
   }
 
+  // MAAK EEN if === IS  data = DDD??!!
   if (opleiding === "Alles"){
     uniData.forEach(function(d){
       if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
@@ -286,15 +381,9 @@ function updateLine (opleiding, instelling){
               coordinates['x'] = jaar;
               coordinates['y'] = totaal
               dataset.push(coordinates)
-
-
-
             })
-
             lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
-
           }
-
         }
     })
 
@@ -306,6 +395,8 @@ function updateLine (opleiding, instelling){
     let min = Math.min(...arr);
     let max = Math.max(...arr);
 
+    // var max = 150
+
   // 5. X scale
   var xScale = d3.scaleLinear()
       .domain([2013,2017]) // input
@@ -316,6 +407,8 @@ function updateLine (opleiding, instelling){
       .domain([0, max + margin.yPadding]) // input
       .range([height, 0]); // output
 
+  // dataset = [{x: 2013, y: 100, x: 2014, y: 120, x: 2015, y: 80, x:2017, y:98},
+              // {x: 2013, y: 130, x: 2014, y: 150, x: 2015, y: 100, x:2017, y:120}]
   // 7. d3's line generator
   var line = d3.line()
       .x(function(d, i) { return xScale(d.x); }) // set the x values for the line generator
@@ -328,13 +421,16 @@ function updateLine (opleiding, instelling){
     .duration(duration)
     .call(d3.axisLeft(yScale))
 
-  // 9. Append the path, bind the data, and call the line generator
-  d3.select(".line")
-      .attr("id", id)
-      .datum(dataset) // 10. Binds data to the line
-      .transition()
-      .duration(duration)
-      .attr("d", function(d) { return line(d); })
+  // lineGraphData.forEach(function(d){
+    d3.select(".line")
+
+        .datum(dataset) // 10. Binds data to the line
+        .transition()
+        .attr("class", "line")
+        .attr("id", id)
+       // 11. Calls the line generator // Assign a class for styling
+        .attr("d", line);
+        // })
 
 
   // 12. Appends a circle for each datapoint
@@ -342,7 +438,7 @@ function updateLine (opleiding, instelling){
       .attr("id", id)
       .data(dataset)
       .transition()
-      .duration(duration)
+      // .duration(duration)
       .attr("cx", function(d, i) { return xScale(d.x) })
       .attr("cy", function(d) { return yScale(d.y) })
       .attr("value", function(d){return [instelling, opleiding]})

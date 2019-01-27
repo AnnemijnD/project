@@ -13,6 +13,7 @@ function clicked(webElement, instelling, opleiding, jaar, id){
     }
 
     else if (wE === "bargraph"){
+      updateBarGraph(opleiding, instelling, jaar, "Append")
 
     }
 
