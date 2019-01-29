@@ -35,32 +35,21 @@ var tip = d3.tip()
 
 function createHeatMap(dataMap, dataStud, jaartal) {
 
+  var mapwidth = 600/1.5
+  var mapheight = 700/1.5
   // set margins
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
-              width = 600/1.5 - margin.left - margin.right,
-              height = 700/1.5 - margin.top - margin.bottom;
+              width = 600/1.5- margin.left - margin.right,
+              height = 400 - margin.top - margin.bottom;
 
   // titles
-  var title = d3.select(".container")
-
-              .append("h1")
-              .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland in 2017");
-
-
-  // var slider = d3.select("#mapBlock")
-  //               .append("div")
-  //               .attr("class", "slidecontainer")
-  //               .append("input")
-  //               .attr("type", "range")
-  //               .attr("min", "2013")
-  //               .attr("max", "2017")
-  //               .attr("value", "2017")
-  //               .attr("class", "slider")
-  //               .attr("id", "myRange")
-  //               .on("input", function(d){
-  //                 console.log(this.value)
-  //                 return updateMap(this.value)
-  //               })
+  var title = d3.select("#mapBlock")
+              .append("div")
+              .attr("class", "row")
+              .append("div")
+              .attr("class", "col-sm")
+              .append("h4")
+              .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland");
 
 
 
@@ -69,6 +58,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
     .attr("class", "col-sm-2")
     .append("p")
     .attr("id", "value-time")
+
 
   d3.select("#mapBlock")
     .append("div")
@@ -94,8 +84,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
       // .default(new Date(1998, 10, 3))
       .on('onchange', val => {
         updateMap(d3.timeFormat("%Y")(val))
-        console.log(d3.timeFormat("%Y")(val))
-        d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+        // d3.select('p#value-time').text(function(d) {return ("Jaar: " + d3.timeFormat('%Y')(val))});
       })
 
     var gTime = d3
@@ -108,7 +97,8 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
     gTime.call(sliderTime);
 
-    d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+    d3.select('p#value-time')
+    // .text("Jaar: " + d3.timeFormat('%Y')(sliderTime.value()));
 
 
 
@@ -118,6 +108,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
                 .attr("id", "map")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
+                .attr("viewBox", "0 0 420 400")
                 // .append('g')
                 // .attr('class', 'map')
 
@@ -129,8 +120,8 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
   var projection = d3.geoMercator()
                     .center([ 5, 52 ])
-                    .translate([ width/2, height - 180])
-                    .scale([ width*10]);
+                    .translate([ mapwidth/3, mapheight/2])
+                    .scale([ mapwidth*12]);
 
 
   var path = d3.geoPath().projection(projection);
@@ -210,8 +201,8 @@ function createHeatMap(dataMap, dataStud, jaartal) {
        .append("svg")
        .attr("height", 200)
        .attr("width", w + 10)
-       .attr("x", 20)
-       .attr("y", 400);
+       .attr("x", 10)
+       .attr("y", 350);
 
    // set color scale
    var color = d3.scaleLinear()
@@ -276,47 +267,47 @@ function createHeatMap(dataMap, dataStud, jaartal) {
      .style("font-size", "10px");
 
     // makeDropdowns
-    var button = d3.select("#dropdownInst")
-        .append("div")
-        .attr("class", "dropdown")
-        .attr("id", 'dropLine-1')
-        .append("button")
-        .attr("class", "btn btn-default dropdown-toggle")
-        .attr("type", "button")
-        .attr("data-toggle", "dropdown")
-        .text("Instituut")
-        .append("span")
-        .attr("class", "caret")
-
-    var emptyDropLine = d3.select("#dropLine-1")
-                          .append("ul")
-                          .attr("id", "dropdown-instelling")
-                          .attr("class", "dropdown-menu")
-
-    // makeDropdowns
-    var button = d3.select("#dropdownOpl")
-        .append("div")
-        .attr("class", "dropdown")
-        .attr("id", 'dropLine-2')
-        .append("button")
-        .attr("class", "btn btn-default dropdown-toggle")
-        .attr("type", "button")
-        .attr("data-toggle", "dropdown")
-        .text("Opleiding")
-        .append("span")
-        .attr("class", "caret")
-
-    var emptyDropLine2 = d3.select("#dropLine-2")
-                          .append("ul")
-                          .attr("id", "dropdown-opleiding")
-                          .attr("class", "dropdown-menu")
+    // var button = d3.select("#dropdownInst")
+    //     .append("div")
+    //     .attr("class", "dropdown")
+    //     .attr("id", 'dropLine-1')
+    //     .append("button")
+    //     .attr("class", "btn btn-default dropdown-toggle")
+    //     .attr("type", "button")
+    //     .attr("data-toggle", "dropdown")
+    //     .text("Instituut")
+    //     .append("span")
+    //     .attr("class", "caret")
+    //
+    // var emptyDropLine = d3.select("#dropLine-1")
+    //                       .append("ul")
+    //                       .attr("id", "dropdown-instelling")
+    //                       .attr("class", "dropdown-menu")
+    //
+    // // makeDropdowns
+    // var button = d3.select("#dropdownOpl")
+    //     .append("div")
+    //     .attr("class", "dropdown")
+    //     .attr("id", 'dropLine-2')
+    //     .append("button")
+    //     .attr("class", "btn btn-default dropdown-toggle")
+    //     .attr("type", "button")
+    //     .attr("data-toggle", "dropdown")
+    //     .text("Opleiding")
+    //     .append("span")
+    //     .attr("class", "caret")
+    //
+    // var emptyDropLine2 = d3.select("#dropLine-2")
+    //                       .append("ul")
+    //                       .attr("id", "dropdown-opleiding")
+    //                       .attr("class", "dropdown-menu")
 
 
 
 
     // set standard bargraph to the Netherlands
     var linegraphvar = lineGraph("Universiteit van Amsterdam", "Biomedische Wetenschappen")
-    var dropdowns = makeDropdowns(allData)
+    // var dropdowns = makeDropdowns(allData)
     // var barChartVar = barChart(dataStud)
     var barGraphVar = barGraph()
     // var samsBarvar = samsBar()
@@ -472,14 +463,14 @@ function updateMap(jaartal){
 
 function circleXScale(x) {
 
-  var scaled = ((5.6970977783203125 - x) / 0.00920278999983715)/1.5
+  var scaled = (((5.6970977783203125 - x) / (0.00920278999983715))/1.5) * (12/10)
 
-  return 375/1.5 - scaled
+  return (375/1.5 * (12/10) - scaled - 110)
 }
 
 function circleYScale(y){
-  var scaled = ((50.8506076217602 - y) / (0.005925835076440901))/1.5
+  var scaled = (((50.8506076217602 - y) / (0.005925835076440901))/1.5) * (12/10)
 
-  return 543/1.5 + scaled + 50
+  return (543/1.5) * (12/10) + scaled - 40
 
 }
