@@ -10,17 +10,19 @@
     <link rel="stylesheet" type="text/css" href="extrabootstrap/bootstrap_theme.min.css">
     <script src="extrabootstrap/bootstrap_js.min.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <!-- <script src="https://d3js.org/d3-transition.v1.min.js"></script> -->
     <title>Annemijn Dijkhuis</title>
   </head>
   <script src="d3/d3.min.js"></script>
   <script src="d3/d3-tip.js"></script>
   <script src="d3/d3-legend.js"></script>
-  <script src="code/lineGraph.js"></script>
+  <script src="d3/d3-simpleslider.js"></script>
+  <script src="code/lineGraph3.js"></script>
   <script src="code/barGraph.js"></script>
   <script src= "code/click.js"></script>
   <script src="code/map.js"></script>
   <script src="code/dropdowns.js"></script>
+
+
   <script src="main.js"></script>
   <body onload="onload()">
     <nav class="navbar navbar-default">
@@ -36,9 +38,12 @@
     </div>
   </nav>
   <div class="container">
+
     <div class="jumbotron">
       <h1>Visualisaties</h1>
     </div>
+
+
     <!-- Example single danger button -->
   <div class="row">
     <div class="col-sm-7" id="mapBlock">
@@ -59,6 +64,7 @@
     </div>
 
   </div>
+
   <!--Make sure the form has the autocomplete function switched off:-->
 <!-- <form autocomplete="off" action="/action_page.php">
   <div class="autocomplete" style="width:300px;">

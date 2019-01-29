@@ -91,3 +91,14 @@ zijn vanuit alle functies.
 * Main functie is nu slechts het laden van data en starten van functies
 * Een linearGradient agenda gemaakt. Wordt gebruikt voor de kaart.
 * Bargraph is nu breed en kort zodat hij tegelijk zichtbaar is met linechart
+
+
+## MA 28/1/19
+* UpdateMap functie gemaakt
+* Functie gemaakt die zorgt dat de tooltip op de kaart nu ook laat de samenstelling
+van de universiteiten laat zien. Wanneer een stad meer dan één universiteit heeft
+staat er ook een los totaal aantal studenten in de tooltip.
+* Gezorgd dat een slider werkt
+* Probeer een mooiere slider te plaatsen van simple slider. Probleem is dat deze
+axisBottom gebruikt, waardoor er nu ook een eerdere as van mij wordt gebruikt. Ik ga
+dit proberen aan te passen in de code. 

@@ -53,7 +53,7 @@ function barGraph(){
   y.domain([0, d3.max(barGraphData, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
   g.append("g")
-      .attr("class", "axis")
+      .attr("class", "xAxisBar")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x0));
 
@@ -63,7 +63,7 @@ function barGraph(){
 
 
   g.append("g")
-      .attr("class", "y axis")
+      .attr("class", "yAxisBar")
       .call(d3.axisLeft(y).ticks(null, "s"))
     .append("text")
       .attr("x", 2)
@@ -91,6 +91,7 @@ function barGraph(){
       .attr("fill", z)
       .attr("stroke", z)
       .attr("stroke-width",2)
+      .on("click", function(d){ return updateBarGraph("Biomedische Wetenschappen", "Vrije Universiteit Amsterdam", "2014", "Append")})
 
   legend.append("text")
       .attr("x", width + margin.right - 7)
@@ -139,6 +140,7 @@ function barGraph(){
     svg.call(tip);
 
 
+    var noData = false;
 
       if (opleiding === "Alles"){
 
@@ -147,6 +149,10 @@ function barGraph(){
           var vrouwen = parseInt((d[`${jaar} VROUW`]));
           var mannen = parseInt((d[`${jaar} MAN`]));
           var totaal = parseInt((d[`TOTAAL ${jaar}`]));
+
+          if (totaal == 0){
+            var noData = true;
+          }
 
           if (type === "Append"){
           barGraphData.push({Instelling: instelling, Opleiding: opleiding,
@@ -182,6 +188,10 @@ function barGraph(){
                 var mannen = parseInt((d[`${jaar} MAN`]));
                 var totaal = mannen + vrouwen
 
+                if (totaal == 0){
+                  var noData = true;
+                }
+
                 if (type === "Append"){
                 barGraphData.push({Instelling: instelling, Opleiding: opleiding,
                   jaar:jaar, Man: mannen, Vrouw: vrouwen, Totaal: totaal})
@@ -199,11 +209,6 @@ function barGraph(){
 
                   }
                 }
-
-
-
-
-
             }
           }
       })
@@ -212,7 +217,6 @@ function barGraph(){
 
 
     var data = barGraphData
-
 
     var svg = d3.select("#graph1 svg")
 
@@ -245,13 +249,13 @@ function barGraph(){
     y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
     // update the x axis
-    d3.select(".axis")
+    d3.select(".xAxisBar")
       .transition()
       .duration(500)
       .call(d3.axisBottom(x0));
 
     // update the y axis
-    d3.select(".y")
+    d3.select(".yAxisBar")
     .transition()
     .call(d3.axisLeft(y).ticks(null, "s"))
     .duration(500);
@@ -293,12 +297,11 @@ function barGraph(){
                                       d.Instelling, d.jaar, "Delete")})
     .selectAll("rect")
 
-    .data(function(d) { return keys.map(function(key) { return {key: key, value: d[key]}; }); })
+    .data(function(d) {return keys.map(function(key) { return {key: key, value: d[key]}; }); })
     .enter().append("rect")
       .on("mouseover", function(d){
 
         tip.show(d);
-        console.log(this)
         var self = this;
 
         d3.select(this)
@@ -331,15 +334,38 @@ function barGraph(){
 
       .attr("y", function(d) { return y(0); })
       .attr("height", "0")
-      .attr("width", x1.bandwidth())
+      .attr("width", function(d, i) {
+
+        console.log(i);
+        if (i - 2 % 3 == 0){
+          if (d.value == 0){
+              return "200"
+            };
+          };
+        return x1.bandwidth() })
       .transition()
       .duration(100)
-      .attr("y", function(d){
+      .attr("y", function(d, i ){
+        if (i - 2 % 3 == 0){
+          if (d.value == 0){
+              return y(height/2)
+            };
+          };
             return y(d.value); })
-      .attr("height", function(d) { return height - y(d.value); })
+      .attr("height", function(d, i) {
+        if (i - 2 % 3 == 0){
+          if (d.value == 0){
+              console.log(y(d.value))
+              return (y(d.value) - 100)
+            };
+          };
+        return height - y(d.value); })
       .attr("fill", function(d) { return z(d.key); })
       .attr("x", function(d) {
         return x1(d.key); })
+
+
+
 
     // check bar data
     var bars = svg.selectAll(".bar").selectAll("rect")

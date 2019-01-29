@@ -47,20 +47,70 @@ function createHeatMap(dataMap, dataStud, jaartal) {
               .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland in 2017");
 
 
-  var slider = d3.select("#mapBlock")
-                .append("div")
-                .attr("class", "slidecontainer")
-                .append("input")
-                .attr("type", "range")
-                .attr("min", "2013")
-                .attr("max", "2017")
-                .attr("value", "2017")
-                .attr("class", "slider")
-                .attr("id", "myRange")
-                .on("input", function(d){
-                  console.log(this.value)
-                  return updateMap(this.value)
-                })
+  // var slider = d3.select("#mapBlock")
+  //               .append("div")
+  //               .attr("class", "slidecontainer")
+  //               .append("input")
+  //               .attr("type", "range")
+  //               .attr("min", "2013")
+  //               .attr("max", "2017")
+  //               .attr("value", "2017")
+  //               .attr("class", "slider")
+  //               .attr("id", "myRange")
+  //               .on("input", function(d){
+  //                 console.log(this.value)
+  //                 return updateMap(this.value)
+  //               })
+
+
+
+  d3.select("#mapBlock")
+    .append("div")
+    .attr("class", "col-sm-2")
+    .append("p")
+    .attr("id", "value-time")
+
+  d3.select("#mapBlock")
+    .append("div")
+    .attr("class", "sm")
+    .attr("id", "slider-time")
+
+
+    // Time
+    var dataTime = d3.range(0, lastYear - firstYear + 1).map(function(d) {
+      return new Date(firstYear + d, lastYear - firstYear, 3);
+    });
+
+    // var dataTime2 = d3.range(l)
+
+    var sliderTime = d3
+      .sliderBottom()
+      .min(d3.min(dataTime))
+      .max(d3.max(dataTime))
+      .step(1000 * 60 * 60 * 24 * 365)
+      .width(300)
+      .tickFormat(d3.timeFormat('%Y'))
+      .tickValues(dataTime)
+      // .default(new Date(1998, 10, 3))
+      .on('onchange', val => {
+        updateMap(d3.timeFormat("%Y")(val))
+        console.log(d3.timeFormat("%Y")(val))
+        d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
+      })
+
+    var gTime = d3
+      .select('div#slider-time')
+      .append('svg')
+      .attr('width', 500)
+      .attr('height', 100)
+      .append('g')
+      .attr('transform', 'translate(30,30)');
+
+    gTime.call(sliderTime);
+
+    d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
+
+
 
     // make svg
     var svg = d3.select("#mapBlock")
@@ -87,13 +137,14 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
   svg.call(tip);
   // fill map with the right color
-  d3.select('svg')
+  d3.select('#map')
   .append("g")
   .attr("class", "provincies")
   .selectAll("path")
   .data(dataMap.features)
   .enter().append("path")
   .attr("d", path)
+  .attr("class", "mapPath")
   .style("fill", function(d) {
                                     return '#4D80B3'
 
@@ -155,7 +206,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
     var w = 300, h = 50;
 
     // set legendsvg
-    var key = d3.select("svg")
+    var key = d3.select("#map")
        .append("svg")
        .attr("height", 200)
        .attr("width", w + 10)
@@ -224,23 +275,6 @@ function createHeatMap(dataMap, dataStud, jaartal) {
      .text("Aantal studenten")
      .style("font-size", "10px");
 
-    //  // make grey block to define countries without data
-    //  d3.select("svg")
-    //  .append('rect')
-    //  .attr("height", 15)
-    //  .attr("width", 20)
-    //  .attr("x", 20)
-    //  .attr("y", 470)
-    //  .style("fill", "#000000")
-    //  .style("opacity", 0.8);
-    //
-    //
-    //  d3.select("svg")
-    //  .append("text")
-    //  .text("= no Data")
-    //  .attr("x", 50)
-    //  .attr("y", 480);
-
     // makeDropdowns
     var button = d3.select("#dropdownInst")
         .append("div")
@@ -290,7 +324,6 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
 function updateMap(jaartal){
 
-  console.log("hoi")
 
   var svg = d3.select("#map")
 
@@ -334,10 +367,7 @@ function updateMap(jaartal){
 
     var dotSize = d3.scaleLinear()
                     .domain([0,max])
-                    .range([2,30]);
-
-
-
+                    .range([2,20]);
 
 
     var circle = svg.selectAll("circle")
@@ -383,6 +413,15 @@ function updateMap(jaartal){
             .style("opacity", 1)
 
       })
+      .on("click", function(d){
+
+          d["INSTELLINGEN"].forEach(function(d){
+            instelling = d["INSTELLINGSNAAM ACTUEEL"]
+            console.log(instelling)
+            updateLine("Alles", instelling)
+            updateBarGraph("Alles", instelling, jaartal, "Append")
+          })
+      })
       // .transition()
       .attr("cx", function(d) {
         return circleXScale(d.X);
@@ -404,7 +443,6 @@ function updateMap(jaartal){
       //                               return "rgb("+ color(d[`TOTAAL`]) + ",0," + -(color(d[`TOTAAL`]) - 255) +")"
       //                             })
       .style("fill", function(d){
-        console.log("in fill")
         if ((jaartal % 2) === 0){
           return "black"
         }
@@ -416,7 +454,7 @@ function updateMap(jaartal){
       // look at existing circles
       circle
       .transition()
-      .duration(800)
+      .duration(500)
       .attr("r", function(d){
         return  dotSize(d[`TOTAAL`]);
       })
