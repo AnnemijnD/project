@@ -4,10 +4,6 @@
 
 import csv
 import json
-from collections import OrderedDict
-
-
-
 
 def convert_csv_json():
     """
@@ -18,29 +14,28 @@ def convert_csv_json():
     in_file = open('data/eerstejaars.csv', 'r', encoding = "ISO-8859-1")
     # open('eerstejaars.csv', 'r')
 
+    # alle data
     out_file = open('data/eerstejaars.json', 'w')
 
-
+    # tweede file voor data per universiteit
     out_file2 = open("data/instellingen.json", "w")
-    # write rows
+
+    # schrijft row
     reader = csv.DictReader(in_file, delimiter=';')
     rows = [row for row in reader]
 
 
-
-
     instelling_opleiding = {"":[]}
     universiteiten = []
-    # combine_dict = {"": []}
 
     new_file_rows = []
 
+    # verwijder als het geen bachelor is
     for i in range(len(rows) - 1, -1, -1):
-
-
         if not rows[i]["TYPE HOGER ONDERWIJS"] == "bachelor":
             del rows[i]
 
+    # voeg data van dezelfde opleidingen aan elkaar toe
     for i in range(len(rows) - 1, -1, -1):
         g = 0
         for k in rows[i]:
@@ -79,41 +74,38 @@ def convert_csv_json():
         else:
             instelling_opleiding[instelling] = []
 
-
-
         if delete_row:
             del rows[i]
 
-
+    # maakt een "totaal" in de data
     for i in range(len(rows)):
         rows[i]["TOTAAL 2013"] = rows[i]["2013 MAN"] + rows[i]["2013 VROUW"]
         rows[i]["TOTAAL 2014"] = rows[i]["2014 MAN"] + rows[i]["2014 VROUW"]
         rows[i]["TOTAAL 2015"] = rows[i]["2015 MAN"] + rows[i]["2015 VROUW"]
         rows[i]["TOTAAL 2016"] = rows[i]["2016 MAN"] + rows[i]["2016 VROUW"]
         rows[i]["TOTAAL 2017"] = rows[i]["2017 MAN"] + rows[i]["2017 VROUW"]
-        # print(rows[i])
-        # print("\n")
         rows[i].pop("")
-        # print(rows[i])
 
 
 
+    # Maakt een nieuwe file speciaal voor alleen de universiteiten
     for i in range(len(rows)):
 
+        # checkt of de universiteit al is opgeslagen
         university = rows[i]["INSTELLINGSNAAM ACTUEEL"]
         city = rows[i]["GEMEENTENAAM"]
         new_university = True
 
+        # haalt storende "B" weg in text
         if rows[i]["OPLEIDINGSNAAM ACTUEEL"].split()[0] == "B":
             rows[i]["OPLEIDINGSNAAM ACTUEEL"] = rows[i]["OPLEIDINGSNAAM ACTUEEL"].replace("B ", "")
 
-
+        # voegt data bij universiteit
         for j in range(len(new_file_rows)):
 
 
             if rows[i]["INSTELLINGSNAAM ACTUEEL"] in universiteiten:
                 if rows[i]["INSTELLINGSNAAM ACTUEEL"] == new_file_rows[j]["INSTELLINGSNAAM ACTUEEL"]:
-                    print(type(rows[i]["2013 MAN"]))
                     new_file_rows[j]["2013 MAN"] += rows[i]["2013 MAN"]
                     new_file_rows[j]["2013 VROUW"] += rows[i]["2013 VROUW"]
                     new_file_rows[j]["2014 MAN"] += rows[i]["2014 MAN"]
@@ -135,12 +127,6 @@ def convert_csv_json():
         if new_university:
 
             d = {}
-             # d = OrderedDict([("INSTELLINGSNAAM ACTUEEL", rows[i]["INSTELLINGSNAAM ACTUEEL"]),
-             # ("2013 MAN", rows[i]["2013 MAN"]),("2013 VROUW", rows[i]["2013 VROUW"]),
-             # ("2014 MAN", rows[i]["2014 MAN"]),
-             #
-             #  ])
-
             d["INSTELLINGSNAAM ACTUEEL"] = rows[i]["INSTELLINGSNAAM ACTUEEL"]
             d["GEMEENTENAAM"] = city
             d["2013 MAN"] = rows[i]["2013 MAN"]
@@ -158,26 +144,16 @@ def convert_csv_json():
             d["TOTAAL 2015"] = rows[i]["2015 MAN"] + rows[i]["2015 VROUW"]
             d["TOTAAL 2016"] = rows[i]["2016 MAN"] + rows[i]["2016 VROUW"]
             d["TOTAAL 2017"] = rows[i]["2017 MAN"] + rows[i]["2017 VROUW"]
-            print(d)
 
             new_file_rows.append(d)
             universiteiten.append(d["INSTELLINGSNAAM ACTUEEL"])
 
 
-            # OrderedDict([('PROVINCIE', 'Zuid-Holland'), ('GEMEENTENUMMER', '0599'), ('GEMEENTENAAM', 'ROTTERDAM'), ('SOORT INSTELLING', 'reguliere inst.'), ('TYPE HOGER ONDERWIJS', 'bachelor'), ('BRIN NUMMER ACTUEEL', '21PE'), ('INSTELLINGSNAAM ACTUEEL', 'Erasmus Universiteit Rotterdam'), ('CROHO ONDERDEEL', 'gezondheidszorg'), ('CROHO SUBONDERDEEL', 'n.v.t. (gezondheidszorg)'), ('OPLEIDINGSCODE ACTUEEL', '56553'), ('OPLEIDINGSNAAM ACTUEEL', 'B Gezondheidswetenschappen'), ('OPLEIDINGSVORM', 'voltijd onderwijs'), ('OPLEIDINGSFASE ACTUEEL', 'bachelor'), ('2013 MAN', 31), ('2013 VROUW', 94), ('2014 MAN', 24), ('2014 VROUW', 71), ('2015 MAN', 25), ('2015 VROUW', 65), ('2016 MAN', 10), ('2016 VROUW', 64), ('2017 MAN', 33), ('2017 VROUW', 81), ('TOTAAL 2013', 125), ('TOTAAL 2014', 95), ('TOTAAL 2015', 90), ('TOTAAL 2016', 74), ('TOTAAL 2017', 114)])
 
-
-
-
-
-    # if rows[i]["GEMEENTENAAM"] not in steden:
-    #     steden.append(rows[i]["GEMEENTENAAM"])
-
-    # if not rows[i]["SOORT INSTELLING"] == "reguliere inst.":
-    #     print(rows[i])
-
-
-
+    # zorgt dat alleen voltijd onderwijs in de dataset zit
+    for i in range(len(rows) - 1, -1, -1):
+        if not rows[i]["OPLEIDINGSVORM"] == "voltijd onderwijs":
+            del rows[i]
 
 
     # write jsonfile

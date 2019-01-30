@@ -665,7 +665,7 @@ function axis(orient, scale) {
         .attr(x + "2", k * tickSizeInner);
 
     text
-        .attr(x, k * spacing)
+        // .attr(x, k * spacing)
         .text(format);
 
     selection.filter(entering)

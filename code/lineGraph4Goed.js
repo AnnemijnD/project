@@ -1,7 +1,7 @@
 // // Alle margindingen als global variable
 // // Set tooltips
 var tipLine = d3.tip()
-            .attr('class', 'd3-tip')
+            .attr("class", "d3-tip")
             .offset([-10, 0])
             .html(function(d) {
 
@@ -10,8 +10,8 @@ var tipLine = d3.tip()
 
 // svg
 var marginLine = {top: 50, right: 40, bottom: 50, left: 60, yPadding: 10}
-, widthLine = 570 - marginLine.left - marginLine.right // Use the window's width
-, heightLine = 350 - marginLine.top - marginLine.bottom; // Use the window's height
+, widthLine = 570 - marginLine.left - marginLine.right // Use the window"s width
+, heightLine = 350 - marginLine.top - marginLine.bottom; // Use the window"s height
 
 dataset3 = [];
 
@@ -68,7 +68,7 @@ function lineGraph(instelling,opleiding){
       .attr("text-anchor", "end")
 
 
-  var svg = d3.select('#lineBlock')
+  var svg = d3.select("#lineBlock")
               .append("svg")
               .attr("id", "line")
               .attr("width", widthLine + marginLine.left + marginLine.right)
@@ -129,8 +129,8 @@ dataset = [];
 //           // adds data to dataset
 //           if (duplicate === false){
 //           coordinates = {};
-//           coordinates['x'] = jaar;
-//           coordinates['y'] = mannen + vrouwen;
+//           coordinates["x"] = jaar;
+//           coordinates["y"] = mannen + vrouwen;
 //           dataset.push(coordinates)
 //           lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
 //             x: jaar, y: mannen + vrouwen})
@@ -183,7 +183,7 @@ svg.append("g")
 // text label for the y axis
 svg.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", -marginLine.left )
+    .attr("y", -marginLine.left - 10 )
     .attr("x",0 - (heightLine / 2))
     .attr("dy", "2em")
     .style("text-anchor", "middle")
@@ -198,14 +198,16 @@ svg.append("text")
     .text("Tijd (jaren)")
 
 
-svg.append('g')
-   .attr('class', 'linesG')
-   .append('g')
-   .attr('class', 'lineG')
+svg.append("g")
+   .attr("class", "linesG")
+   .append("g")
+   .attr("class", "lineG")
 
 svg.select(".linesG")
-    .append('g')
+    .append("g")
     .attr("class", "circlesG")
+
+
 
 
 
@@ -218,6 +220,7 @@ keys = ["Biomedische", "dingen", "nog meer"]
 
 function updateLine (opleiding, instelling, type){
 
+    $(".alert").hide()
 
   datapoints = []
   // get number of datapoints
@@ -251,7 +254,7 @@ function updateLine (opleiding, instelling, type){
     // als dit iD is gebruikt, word ie true
     var idUsed = false;
 
-    // zoek door de data naar de verschillende id's
+    // zoek door de data naar de verschillende id"s
     lineGraphData.forEach(function(d){
 
       // als dit iD is gebruikt, word true
@@ -268,7 +271,6 @@ function updateLine (opleiding, instelling, type){
     id++
     }
   }
-
   // MAAK EEN if === IS  data = DDD??!!
   if (opleiding === "Alles"){
     uniData.forEach(function(d){
@@ -281,8 +283,8 @@ function updateLine (opleiding, instelling, type){
           var totaal = parseInt((d[`TOTAAL ${jaar}`]));
 
           coordinates = {};
-          coordinates['x'] = jaar;
-          coordinates['y'] = totaal
+          coordinates["x"] = jaar;
+          coordinates["y"] = totaal
           dataset.push(coordinates)
           // lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
           //   x: jaar, y: totaal})
@@ -295,19 +297,30 @@ function updateLine (opleiding, instelling, type){
             if (opleiding === lineGraphData[i]["Opleiding"]){
               if (instelling === lineGraphData[i]["Instelling"]){
                 if (type === "Delete"){
-                console.log("gevonden")
                 lineGraphData.splice(i, 1)
                 }
                 else{
+
                   return 0
                 }
               }
             }
           }
 
-      if (!(type === "Delete")){
-      lineGraphData.push({id: id, Opleiding: opleiding,
-        Instelling: instelling, data:dataset})
+
+
+      if (type === "Append"){
+        if (lineGraphData.length > 3){
+
+          $("#alert").text(message)
+
+          $(".alert").show()
+          return 0
+        }
+        else{
+        lineGraphData.push({id: id, Opleiding: opleiding,
+          Instelling: instelling, data:dataset})
+        }
       }
 
 
@@ -326,29 +339,44 @@ function updateLine (opleiding, instelling, type){
               var totaal = parseInt((d[`TOTAAL ${jaar}`]));
 
               coordinates = {};
-              coordinates['x'] = jaar;
-              coordinates['y'] = totaal
+              coordinates["x"] = jaar;
+              coordinates["y"] = totaal
               dataset.push(coordinates)
               // lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
               //   x: jaar, y: totaal})
             })
-            if (type === "Delete"){
-
-                for (var i = 0; i < lineGraphData.length; i++){
-                  if (opleiding === lineGraphData[i]["Opleiding"]){
-                    if (instelling === lineGraphData[i]["Instelling"]){
-                      lineGraphData.splice(i, 1)
-                    }
+            for (var i = 0; i < lineGraphData.length; i++){
+              if (opleiding === lineGraphData[i]["Opleiding"]){
+                if (instelling === lineGraphData[i]["Instelling"]){
+                  if (type === "Delete"){
+                  lineGraphData.splice(i, 1)
                   }
+                  else{
+                    return 0
+                  }
+                }
               }
             }
-            else{
-            lineGraphData.push({id: id, Opleiding: opleiding,
-              Instelling: instelling, data: dataset})
-            }
+
+        if (type === "Append"){
+          if (lineGraphData.length > 3){
+            $("#alert").text(message)
+
+
+            $(".alert").show()
+            return 0
+
+
+
+          }
+          else{
+          lineGraphData.push({id: id, Opleiding: opleiding,
+            Instelling: instelling, data:dataset})
+          }
           }
         }
-    })
+    }
+  })
 
     var dotData = [];
     var lineData = [];
@@ -393,7 +421,7 @@ function updateLine (opleiding, instelling, type){
 var colorScale = d3.schemeSet2
 
 
-  // 7. d3's line generator
+  // 7. d3"s line generator
   var line = d3.line()
       .x(function(d, i) { return xScale(d.x); }) // set the x values for the line generator
       .y(function(d) { return yScale(d.y); }) // set the y values for the line generator
@@ -427,15 +455,6 @@ var colorScale = d3.schemeSet2
            return colorScale[String(i)]})
 
 
-
-
-
-  // console.log(dotData)
-  // console.log(dataset)
-  // console.log(dataset3)
-  // console.log(lineGraphData)
-
-
   var dotsG = svg.select(".circlesG").selectAll(".dot").data(dotData)
 
     dotsG
@@ -467,35 +486,39 @@ var colorScale = d3.schemeSet2
       .selectAll("g")
       .attr("transform", function(d, i) {return "translate(0,"+ i * 20 + ")" })
 
-
-                        console.log(lineGraphData)
                         legendUpdate
                         .enter()
                         .append("g")
                       .attr("fill", function(d, i){return colorScale[String(i)]})
                         .attr("stroke", function(d, i){return colorScale[String(i)]})
                         .attr("stroke-width",2)
+                        .attr("class", "legendRect")
                         .attr("id", function(d, i){return "legendBlock" + i})
                         .on("click", function(d){
-                          console.log(this)
-                          // legendUpdate.selectAll("text").remove()
-                          var id = "#lineLegendText" + d.id
-
-                          // d3.select(id).remove()
-
-                          self = d3.select(this)
 
 
                           return updateLine(d.Opleiding, d.Instelling, "Delete")})
-                        // .merge(legendUpdate)
                         .attr("transform", function(d, i) {return "translate(0,"+ i * 20 + ")" })
                         .append("rect")
+                        // .on("mouseover", function(d){
+                        //
+                        //   d3.select(this)
+                        //     .style("opacity", 1)
+                        //     .style("stroke-width",3);
+                        //   })
+                        // .on("mouseout", function(d){
+                        //     d3.select(this)
+                        //       .style("opacity", 0.8)
+                        //
+                        //       .style("stroke-width",0);
+                        //
+                        // })
+
                         .attr("x", 20)
                         .attr("width", 15)
                         .attr("height", 15)
 
                     legendUpdate.exit().remove()
-
 
                 d3.selectAll(".legendtext").remove()
 
@@ -512,7 +535,12 @@ var colorScale = d3.schemeSet2
                     .attr("y", 9.5)
                     .attr("dy", "0.32em")
                     .style("font-size", "10px")
+
                     .text(function(d) { return`${d.Instelling}, ${d.Opleiding}` });
 
 
+}
+
+function confirmMessage() {
+  confirm("Press a button!");
 }

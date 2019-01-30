@@ -10,10 +10,13 @@ var uniData = [];
 var geoData = [];
 var firstYear = 2013;
 var lastYear = 2017;
+var message = "Maximaal vier staafdiagramgroepen of lijnen." +
+" Verwijder eerst data door op een staaf of gekleurdlegendablok te klikken."
+
 
 function onload(){
-
   // load all data
+
   var ned = "data/nederland.json"
   var dataEerstejaars = "data/eerstejaars.json"
   var dataUni = "data/instellingen.json"
@@ -31,7 +34,7 @@ function onload(){
     geoData = response[3]
     allData = response[1]
      createHeatMap(response[0], response[1], 2013)
-    
+
     return
   }).catch(function(e){
       throw(e);

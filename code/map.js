@@ -3,7 +3,7 @@
 // fix get max!
 
 var tip = d3.tip()
-            .attr('class', 'd3-tip')
+            .attr("class", "d3-tip")
             .offset([-10, 0])
             .html(function(d) {
 
@@ -81,25 +81,25 @@ function createHeatMap(dataMap, dataStud, jaartal) {
       .max(d3.max(dataTime))
       .step(1000 * 60 * 60 * 24 * 365)
       .width(300)
-      .tickFormat(d3.timeFormat('%Y'))
+      .tickFormat(d3.timeFormat("%Y"))
       .tickValues(dataTime)
       .default(new Date(2017, 10, 3))
-      .on('onchange', val => {
+      .on("onchange", val => {
         updateMap(d3.timeFormat("%Y")(val))
       })
 
     var gTime = d3
-      .select('div#slider-time')
-      .append('svg')
-      .attr('width', 500)
-      .attr('height', 100)
-      .append('g')
-      .attr('transform', 'translate(30,30)');
+      .select("div#slider-time")
+      .append("svg")
+      .attr("width", 500)
+      .attr("height", 100)
+      .append("g")
+      .attr("transform", "translate(30,30)");
 
     gTime.call(sliderTime);
 
-    d3.select('p#value-time')
-    // .text("Jaar: " + d3.timeFormat('%Y')(sliderTime.value()));
+    d3.select("p#value-time")
+    // .text("Jaar: " + d3.timeFormat("%Y")(sliderTime.value()));
 
 
 
@@ -110,8 +110,8 @@ function createHeatMap(dataMap, dataStud, jaartal) {
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .attr("viewBox", "0 0 420 400")
-                // .append('g')
-                // .attr('class', 'map')
+                // .append("g")
+                // .attr("class", "map")
     var title = d3.select("#map")
                   .append("text")
                   .text("Aantal eerstejaarsaanmeldingen in het WO per jaar per stad")
@@ -133,7 +133,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
 
   svg.call(tip);
   // fill map with the right color
-  d3.select('#map')
+  d3.select("#map")
   .append("g")
   .attr("class", "provincies")
   .selectAll("path")
@@ -142,17 +142,17 @@ function createHeatMap(dataMap, dataStud, jaartal) {
   .attr("d", path)
   .attr("class", "mapPath")
   .style("fill", function(d) {
-                                    return '#4D80B3'
+                                    return "#4D80B3"
 
                                 })
   .style("opacity",0.8)
   .style("position", "relative")
-  .style('z-index', "-1")
+  .style("z-index", "-1")
 
   // tooltips
   .style("stroke","white")
-  .style('stroke-width', 0.3)
-  .on('mouseover',function(d){
+  .style("stroke-width", 0.3)
+  .on("mouseover",function(d){
     if ((isNaN(d.total)) === false){
         tip.show(d);
 
@@ -162,7 +162,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
         .style("stroke-width",3);
       }
   })
-  .on('mouseout', function(d){
+  .on("mouseout", function(d){
     if ((isNaN(d.total)) === false){
       tip.hide(d);
       d3.select(this)
@@ -275,7 +275,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
     // var button = d3.select("#dropdownInst")
     //     .append("div")
     //     .attr("class", "dropdown")
-    //     .attr("id", 'dropLine-1')
+    //     .attr("id", "dropLine-1")
     //     .append("button")
     //     .attr("class", "btn btn-default dropdown-toggle")
     //     .attr("type", "button")
@@ -293,7 +293,7 @@ function createHeatMap(dataMap, dataStud, jaartal) {
     // var button = d3.select("#dropdownOpl")
     //     .append("div")
     //     .attr("class", "dropdown")
-    //     .attr("id", 'dropLine-2')
+    //     .attr("id", "dropLine-2")
     //     .append("button")
     //     .attr("class", "btn btn-default dropdown-toggle")
     //     .attr("type", "button")
@@ -379,7 +379,7 @@ function updateMap(jaartal){
       circle
       .enter()
       .append("circle")
-      .on('mouseover',function(d){
+      .on("mouseover",function(d){
 
           tip.show(d);
 
@@ -395,7 +395,7 @@ function updateMap(jaartal){
             .style("opacity", .5)
 
       })
-      .on('mouseout', function(d){
+      .on("mouseout", function(d){
           tip.hide(d);
           d3.select(this)
             .style("opacity", 0.8)

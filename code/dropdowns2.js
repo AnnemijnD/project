@@ -35,7 +35,7 @@ function makeDropdowns(dataStud){
                         .remove()
 
                       d3.select("#dropLine-2")
-                        .select('button')
+                        .select("button")
                         .text("Opleiding")
 
                       var instelling = d
