@@ -1,9 +1,9 @@
-# Project Annemijn Dijkhuis
+# Aanmeldingen eerstejaarsstudenten WO
+Annemijn Dijkhuis
+11149272
+Minor Programmeren UvA
 
 ## Dataprocessing project 
-
-Eerstejaarsstudenten bij universiteiten
-Minor programmeren
 https://annemijnd.github.io/project/
 
 # Introductie
