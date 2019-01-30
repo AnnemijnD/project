@@ -416,7 +416,6 @@ function updateLine (opleiding, instelling, type){
     .attr("class", "dot")
     .attr("r", 4)
     .on("click", function(d){
-      console.log(id);
       return updateBarGraph(opleiding, instelling, d.x, "Append")})
     .on("mouseover", function(d){
       return tipLine.show(d);

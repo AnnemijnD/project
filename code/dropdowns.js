@@ -7,6 +7,7 @@ function makeDropdowns(){
   instituten = ["Kies Instelling"];
   opleidingen = ["Kies Opleiding"];
 
+  // vind de juiste data
   ALLDATA.forEach(function(d){
   if (!(instituten.includes(d["INSTELLINGSNAAM ACTUEEL"]))){
     instituten.push(d["INSTELLINGSNAAM ACTUEEL"])
@@ -14,8 +15,7 @@ function makeDropdowns(){
 
   })
 
-
-
+  // maak een rij voor de dropdowns
   var row = d3.select("#lineBlock")
               .append("div")
               .attr("class", "row")
@@ -56,10 +56,6 @@ function makeDropdowns(){
     .attr("value", function(d) {return d})
     .text(function(d){return d})
 
-    // selectOpleiding
-    // .selectAll("option")
-    // .data()
-
   // voeg data toe aan tweede dropdown
     selectInstelling
     .on("change", function(d){
@@ -76,7 +72,7 @@ function makeDropdowns(){
           })
 
 
-      selectOpleiding
+    selectOpleiding
       .selectAll("option")
       .data(opleidingen)
       .enter()
