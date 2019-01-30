@@ -20,6 +20,9 @@ In dit project zal met data van DUO de aanmeldingen van eerstejaars bachelorstud
 Door middel van een kaart van Nederland kan worden gezien in welke steden de meeste studenten zich hebben aangemeld per jaar.
 Er kan met een slider van jaar worden veranderd. Grotere bolletjes representeren meer studenten. Daarnaast geeft de kleur, zoals deze op de legenda is weergegeven, aan hoeveel studenten zih hebben aangemeld. De kaart is verbonden aan de lijngrafiek en aan de staafdiagram door op een stad te klikken. 
 
+![Alt text](project/doc/map.png)
+        
+
 ## Lijngrafiek
 
 De lijngrafiek geeft voor een instelling en een opleiding (of alle opleidingen) weer hoeveel studenten zich hebben aangemeld tussen 2013 en 2017. Er kunnen vier lijnen worden toegevoegd door gebruik te maken van het dropdown menu, of door te klikken op een stad uit de kaart. Er kunnen lijnen worden verwijderd door op het gelkeurde blokje in de legenda te klikken. Er kunnen maximaal vier lijnen in de grafiek staan.
