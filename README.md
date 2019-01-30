@@ -27,9 +27,11 @@ Er kan met een slider van jaar worden veranderd. Grotere bolletjes representeren
 
 De lijngrafiek geeft voor een instelling en een opleiding (of alle opleidingen) weer hoeveel studenten zich hebben aangemeld tussen 2013 en 2017. Er kunnen vier lijnen worden toegevoegd door gebruik te maken van het dropdown menu, of door te klikken op een stad uit de kaart. Er kunnen lijnen worden verwijderd door op het gelkeurde blokje in de legenda te klikken. Er kunnen maximaal vier lijnen in de grafiek staan.
 
+![](doc/lineGraph.png)
+
 
 ## Gegroepeerde staafdiagram
 
 Het gegroepeerde staafdiagram bestaat uit staven die mannen, vrouwen  en de totaalhoeveelheid studenten weergeven voor één jaar. Dit kan voor een instelling en opleiding zijn, maar ook voor een instelling en alle opleidingen. Wanneer er op een stad of een datapunt uit de lijngrafiek wordt geklikt, komt er een gegroepeerd staafdiagram bij door middel van een updatefunctie.
 
-
+![](doc/barGraphs.png)
