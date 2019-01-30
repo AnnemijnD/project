@@ -108,7 +108,17 @@ pointer-events: none;
 #dropLine.li:hover {
   color: blue;
 }
-/*
-.bargraph {
-  width: 80%;
-} */
+
+#barGraph{
+  width: 50%;
+  height: 50%;
+}
+
+select{
+    width: 200px;
+    text-overflow: ellipsis;
+}
+
+.barRect:hover {
+  fill: steelblue;
+}

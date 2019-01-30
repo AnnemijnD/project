@@ -31,7 +31,7 @@ function onload(){
     geoData = response[3]
     allData = response[1]
      createHeatMap(response[0], response[1], 2013)
-     makeDropdowns(allData)
+    
     return
   }).catch(function(e){
       throw(e);

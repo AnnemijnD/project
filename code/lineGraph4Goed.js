@@ -9,7 +9,7 @@ var tipLine = d3.tip()
             })
 
 // svg
-var marginLine = {top: 50, right: 40, bottom: 50, left: 50, yPadding: 10}
+var marginLine = {top: 50, right: 40, bottom: 50, left: 60, yPadding: 10}
 , widthLine = 570 - marginLine.left - marginLine.right // Use the window's width
 , heightLine = 350 - marginLine.top - marginLine.bottom; // Use the window's height
 
@@ -22,7 +22,7 @@ var legendData = [{id:0, text:"No Data"}, {id:1, text:"No Data"}, {id:2, text:"N
 
 function lineGraph(instelling,opleiding){
 
-  var title = d3.select("#lineBlock")
+  var header = d3.select("#lineBlock")
                 .append("div")
                 .attr("class", "row")
                 .append("div")
@@ -37,11 +37,25 @@ function lineGraph(instelling,opleiding){
   var legendDiv = d3.select("#lineBlock")
                     .append("div")
                     .attr("class", "row")
+
+                    legendDiv
                     .append("div")
                     .attr("id", "legendLine")
                     .attr("class", "col-sm-12")
                     .append("h5")
-                    .text("Legenda")
+                    .text("Legenda (Instelling, Opleiding)   ")
+
+                    // legendDiv
+                    // .append("div")
+                    // .attr("id", "legendLine")
+                    // .attr("class", "col-sm-4")
+                    // .append("h5")
+                    //
+                    // .text("Instelling, Opleiding")
+
+
+
+
 
   d3.select("#legendLine")
       .append("svg")
@@ -61,6 +75,13 @@ function lineGraph(instelling,opleiding){
               .attr("height", heightLine + marginLine.top + marginLine.bottom)
               .append("g")
               .attr("transform", "translate(" + marginLine.left + "," + marginLine.top + ")");
+
+  var title = d3.select("#line")
+                .append("text")
+                .text("Aantal eerstejaarsaanmeldingen in het WO voor verschillende opleidingen tussen 2013-2017")
+                .attr("x", function() {return widthLine/8})
+                .attr("y", function() {return marginLine.top/2})
+                .style("font-size", "12px")
 
   svg.call(tipLine);
 
@@ -134,8 +155,8 @@ dataset = [];
   let max = Math.max(...arr);
 
 // 5. X scale
-var xScale = d3.scaleLinear()
-    .domain([2013,2017]) // input
+var xScale = d3.scaleTime()
+    .domain([firstYear,lastYear]) // input
     .range([0, widthLine]); // output
 
 // 6. Y scale
@@ -148,13 +169,33 @@ var yScale = d3.scaleLinear()
 svg.append("g")
     .attr("class", "xAxisLine")
     .attr("transform", "translate(0," + heightLine + ")")
-    .call(d3.axisBottom(xScale))
-     // Create an axis component with d3.axisBottom
+    .call(d3.axisBottom(xScale)
+     .tickFormat(d3.format("d")));
+
+
 
 // 4. Call the y axis in a group tag
 svg.append("g")
     .attr("class", "yAxisLine")
     .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+
+// text label for the y axis
+svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -marginLine.left )
+    .attr("x",0 - (heightLine / 2))
+    .attr("dy", "2em")
+    .style("text-anchor", "middle")
+    .text("Aantal studenten")
+
+// text label for the x axis
+svg.append("text")
+    .attr("y", heightLine + 5)
+    .attr("x", widthLine/2)
+    .attr("dy", "2em")
+    .style("text-anchor", "middle")
+    .text("Tijd (jaren)")
 
 
 svg.append('g')
@@ -171,11 +212,11 @@ svg.select(".linesG")
 keys = ["Biomedische", "dingen", "nog meer"]
 
 
-  updateLine("Biomedische Wetenschappen", "Universiteit van Amsterdam");
+  updateLine("Biomedische Wetenschappen", "Universiteit van Amsterdam", "Append");
 
 }
 
-function updateLine (opleiding, instelling){
+function updateLine (opleiding, instelling, type){
 
 
   datapoints = []
@@ -196,7 +237,7 @@ function updateLine (opleiding, instelling){
   var n = datapoints.length;
 
 
-  dataset = [];
+
   // get right dataset
 
   var id = 0;
@@ -233,6 +274,7 @@ function updateLine (opleiding, instelling){
     uniData.forEach(function(d){
       if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
 
+        var  dataset = [];
         // // get data of all years
         datapoints.forEach(function(a){
           var jaar = a
@@ -242,12 +284,32 @@ function updateLine (opleiding, instelling){
           coordinates['x'] = jaar;
           coordinates['y'] = totaal
           dataset.push(coordinates)
-          lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
-            x: jaar, y: totaal})
+          // lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
+          //   x: jaar, y: totaal})
 
 
       })
-      // lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
+
+
+          for (var i = 0; i < lineGraphData.length; i++){
+            if (opleiding === lineGraphData[i]["Opleiding"]){
+              if (instelling === lineGraphData[i]["Instelling"]){
+                if (type === "Delete"){
+                console.log("gevonden")
+                lineGraphData.splice(i, 1)
+                }
+                else{
+                  return 0
+                }
+              }
+            }
+          }
+
+      if (!(type === "Delete")){
+      lineGraphData.push({id: id, Opleiding: opleiding,
+        Instelling: instelling, data:dataset})
+      }
+
 
 
 
@@ -257,9 +319,8 @@ function updateLine (opleiding, instelling){
       if (d["OPLEIDINGSNAAM ACTUEEL"] === opleiding){
         if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
 
-
-
             // // get data of all years
+            var dataset = [];
             datapoints.forEach(function(a){
               var jaar = a
               var totaal = parseInt((d[`TOTAAL ${jaar}`]));
@@ -268,29 +329,54 @@ function updateLine (opleiding, instelling){
               coordinates['x'] = jaar;
               coordinates['y'] = totaal
               dataset.push(coordinates)
-              lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
-                x: jaar, y: totaal})
+              // lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling,
+              //   x: jaar, y: totaal})
             })
-            // lineGraphData.push({id: id, Opleiding: opleiding, Instelling: instelling})
+            if (type === "Delete"){
+
+                for (var i = 0; i < lineGraphData.length; i++){
+                  if (opleiding === lineGraphData[i]["Opleiding"]){
+                    if (instelling === lineGraphData[i]["Instelling"]){
+                      lineGraphData.splice(i, 1)
+                    }
+                  }
+              }
+            }
+            else{
+            lineGraphData.push({id: id, Opleiding: opleiding,
+              Instelling: instelling, data: dataset})
+            }
           }
         }
     })
 
+    var dotData = [];
+    var lineData = [];
 
-    dataset3.push(dataset)
+    lineGraphData.forEach(function(d){
+      lineData.push(d.data)
+
+      d.data.forEach(function(d){
+          coordinates = {};
+          coordinates["x"] = d.x;
+          coordinates["y"] = d.y;
+          dotData.push(coordinates)
+        })
+    })
+
+    // dataset3.push(dataset)
     var svg = d3.select("#line")
     //   .remove()
 
 
-
     // get mininma and maxima
     let arr = []
-    dataset3.forEach(function(d) {
-              d.forEach(function(d){
-                  arr.push(d.y);
-              })
+    lineData.forEach(function(d) {
+      d.forEach(function(d){
+              arr.push(d.y);
+            })
+              });
 
-    });
     let min = Math.min(...arr);
     let max = Math.max(...arr);
 
@@ -307,8 +393,6 @@ function updateLine (opleiding, instelling){
 var colorScale = d3.schemeSet2
 
 
-  // dataset = [{x: 2013, y: 100, x: 2014, y: 120, x: 2015, y: 80, x:2017, y:98},
-              // {x: 2013, y: 130, x: 2014, y: 150, x: 2015, y: 100, x:2017, y:120}]
   // 7. d3's line generator
   var line = d3.line()
       .x(function(d, i) { return xScale(d.x); }) // set the x values for the line generator
@@ -321,8 +405,7 @@ var colorScale = d3.schemeSet2
     .duration(duration)
     .call(d3.axisLeft(yScale))
 
-
-  var lines = svg.select(".lineG").selectAll("path").data(dataset3);
+  var lines = svg.select(".lineG").selectAll("path").data(lineData);
 
   lines.exit().remove()
 
@@ -339,30 +422,21 @@ var colorScale = d3.schemeSet2
         .duration(duration)
         .attr("class", "line")
         .attr("id", function(d, i){ return i})
-        .attr("d", function(d){ console.log(d);return line(d)})
+        .attr("d", function(d){ return line(d)})
         .style("stroke", function(d,i){ lineColor = colorScale[String(i)];
            return colorScale[String(i)]})
 
 
 
-  var dotData = [];
-  lineGraphData.forEach(function(d){
-    // console.log(d)
-    coordinates = {};
-    coordinates["x"] = d.x;
-    coordinates["y"] = d.y;
-    dotData.push(coordinates)
 
-
-  })
 
   // console.log(dotData)
   // console.log(dataset)
   // console.log(dataset3)
   // console.log(lineGraphData)
 
-console.log(lineGraphData)
-  var dotsG = svg.select(".circlesG").selectAll(".dot").data(lineGraphData)
+
+  var dotsG = svg.select(".circlesG").selectAll(".dot").data(dotData)
 
     dotsG
     .enter()
@@ -387,30 +461,58 @@ console.log(lineGraphData)
 
   var legendUpdate = d3.select("#legendLine svg g")
                         .selectAll("g")
-                        .data(legendData)
+                        .data(lineGraphData)
+
+      legendUpdate
+      .selectAll("g")
+      .attr("transform", function(d, i) {return "translate(0,"+ i * 20 + ")" })
+
+
+                        console.log(lineGraphData)
+                        legendUpdate
                         .enter()
                         .append("g")
-                        .attr("transform", function(d, i) {return "translate(0,"+ i * 20 + ")" })
+                      .attr("fill", function(d, i){return colorScale[String(i)]})
+                        .attr("stroke", function(d, i){return colorScale[String(i)]})
+                        .attr("stroke-width",2)
+                        .attr("id", function(d, i){return "legendBlock" + i})
+                        .on("click", function(d){
+                          console.log(this)
+                          // legendUpdate.selectAll("text").remove()
+                          var id = "#lineLegendText" + d.id
 
-                        legendUpdate
+                          // d3.select(id).remove()
+
+                          self = d3.select(this)
+
+
+                          return updateLine(d.Opleiding, d.Instelling, "Delete")})
+                        // .merge(legendUpdate)
+                        .attr("transform", function(d, i) {return "translate(0,"+ i * 20 + ")" })
                         .append("rect")
                         .attr("x", 20)
                         .attr("width", 15)
                         .attr("height", 15)
-                        .style("fill",function(d, i){console.log(i);return colorScale[String(i)]})
-                        .attr("stroke", function(d, i){return colorScale[String(i)]})
-                        .attr("stroke-width",2)
-                        .attr("id", function(d, i){return "legendBlock" + i})
 
-                // legendUpdate
-                // .append("rect")
+                    legendUpdate.exit().remove()
 
 
-                legendUpdate.append("text")
-                    .attr("x", 80)
+                d3.selectAll(".legendtext").remove()
+
+              d3.select("#legendLine svg")
+                .append("g")
+                .attr("class", "legendtextG")
+                .selectAll("text")
+                .data(lineGraphData)
+                .enter()
+                .append("text")
+                .attr("class", "legendtext")
+                .attr("transform", function(d,i) {return "translate(0,"+ i * 20 + ")" })
+                .attr("x", 40)
                     .attr("y", 9.5)
                     .attr("dy", "0.32em")
-                    .text(function(d) { return d.text; });
+                    .style("font-size", "10px")
+                    .text(function(d) { return`${d.Instelling}, ${d.Opleiding}` });
 
 
 }

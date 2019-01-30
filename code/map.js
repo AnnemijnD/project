@@ -43,13 +43,15 @@ function createHeatMap(dataMap, dataStud, jaartal) {
               height = 400 - margin.top - margin.bottom;
 
   // titles
-  var title = d3.select("#mapBlock")
+  var header = d3.select("#mapBlock")
               .append("div")
               .attr("class", "row")
               .append("div")
-              .attr("class", "col-sm")
+              .attr("class", "col-sm-12")
               .append("h4")
-              .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland");
+              .attr("text-align","center")
+              .text("Aantal aanmeldingen van eerstejaarsstudenten in Nederland")
+
 
 
 
@@ -81,10 +83,9 @@ function createHeatMap(dataMap, dataStud, jaartal) {
       .width(300)
       .tickFormat(d3.timeFormat('%Y'))
       .tickValues(dataTime)
-      // .default(new Date(1998, 10, 3))
+      .default(new Date(2017, 10, 3))
       .on('onchange', val => {
         updateMap(d3.timeFormat("%Y")(val))
-        // d3.select('p#value-time').text(function(d) {return ("Jaar: " + d3.timeFormat('%Y')(val))});
       })
 
     var gTime = d3
@@ -111,7 +112,11 @@ function createHeatMap(dataMap, dataStud, jaartal) {
                 .attr("viewBox", "0 0 420 400")
                 // .append('g')
                 // .attr('class', 'map')
-
+    var title = d3.select("#map")
+                  .append("text")
+                  .text("Aantal eerstejaarsaanmeldingen in het WO per jaar per stad")
+                  .attr("x", function() {return width/10})
+                  .attr("y", function() {return 10})
 
 
 
@@ -409,7 +414,7 @@ function updateMap(jaartal){
           d["INSTELLINGEN"].forEach(function(d){
             instelling = d["INSTELLINGSNAAM ACTUEEL"]
             console.log(instelling)
-            updateLine("Alles", instelling)
+            updateLine("Alles", instelling, "Append")
             updateBarGraph("Alles", instelling, jaartal, "Append")
           })
       })

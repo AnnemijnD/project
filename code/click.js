@@ -8,7 +8,7 @@ function clicked(webElement, instelling, opleiding, jaar, id){
 
     else if (wE === "linegraph"){
 
-      updateLine(opleiding, instelling)
+      updateLine(opleiding, instelling, "Append")
 
     }
 
@@ -19,7 +19,7 @@ function clicked(webElement, instelling, opleiding, jaar, id){
 
     else if (wE === "dropdown"){
 
-      updateLine(opleiding, instelling)
+      updateLine(opleiding, instelling, "Append")
 
     }
 

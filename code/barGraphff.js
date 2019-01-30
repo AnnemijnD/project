@@ -24,11 +24,7 @@ function barGraph(){
       height = +svg.attr("height") - margin.top - margin.bottom
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var title = d3.select("#barGraph svg")
-              .append("text")
-              .text("Aantal eerstejaarsaanmeldingen in het WO verschillend tussen man en vrouw")
-              .attr("x", function() {return width/3})
-              .attr("y", function() {return margin.bottom/2})
+
 
 
   // The scale spacing the groups:
@@ -44,7 +40,7 @@ var title = d3.select("#barGraph svg")
       .rangeRound([height, 0]);
 
   var z = d3.scaleOrdinal()
-        .range(d3.schemeDark2)
+        .range(["#884444", "#444488", "#448844"])
 
 
   var keys = ["Vrouw", "Man", "Totaal"]
@@ -52,7 +48,7 @@ var title = d3.select("#barGraph svg")
 
 
 
-  x0.domain(barGraphData.map(function(d) { return `${d.Opleiding}, ${d.Instelling}, ${d.jaar}`; }));
+  x0.domain(barGraphData.map(function(d) { return `${d.Opleiding}, ${d.Instelling} ${d.jaar}`; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
   y.domain([0, d3.max(barGraphData, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
@@ -161,23 +157,18 @@ var title = d3.select("#barGraph svg")
           for (var i = 0; i < barGraphData.length; i++){
             if (opleiding === barGraphData[i]["Opleiding"]){
               if (instelling === barGraphData[i]["Instelling"]){
-                if (jaar === barGraphData[i]["jaar"]){
-                  if (type === "Delete"){
-                          console.log("inifs")
-                  console.log("gevonden")
-                  barGraphData.splice(i, 1)
-                  }
-                  else{
-                    return 0
-                  }
-              }
+                if (type === "Delete"){
+                console.log("gevonden")
+                barGraphData.splice(i, 1)
+                }
+                else{
+                  return 0
+                }
               }
             }
           }
 
       if (!(type === "Delete")){
-
-
       barGraphData.push({Instelling: instelling, Opleiding: opleiding,
         jaar:jaar, Man: mannen, Vrouw: vrouwen, Totaal: totaal})
       }
@@ -204,21 +195,18 @@ var title = d3.select("#barGraph svg")
                 for (var i = 0; i < barGraphData.length; i++){
                   if (opleiding === barGraphData[i]["Opleiding"]){
                     if (instelling === barGraphData[i]["Instelling"]){
-                      if (jaar === barGraphData[i]["jaar"]){
-                        if (type === "Delete"){
-
-                        barGraphData.splice(i, 1)
-                        }
-                        else{
-                          return 0
-                        }
-                    }
+                      if (type === "Delete"){
+                      console.log("gevonden")
+                      barGraphData.splice(i, 1)
+                      }
+                      else{
+                        return 0
+                      }
                     }
                   }
                 }
 
             if (!(type === "Delete")){
-
           barGraphData.push({Instelling: instelling, Opleiding: opleiding,
             jaar:jaar, Man: mannen, Vrouw: vrouwen, Totaal: totaal})
             }
@@ -255,9 +243,9 @@ var title = d3.select("#barGraph svg")
 
     var z = d3.scaleOrdinal()
               // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-              .range(d3.schemeDark2)
+              .range(["#884444", "#444488", "#448844"])
 
-    x0.domain(data.map(function(d) { return `${d.Opleiding}, ${d.Instelling}, ${d.jaar}`; }));
+    x0.domain(data.map(function(d) { return `${d.Opleiding}, ${d.Instelling} ${d.jaar}`; }));
     x1.domain(keys).rangeRound([0, x0.bandwidth()]);
     y.domain([0, d3.max(data, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
@@ -272,22 +260,6 @@ var title = d3.select("#barGraph svg")
     .transition()
     .call(d3.axisLeft(y).ticks(null, "s"))
     .duration(500);
-
-
-    d3.select(".xAxisBar")
-      .selectAll(".tick")
-      .on("click", function(d){
-
-      opleiding = d.split(",")[0]
-      instelling = d.split(",")[1]
-      jaar = parseInt(d.split(",")[2])
-
-
-      console.log(opleiding, instelling, jaar)
-      return updateBarGraph(opleiding, instelling, jaar, "Delete")
-    })
-
-
 
     var dataKeys = []
 
@@ -307,20 +279,20 @@ var title = d3.select("#barGraph svg")
     groups
     .transition()
     .duration(100)
-    .attr("transform", function(d) { return "translate(" + x0(`${d.Opleiding}, ${d.Instelling}, ${d.jaar}`) + ")"; })
+    .attr("transform", function(d) { return "translate(" + x0(`${d.Opleiding}, ${d.Instelling} ${d.jaar}`) + ")"; })
 
     // update the newly inserted groups
     d3.selectAll("#extra")
     .transition()
     .duration(100)
-    .attr("transform", function(d) { return "translate(" + (x0(`${d.Opleiding}, ${d.Instelling}, ${d.jaar}`) + margin.left) + "," + margin.top + ")"; })
+    .attr("transform", function(d) { return "translate(" + (x0(`${d.Opleiding}, ${d.Instelling} ${d.jaar}`) + margin.left) + "," + margin.top + ")"; })
 
 
     // enter the new groups and rectangles
     groups.enter().append("g")
     .attr("class","bar")
     .attr("id", "extra")
-    .attr("transform", function(d) { return "translate(" + (x0(`${d.Opleiding}, ${d.Instelling}, ${d.jaar}`) + margin.left)  + "," + margin.top + ")"; })
+    .attr("transform", function(d) { return "translate(" + (x0(`${d.Opleiding}, ${d.Instelling} ${d.jaar}`) + margin.left)  + "," + margin.top + ")"; })
     .on("click",function(d) {
                       updateBarGraph(d.Opleiding,
                                       d.Instelling, d.jaar, "Delete")})
@@ -333,49 +305,47 @@ var title = d3.select("#barGraph svg")
         tip.show(d);
         var self = this;
 
-        // d3.select(this)
-        //   .style("opacity", 1.5)
-        //   .style("fill", "#ffab00")
+        d3.select(this)
+          .style("opacity", 1.5)
+          .style("fill", "#ffab00")
 
 
       })
       .on("mouseout", function(d){
         tip.hide(d);
-        // d3.select(this)
-        //   .style("fill", function(d, i) {
-        //
-        //     if ((i - 2 % 3) === 0 ){
-        //       if (d.value === 0){
-        //         return "black"
-        //       }
-        //     }
-        //
-        //     return z(d.key); })
+        d3.select(this)
+          .style("fill", function(d) { return z(d.key); })
       })
       .on("click", function(d){
         tip.hide(d);
       })
-      .attr("class", "barRect")
+
       .attr("y", function(d) { return y(0); })
       .attr("height", "0")
-      .attr("width", function(d,) {
-        return x1.bandwidth()})
+      .attr("width", function(d, i) {
+
+        if (i - 2 % 3 == 0){
+          if (d.value == 0){
+              return "200"
+            };
+          };
+        return x1.bandwidth() })
       .transition()
       .duration(100)
       .attr("y", function(d, i ){
-        // if (i - 2 % 3 == 0){
-        //   if (d.value == 0){
-        //       return y(max/2)
-        //     };
-        //   };
+        if (i - 2 % 3 == 0){
+          if (d.value == 0){
+              return y(height/2)
+            };
+          };
             return y(d.value); })
       .attr("height", function(d, i) {
-        // if (i - 2 % 3 == 0){
-        //   if (d.value == 0){
-              // return 40;
-          //   };
-          // }
-        // })
+        if (i - 2 % 3 == 0){
+          if (d.value == 0){
+              console.log(y(d.value))
+              return (100)
+            };
+          };
         return height - y(d.value); })
       .attr("fill", function(d) { return z(d.key); })
       .attr("x", function(d) {
@@ -393,41 +363,10 @@ var title = d3.select("#barGraph svg")
     bars
       .transition()
       .attr("x", function(d) { return x1(d.key); })
-      .attr("y", function(d, i) {
-        if (i - 2 % 3 === 0){
-          if (d.value === 0){
-              return y(40);
-            };
-          }return y(d.value); })
-      .attr("height", function(d, i) {
-        // if (i - 2 % 3 === 0){
-        //   if (d.value === 0){
-        //       return height - y(40);
-        //     };}
-          return height - y(d.value); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
       .attr("width", x1.bandwidth())
-      .attr("fill", function(d, i) {
-        // if ((i - 2 % 3) === 0 ){
-        //   if (d.value === 0){
-
-            // d3.select(this)
-            //   .attr("transform", "translate(0," + -height/2 + ")")
-            //   .append("g")
-            //   .attr("x", function(d){return x1(d.key)})
-            //   .attr("y", function(d){ return -height/2})
-            //   .attr("height", 60)
-            //   .attr('width', 80)
-            //   .append("text")
-              //
-              // .text("g");
-        //
-        //     return "black"
-        //   }
-        // }
-
-        return z(d.key); })
+      .attr("fill", function(d) { return z(d.key); })
       .duration(500);
 
   }
-
-  

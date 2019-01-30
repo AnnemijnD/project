@@ -1,7 +1,7 @@
-function makeDropdowns(dataStud){
+function makeDropdowns(){
 
-  instituten = [""];
-  opleidingen = [""];
+  instituten = ["Kies Instelling"];
+  opleidingen = ["Kies Opleiding"];
 
   allData.forEach(function(d){
   if (!(instituten.includes(d["INSTELLINGSNAAM ACTUEEL"]))){
@@ -10,6 +10,23 @@ function makeDropdowns(dataStud){
 
   })
 
+
+
+  var row = d3.select("#lineBlock")
+              .append("div")
+              .attr("class", "row")
+
+
+  row.append("div")
+      .attr("class", "col-sm-6")
+      .attr("id", "dropdownInst")
+
+
+  row.append("div")
+      .attr("class", "col-sm-6")
+      .attr("id","dropdownOpl" )
+
+
   // initieer dropdown
   var selectInstelling = d3.select("#dropdownInst")
                           .append("select")
@@ -17,10 +34,19 @@ function makeDropdowns(dataStud){
   var selectOpleiding = d3.select("#dropdownOpl")
                           .append("select")
 
+
   // voeg data toe
     selectInstelling
     .selectAll("option")
     .data(instituten)
+    .enter()
+    .append("option")
+    .attr("value", function(d) {return d})
+    .text(function(d){return d})
+
+    selectOpleiding
+    .selectAll("option")
+    .data(opleidingen)
     .enter()
     .append("option")
     .attr("value", function(d) {return d})
@@ -33,8 +59,9 @@ function makeDropdowns(dataStud){
   // voeg data toe aan tweede dropdown
     selectInstelling
     .on("change", function(d){
+      selectOpleiding.selectAll("option").remove();
 
-      opleidingen = [""]
+      opleidingen = ["Kies Opleiding"]
       instelling = this.value
       allData.forEach(function(x){
             if(x["INSTELLINGSNAAM ACTUEEL"] === instelling){
@@ -56,7 +83,7 @@ function makeDropdowns(dataStud){
       selectOpleiding
       .on("change", function(d){
         var opleiding = this.value;
-        updateLine(opleiding, instelling)
+        updateLine(opleiding, instelling, "Append")
       })
     })
 }
