@@ -75,7 +75,7 @@ function lineGraph(){
 
   // zodat later data kan worden toegevoegd, vindt dit de hoeveelheid datapunten
   datapoints = [];
-  var keys = Object.keys(allData[0])
+  var keys = Object.keys(ALLDATA[0])
 
   keys.forEach(function(d){
     var splitd = d.split(" ", d.length);
@@ -94,7 +94,7 @@ function lineGraph(){
 
   // vind de minima en maxima
   var arr = []
-  lineGraphData.forEach(function(d) {
+  LINEGRAPHDATA.forEach(function(d) {
     d["data"].forEach(function(d){
             arr.push(d.y);
           })
@@ -105,7 +105,7 @@ function lineGraph(){
 
   // x schaal voor de x-as
   var xScale = d3.scaleTime()
-      .domain([firstYear,lastYear])
+      .domain([FIRSTYEAR,LASTYEAR])
       .range([0, widthLine]);
 
   // y schaal voor de y-as
@@ -168,7 +168,7 @@ function updateLine (opleiding, instelling, type){
   datapoints = [];
 
   // vind alle keys
-  var keys = Object.keys(allData[0]);
+  var keys = Object.keys(ALLDATA[0]);
 
   keys.forEach(function(d){
     var splitd = d.split(" ", d.length);
@@ -193,7 +193,7 @@ function updateLine (opleiding, instelling, type){
     var idUsed = false;
 
     // zoek door de data naar de verschillende id"s
-    lineGraphData.forEach(function(d){
+    LINEGRAPHDATA.forEach(function(d){
 
       // als dit iD is gebruikt, word true
       if (d.id === id){
@@ -214,7 +214,7 @@ function updateLine (opleiding, instelling, type){
 
   // als dataset "alles" is aangekruisd:
   if (opleiding === "Alles"){
-    uniData.forEach(function(d){
+    UNIDATA.forEach(function(d){
       if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
 
         var  dataset = [];
@@ -232,13 +232,13 @@ function updateLine (opleiding, instelling, type){
 
 
         // checkt of de data wel mag worden gebruikt
-        for (var i = 0; i < lineGraphData.length; i++){
-          if (opleiding === lineGraphData[i]["Opleiding"]){
-            if (instelling === lineGraphData[i]["Instelling"]){
+        for (var i = 0; i < LINEGRAPHDATA.length; i++){
+          if (opleiding === LINEGRAPHDATA[i]["Opleiding"]){
+            if (instelling === LINEGRAPHDATA[i]["Instelling"]){
               if (type === "Delete"){
 
                 // verwijdert data uit de database
-                lineGraphData.splice(i, 1);
+                LINEGRAPHDATA.splice(i, 1);
               }
               else{
 
@@ -251,13 +251,13 @@ function updateLine (opleiding, instelling, type){
 
         // checkt of er niet teveel data-elementen aanwezig zijn.
         if (type === "Append"){
-          if (lineGraphData.length > 3){
-            $("#alert").text(message);
+          if (LINEGRAPHDATA.length > 3){
+            $("#alert").text(MESSAGE);
             $(".alert").show();
             return 0;
           }
           else{
-          lineGraphData.push({id: id, Opleiding: opleiding,
+          LINEGRAPHDATA.push({id: id, Opleiding: opleiding,
             Instelling: instelling, data:dataset});
           };
         };
@@ -268,7 +268,7 @@ function updateLine (opleiding, instelling, type){
   else{
 
     // als een opleiding is aangekruisd:
-    allData.forEach(function(d){
+    ALLDATA.forEach(function(d){
       if (d["OPLEIDINGSNAAM ACTUEEL"] === opleiding){
         if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
 
@@ -289,11 +289,11 @@ function updateLine (opleiding, instelling, type){
             });
 
             // controleer de bedoeling van de gebruiker
-            for (var i = 0; i < lineGraphData.length; i++){
-              if (opleiding === lineGraphData[i]["Opleiding"]){
-                if (instelling === lineGraphData[i]["Instelling"]){
+            for (var i = 0; i < LINEGRAPHDATA.length; i++){
+              if (opleiding === LINEGRAPHDATA[i]["Opleiding"]){
+                if (instelling === LINEGRAPHDATA[i]["Instelling"]){
                   if (type === "Delete"){
-                  lineGraphData.splice(i, 1);
+                  LINEGRAPHDATA.splice(i, 1);
                   }
                   else{
                     return 0;
@@ -304,15 +304,15 @@ function updateLine (opleiding, instelling, type){
 
           // controleer of de data mág worden toegevoegd
           if (type === "Append"){
-            if (lineGraphData.length > 3){
+            if (LINEGRAPHDATA.length > 3){
 
               // maak een alert dat de gebruiker een datapunt moet verwijderen
-              $("#alert").text(message);
+              $("#alert").text(MESSAGE);
               $(".alert").show();
               return 0;
             }
             else{
-            lineGraphData.push({id: id, Opleiding: opleiding,
+            LINEGRAPHDATA.push({id: id, Opleiding: opleiding,
               Instelling: instelling, data:dataset});
             }
           };
@@ -324,7 +324,7 @@ function updateLine (opleiding, instelling, type){
   var dotData = [];
   var lineData = [];
 
-  lineGraphData.forEach(function(d){
+  LINEGRAPHDATA.forEach(function(d){
     lineData.push(d.data)
 
     d.data.forEach(function(d){
@@ -436,7 +436,7 @@ function updateLine (opleiding, instelling, type){
   // enter, update en remove legenda
   var legendUpdate = d3.select("#legendLine svg g")
                         .selectAll("g")
-                        .data(lineGraphData);
+                        .data(LINEGRAPHDATA);
 
   legendUpdate
     .selectAll("g")
@@ -469,7 +469,7 @@ function updateLine (opleiding, instelling, type){
     .append("g")
     .attr("class", "legendtextG")
     .selectAll("text")
-    .data(lineGraphData)
+    .data(LINEGRAPHDATA)
     .enter()
     .append("text")
     .attr("class", "legendtext")

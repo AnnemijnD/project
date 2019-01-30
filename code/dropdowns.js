@@ -7,7 +7,7 @@ function makeDropdowns(){
   instituten = ["Kies Instelling"];
   opleidingen = ["Kies Opleiding"];
 
-  allData.forEach(function(d){
+  ALLDATA.forEach(function(d){
   if (!(instituten.includes(d["INSTELLINGSNAAM ACTUEEL"]))){
     instituten.push(d["INSTELLINGSNAAM ACTUEEL"])
   }
@@ -67,7 +67,7 @@ function makeDropdowns(){
 
       opleidingen = ["Kies Opleiding"]
       instelling = this.value
-      allData.forEach(function(x){
+      ALLDATA.forEach(function(x){
             if(x["INSTELLINGSNAAM ACTUEEL"] === instelling){
               if (!(opleidingen.includes(x["OPLEIDINGSNAAM ACTUEEL"]))){
                 opleidingen.push(x["OPLEIDINGSNAAM ACTUEEL"])

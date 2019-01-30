@@ -1,16 +1,15 @@
-// Script for the index.html file. Part of end project
+// Script for the vis.html file. Part of end project
 // Annemijn Dijkhuis
 // 11149272
 
-var barGraphData = [];
-var lineGraphData = [];
-var mapData = [];
-var allData = [];
-var uniData = [];
-var geoData = [];
-var firstYear = 2013;
-var lastYear = 2017;
-var message = "Maximaal vier staafdiagramgroepen of lijnen." +
+var BARGRAPHDATA = [];
+var LINEGRAPHDATA = [];
+var ALLDATA = [];
+var UNIDATA = [];
+var GEODATA = [];
+var FIRSTYEAR = 2013;
+var LASTYEAR = 2017;
+var MESSAGE = "Maximaal vier staafdiagramgroepen of lijnen." +
 " Verwijder eerst data door op een staaf of gekleurd legendablok te klikken."
 
 
@@ -20,18 +19,18 @@ function onload(){
   var ned = "../data/nederland.json"
   var dataEerstejaars = "../data/eerstejaars.json"
   var dataUni = "../data/instellingen.json"
-  var geoDataSteden = "../data/geoDataSteden.json"
+  var GEODATASteden = "../data/GEODATASteden.json"
 
   var requests = [d3.json(ned), d3.json(dataEerstejaars), d3.json(dataUni),
-                  d3.json(geoDataSteden)];
+                  d3.json(GEODATASteden)];
 
   Promise.all(requests).then(function(response) {
 
-    uniData = response[2]
-    geoData = response[3]
-    allData = response[1]
+    UNIDATA = response[2]
+    GEODATA = response[3]
+    ALLDATA = response[1]
 
-        createMap(response[0], response[1], firstYear);
+        createMap(response[0]);
         lineGraph();
         barGraph();
 

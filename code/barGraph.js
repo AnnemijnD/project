@@ -65,9 +65,9 @@ function barGraph(){
   updateBarGraph("Biomedische Wetenschappen", "Universiteit van Amsterdam", 2016, "Append")
 
 
-  x0.domain(barGraphData.map(function(d) { return `${d.Opleiding}, ${d.Instelling}, ${d.jaar}`; }));
+  x0.domain(BARGRAPHDATA.map(function(d) { return `${d.Opleiding}, ${d.Instelling}, ${d.jaar}`; }));
   x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-  y.domain([0, d3.max(barGraphData, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
+  y.domain([0, d3.max(BARGRAPHDATA, function(d) { return d3.max(keys, function(key) { return d[key]; }); })]).nice();
 
   // maak een xas
   g.append("g")
@@ -133,7 +133,7 @@ function barGraph(){
     // als "Alles" is aangekruisd
     if (opleiding === "Alles"){
 
-      uniData.forEach(function(d){
+      UNIDATA.forEach(function(d){
         if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
           var vrouwen = parseInt((d[`${jaar} VROUW`]));
           var mannen = parseInt((d[`${jaar} MAN`]));
@@ -148,12 +148,12 @@ function barGraph(){
           }
 
           // controleer de bedoeling van de gebruiker
-          for (var i = 0; i < barGraphData.length; i++){
-            if (opleiding === barGraphData[i]["Opleiding"]){
-              if (instelling === barGraphData[i]["Instelling"]){
-                if (jaar === barGraphData[i]["jaar"]){
+          for (var i = 0; i < BARGRAPHDATA.length; i++){
+            if (opleiding === BARGRAPHDATA[i]["Opleiding"]){
+              if (instelling === BARGRAPHDATA[i]["Instelling"]){
+                if (jaar === BARGRAPHDATA[i]["jaar"]){
                   if (type === "Delete"){
-                  barGraphData.splice(i, 1);
+                  BARGRAPHDATA.splice(i, 1);
                   }
                   else{
 
@@ -167,14 +167,14 @@ function barGraph(){
 
           // controleert of de data mag worden gebruikt
           if (type === "Append"){
-            if (barGraphData.length > 3){
+            if (BARGRAPHDATA.length > 3){
 
                 // alert de gebruiker bij te veel data
-                $("#alert").text(message)
+                $("#alert").text(MESSAGE)
                 $(".alert").show()
             }
             else{
-                barGraphData.push({Instelling: instelling, Opleiding: opleiding,
+                BARGRAPHDATA.push({Instelling: instelling, Opleiding: opleiding,
                     jaar:jaar, Man: mannen, Vrouw: vrouwen, Totaal: totaal})
             };
           };
@@ -184,7 +184,7 @@ function barGraph(){
 
     // als een opleiding is aangeklikt
     else{
-      allData.forEach(function(d){
+      ALLDATA.forEach(function(d){
         if (d["INSTELLINGSNAAM ACTUEEL"] === instelling){
           if (d["OPLEIDINGSNAAM ACTUEEL"] === opleiding){
             var vrouwen = parseInt((d[`${jaar} VROUW`]));
@@ -200,12 +200,12 @@ function barGraph(){
             }
 
             // contorleert of de data mag worden gebruikt
-            for (var i = 0; i < barGraphData.length; i++){
-              if (opleiding === barGraphData[i]["Opleiding"]){
-                if (instelling === barGraphData[i]["Instelling"]){
-                  if (jaar === barGraphData[i]["jaar"]){
+            for (var i = 0; i < BARGRAPHDATA.length; i++){
+              if (opleiding === BARGRAPHDATA[i]["Opleiding"]){
+                if (instelling === BARGRAPHDATA[i]["Instelling"]){
+                  if (jaar === BARGRAPHDATA[i]["jaar"]){
                     if (type === "Delete"){
-                      barGraphData.splice(i, 1);
+                      BARGRAPHDATA.splice(i, 1);
                     }
                     else{
                       // data is al in de dataset
@@ -218,12 +218,12 @@ function barGraph(){
 
           // alert als er teveel datasets zijn
           if (type === "Append"){
-            if (barGraphData.length > 3){
-                $("#alert").text(message)
+            if (BARGRAPHDATA.length > 3){
+                $("#alert").text(MESSAGE)
                 $(".alert").show()
               }
               else{
-                barGraphData.push({Instelling: instelling, Opleiding: opleiding,
+                BARGRAPHDATA.push({Instelling: instelling, Opleiding: opleiding,
                   jaar:jaar, Man: mannen, Vrouw: vrouwen, Totaal: totaal})
               };
             };
@@ -232,7 +232,7 @@ function barGraph(){
       });
     };
 
-    var data = barGraphData;
+    var data = BARGRAPHDATA;
 
     var svg = d3.select("#barGraph svg");
 

@@ -3,7 +3,8 @@
 // Creeert en update  een kaart van Nederland
 
 // fix get max!
-
+MINALL = 0;
+MAXALL = 8115;
 var tip = d3.tip()
             .attr("class", "d3-tip")
             .offset([-10, 0])
@@ -33,7 +34,7 @@ var tip = d3.tip()
 
             })
 
-function createMap(dataMap, jaartal) {
+function createMap(dataMap) {
 
   var mapwidth = 600/1.5
   var mapheight = 700/1.5
@@ -69,8 +70,8 @@ function createMap(dataMap, jaartal) {
 
 
     // Time
-    var dataTime = d3.range(0, lastYear - firstYear + 1).map(function(d) {
-      return new Date(firstYear + d, lastYear - firstYear, 3);
+    var dataTime = d3.range(0, LASTYEAR - FIRSTYEAR + 1).map(function(d) {
+      return new Date(FIRSTYEAR + d, LASTYEAR - FIRSTYEAR, 3);
     });
 
     // var dataTime2 = d3.range(l)
@@ -174,29 +175,9 @@ function createMap(dataMap, jaartal) {
 
   updateMap("2017")
 
-  // uniData.forEach(function(d){
-  //   var counter = 0;
-  //   if (!(d["GEMEENTENAAM"] in findMax)){
-  //     findMax[d["GEMEENTENAAM"] ] = 0
-  //   }
-  //   for (var i = firstYear; i < lastYear + 1; i++){
-  //     findMax[d["GEMEENTENAAM"]] += d[`TOTAAL ${i}`]
-  //   }
-  // })
-  //   // var allData_max = d
-  //   // find minima and maxima
-  //   var arr = []
-  //       Object.values(geoData).forEach(function(d) {
-  //               arr.push(d[`TOTAAL`]);
-  //
-  //   });
-  //
-  //   console.log(findMax)
-  //
-  //   var minAll = Math.min(...arr);
-  //   var maxAll = Math.max(...arr);
-  var minAll = 0;
-  var maxAll = 8115;
+
+  var MINALL = 0;
+  var MAXALL = 8115;
 
     // width and height of legendbar
     var w = 300, h = 50;
@@ -211,7 +192,7 @@ function createMap(dataMap, jaartal) {
 
    // set color scale
    var color = d3.scaleLinear()
-       .domain([0,maxAll])
+       .domain([0,MAXALL])
        .range([255,0]);
 
     // source: https://bl.ocks.org/duspviz-mit/9b6dce37101c30ab80d0bf378fe5e583
@@ -227,22 +208,22 @@ function createMap(dataMap, jaartal) {
 
     // bar color gradients
      legend.append("stop")
-       .attr("stop-color", "rgb("+ color(minAll) + ",0," + -(color(minAll) - 255) +")")
+       .attr("stop-color", "rgb("+ color(MINALL) + ",0," + -(color(MINALL) - 255) +")")
        .attr("stop-opacity", 0.8);
 
      legend.append("stop")
        .attr("offset", "33%")
-       .attr("stop-color", "rgb("+ color(maxAll*0.33) + ",0," + -(color(maxAll*0.33) - 255) +")")
+       .attr("stop-color", "rgb("+ color(MAXALL*0.33) + ",0," + -(color(MAXALL*0.33) - 255) +")")
        .attr("stop-opacity", 0.8);
 
      legend.append("stop")
        .attr("offset", "66%")
-       .attr("stop-color", "rgb("+ color(maxAll*0.66) + ",0," + -(color(maxAll*0.66) - 255) +")")
+       .attr("stop-color", "rgb("+ color(MAXALL*0.66) + ",0," + -(color(MAXALL*0.66) - 255) +")")
        .attr("stop-opacity", 0.8);
 
      legend.append("stop")
        .attr("offset", "100%")
-       .attr("stop-color", "rgb("+ color(maxAll) + ",0," + -(color(maxAll) - 255) +")")
+       .attr("stop-color", "rgb("+ color(MAXALL) + ",0," + -(color(MAXALL) - 255) +")")
        .attr("stop-opacity", 0.8);
 
     // make bar
@@ -261,7 +242,7 @@ function createMap(dataMap, jaartal) {
      key.append("text")
         .attr("x", w/2 -10)
         .attr("y", h-5)
-        .text(maxAll)
+        .text(MAXALL)
         .style("font-size", "10px");
 
      // Title legend
@@ -274,7 +255,7 @@ function createMap(dataMap, jaartal) {
 
     // set standard bargraph to the Netherlands
 
-    // var dropdowns = makeDropdowns(allData)
+    // var dropdowns = makeDropdowns(ALLDATA)
 
     // var samsBarvar = samsBar()
 }
@@ -285,12 +266,12 @@ function updateMap(jaartal){
   var svg = d3.select("#map")
 
     var maxStudenten = 0;
-    geoData.forEach(function(geo){
+    GEODATA.forEach(function(geo){
       geo["INSTELLINGEN"] = [];
       var totaalStudenten = 0;
 
 
-      uniData.forEach(function(d){
+      UNIDATA.forEach(function(d){
         if (d["GEMEENTENAAM"] === geo["GEMEENTENAAM"]){
           totaalStudenten += d[`TOTAAL ${jaartal}`];
           instellingenDict = {"INSTELLINGSNAAM ACTUEEL": d["INSTELLINGSNAAM ACTUEEL"],
@@ -307,7 +288,7 @@ function updateMap(jaartal){
 
     // find minima and maxima
     var arr = []
-        Object.values(geoData).forEach(function(d) {
+        Object.values(GEODATA).forEach(function(d) {
                 arr.push(d[`TOTAAL`]);
 
     });
@@ -328,7 +309,7 @@ function updateMap(jaartal){
 
     var circle = svg.selectAll("circle")
                       // .enter()
-                      .data(geoData)
+                      .data(GEODATA)
 
 
     //
