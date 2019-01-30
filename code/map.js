@@ -2,7 +2,6 @@
 // Eindproject Minor programmeren
 // Creeert en update  een kaart van Nederland
 
-// fix get max!
 MINALL = 0;
 MAXALL = 8115;
 var tip = d3.tip()
@@ -38,6 +37,7 @@ function createMap(dataMap) {
 
   var mapwidth = 600/1.5
   var mapheight = 700/1.5
+
   // set margins
   var margin = {top: 0, right: 0, bottom: 0, left: 0},
               width = 600/1.5- margin.left - margin.right,
@@ -74,8 +74,7 @@ function createMap(dataMap) {
       return new Date(FIRSTYEAR + d, LASTYEAR - FIRSTYEAR, 3);
     });
 
-    // var dataTime2 = d3.range(l)
-
+    // maakt slider
     var sliderTime = d3
       .sliderBottom()
       .min(d3.min(dataTime))
@@ -100,7 +99,6 @@ function createMap(dataMap) {
     gTime.call(sliderTime);
 
     d3.select("p#value-time")
-    // .text("Jaar: " + d3.timeFormat("%Y")(sliderTime.value()));
 
 
 
@@ -111,14 +109,13 @@ function createMap(dataMap) {
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .attr("viewBox", "0 0 420 400")
-                // .append("g")
-                // .attr("class", "map")
-    var title = d3.select("#map")
-                  .append("text")
-                  .text("Aantal eerstejaarsaanmeldingen in het WO per jaar per stad")
-                  .attr("x", function() {return width/10})
-                  .attr("y", function() {return 10})
 
+  // maakte tweede titel
+  var titleMap = d3.select("#map")
+                .append("text")
+                .text("Aantal eerstejaarsaanmeldingen in het WO per jaar per stad")
+                .attr("x", function() {return width/10})
+                .attr("y", function() {return 10})
 
 
   var path = d3.geoPath();
@@ -133,6 +130,7 @@ function createMap(dataMap) {
   var path = d3.geoPath().projection(projection);
 
   svg.call(tip);
+
   // fill map with the right color
   d3.select("#map")
   .append("g")
@@ -143,9 +141,8 @@ function createMap(dataMap) {
   .attr("d", path)
   .attr("class", "mapPath")
   .style("fill", function(d) {
-                                    return "#4D80B3"
-
-                                })
+                    return "#4D80B3";
+                  })
   .style("opacity",0.8)
   .style("position", "relative")
   .style("z-index", "-1")
@@ -175,116 +172,106 @@ function createMap(dataMap) {
 
   updateMap("2017")
 
+  // width and height of legendbar
+  var w = 300, h = 50;
 
-  var MINALL = 0;
-  var MAXALL = 8115;
+  // set legendsvg
+  var key = d3.select("#map")
+             .append("svg")
+             .attr("height", 200)
+             .attr("width", w + 10)
+             .attr("x", 10)
+             .attr("y", 350);
 
-    // width and height of legendbar
-    var w = 300, h = 50;
+ // set color scale
+ var color = d3.scaleLinear()
+               .domain([0,MAXALL])
+               .range([255,0]);
 
-    // set legendsvg
-    var key = d3.select("#map")
-       .append("svg")
-       .attr("height", 200)
-       .attr("width", w + 10)
-       .attr("x", 10)
-       .attr("y", 350);
 
-   // set color scale
-   var color = d3.scaleLinear()
-       .domain([0,MAXALL])
-       .range([255,0]);
+  // set linear gradient
+   var legend = key.append("defs")
+                   .append("svg:linearGradient")
+                   .attr("id", "gradient")
+                   .attr("x1", "0%")
+                   .attr("y1", "100%")
+                   .attr("x2", "100%")
+                   .attr("y2", "100%")
+                   .attr("spreadMethod", "pad");
 
-    // source: https://bl.ocks.org/duspviz-mit/9b6dce37101c30ab80d0bf378fe5e583
-    // set linear gradient
-     var legend = key.append("defs")
-       .append("svg:linearGradient")
-       .attr("id", "gradient")
-       .attr("x1", "0%")
-       .attr("y1", "100%")
-       .attr("x2", "100%")
-       .attr("y2", "100%")
-       .attr("spreadMethod", "pad");
+  // bar color gradients
+   legend.append("stop")
+     .attr("stop-color", "rgb("+ color(MINALL) + ",0," + -(color(MINALL) - 255) +")")
+     .attr("stop-opacity", 0.8);
 
-    // bar color gradients
-     legend.append("stop")
-       .attr("stop-color", "rgb("+ color(MINALL) + ",0," + -(color(MINALL) - 255) +")")
-       .attr("stop-opacity", 0.8);
+   legend.append("stop")
+     .attr("offset", "33%")
+     .attr("stop-color", "rgb("+ color(MAXALL*0.33) + ",0," + -(color(MAXALL*0.33) - 255) +")")
+     .attr("stop-opacity", 0.8);
 
-     legend.append("stop")
-       .attr("offset", "33%")
-       .attr("stop-color", "rgb("+ color(MAXALL*0.33) + ",0," + -(color(MAXALL*0.33) - 255) +")")
-       .attr("stop-opacity", 0.8);
+   legend.append("stop")
+     .attr("offset", "66%")
+     .attr("stop-color", "rgb("+ color(MAXALL*0.66) + ",0," + -(color(MAXALL*0.66) - 255) +")")
+     .attr("stop-opacity", 0.8);
 
-     legend.append("stop")
-       .attr("offset", "66%")
-       .attr("stop-color", "rgb("+ color(MAXALL*0.66) + ",0," + -(color(MAXALL*0.66) - 255) +")")
-       .attr("stop-opacity", 0.8);
+   legend.append("stop")
+     .attr("offset", "100%")
+     .attr("stop-color", "rgb("+ color(MAXALL) + ",0," + -(color(MAXALL) - 255) +")")
+     .attr("stop-opacity", 0.8);
 
-     legend.append("stop")
-       .attr("offset", "100%")
-       .attr("stop-color", "rgb("+ color(MAXALL) + ",0," + -(color(MAXALL) - 255) +")")
-       .attr("stop-opacity", 0.8);
+  // make bar
+   key.append("rect")
+     .attr("width", w/2)
+     .attr("height", h -30)
+     .style("fill", "url(#gradient)")
+     .attr("transform", "translate(0, 15)");
 
-    // make bar
-     key.append("rect")
-       .attr("width", w/2)
-       .attr("height", h -30)
-       .style("fill", "url(#gradient)")
-       .attr("transform", "translate(0, 15)");
+  key.append("text")
+     .attr("x", 0)
+     .attr("y", h-5)
+     .text(0)
+     .style("font-size", "10px");
 
-    key.append("text")
-       .attr("x", 0)
-       .attr("y", h-5)
-       .text(0)
-       .style("font-size", "10px");
-
-     key.append("text")
-        .attr("x", w/2 -10)
-        .attr("y", h-5)
-        .text(MAXALL)
-        .style("font-size", "10px");
+   key.append("text")
+      .attr("x", w/2 -10)
+      .attr("y", h-5)
+      .text(MAXALL)
+      .style("font-size", "10px");
 
      // Title legend
      key.append("text")
-     .attr("x", 0)
-     .attr("y", 10)
-     .text("Aantal studenten")
-     .style("font-size", "10px");
+       .attr("x", 0)
+       .attr("y", 10)
+       .text("Aantal studenten")
+       .style("font-size", "10px");
 
-
-    // set standard bargraph to the Netherlands
-
-    // var dropdowns = makeDropdowns(ALLDATA)
-
-    // var samsBarvar = samsBar()
 }
 
 function updateMap(jaartal){
 
-
   var svg = d3.select("#map")
 
-    var maxStudenten = 0;
-    GEODATA.forEach(function(geo){
-      geo["INSTELLINGEN"] = [];
-      var totaalStudenten = 0;
+  // get the right data
+  var maxStudenten = 0;
+  GEODATA.forEach(function(geo){
+    geo["INSTELLINGEN"] = [];
+    var totaalStudenten = 0;
 
 
-      UNIDATA.forEach(function(d){
-        if (d["GEMEENTENAAM"] === geo["GEMEENTENAAM"]){
-          totaalStudenten += d[`TOTAAL ${jaartal}`];
-          instellingenDict = {"INSTELLINGSNAAM ACTUEEL": d["INSTELLINGSNAAM ACTUEEL"],
-                              "TOTAAL INSTELLING": d[`TOTAAL ${jaartal}`]};
-          geo["INSTELLINGEN"].push(instellingenDict);
-        }
-
-      if (maxStudenten < totaalStudenten){
-        maxStudenten = totaalStudenten;
+    UNIDATA.forEach(function(d){
+      if (d["GEMEENTENAAM"] === geo["GEMEENTENAAM"]){
+        totaalStudenten += d[`TOTAAL ${jaartal}`];
+        instellingenDict = {"INSTELLINGSNAAM ACTUEEL": d["INSTELLINGSNAAM ACTUEEL"],
+                            "TOTAAL INSTELLING": d[`TOTAAL ${jaartal}`]};
+        geo["INSTELLINGEN"].push(instellingenDict);
       }
-      geo["TOTAAL"] = totaalStudenten;
-      })
+
+    if (maxStudenten < totaalStudenten){
+      maxStudenten = totaalStudenten;
+    }
+    geo["TOTAAL"] = totaalStudenten;
     })
+  })
 
     // find minima and maxima
     var arr = []
@@ -293,8 +280,8 @@ function updateMap(jaartal){
 
     });
 
-    var min = 0;
-    var max = 8155;
+    var min = MINALL;
+    var max = MAXALL;
 
 
     // set color scale
@@ -311,16 +298,10 @@ function updateMap(jaartal){
                       // .enter()
                       .data(GEODATA)
 
-
-    //
-    // circle.exit().remove();
-
-      // circle.transition().duration()
-
       circle
-      .enter()
-      .append("circle")
-      .on("mouseover",function(d){
+        .enter()
+        .append("circle")
+        .on("mouseover",function(d){
 
           tip.show(d);
 
@@ -354,12 +335,11 @@ function updateMap(jaartal){
 
           d["INSTELLINGEN"].forEach(function(d){
             instelling = d["INSTELLINGSNAAM ACTUEEL"]
-            console.log(instelling)
             updateLine("Alles", instelling, "Append")
             updateBarGraph("Alles", instelling, jaartal, "Append")
           })
       })
-      // .transition()
+
       .attr("cx", function(d) {
         return circleXScale(d.X);
       })
@@ -376,9 +356,6 @@ function updateMap(jaartal){
       .attr("class", "circle")
       .style("position", "relative")
       .style("z-index", "1000")
-      // .style("fill", function(d) {
-      //                               return "rgb("+ color(d[`TOTAAL`]) + ",0," + -(color(d[`TOTAAL`]) - 255) +")"
-      //                             })
       .style("fill", function(d){
         if ((jaartal % 2) === 0){
           return "black"
@@ -388,7 +365,7 @@ function updateMap(jaartal){
         }
       })
 
-      // look at existing circles
+      // update existing circles
       circle
       .transition()
       .duration(500)
@@ -399,15 +376,11 @@ function updateMap(jaartal){
 
           return "rgb("+ color(d[`TOTAAL`]) + ",0," + -(color(d[`TOTAAL`]) - 255) +")"
         })
-
-
-
-
-
 };
 
 
 function circleXScale(x) {
+  // scales x dots
 
   var scaled = (((5.6970977783203125 - x) / (0.00920278999983715))/1.5) * (12/10)
 
@@ -415,6 +388,7 @@ function circleXScale(x) {
 }
 
 function circleYScale(y){
+  // scales y dots
   var scaled = (((50.8506076217602 - y) / (0.005925835076440901))/1.5) * (12/10)
 
   return (543/1.5) * (12/10) + scaled - 40
