@@ -16,10 +16,10 @@ var MESSAGE = "Maximaal vier staafdiagramgroepen of lijnen." +
 function onload(){
 
   // laad alle data
-  var ned = "../data/nederland.json"
-  var dataEerstejaars = "../data/eerstejaars.json"
-  var dataUni = "../data/instellingen.json"
-  var GEODATASteden = "../data/GEODATASteden.json"
+  var ned = "data/nederland.json"
+  var dataEerstejaars = "data/eerstejaars.json"
+  var dataUni = "data/instellingen.json"
+  var GEODATASteden = "data/geoDataSteden.json"
 
   var requests = [d3.json(ned), d3.json(dataEerstejaars), d3.json(dataUni),
                   d3.json(GEODATASteden)];
