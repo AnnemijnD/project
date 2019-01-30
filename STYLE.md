@@ -31,9 +31,9 @@ function toCelsius(fahrenheit) {
 `
 ```javascript
 var provinces = map.selectAll(".provinces")
-    .data(topojson.feature(europe, europe.objects.FranceProvinces).features)
-    .enter()
-    .append("g")
+                    .data(topojson.feature(europe, europe.objects.FranceProvinces).features)
+                    .enter()
+                    .append("g")
  ```
 
  ## Line Length < 80
