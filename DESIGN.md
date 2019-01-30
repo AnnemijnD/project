@@ -5,7 +5,8 @@ en jaren?
 ## Data
 ### Bron
 -	DUO (https://www.duo.nl/open_onderwijsdata/databestanden/ho/ingeschreven/wo-ingeschr/ingeschrevenen-wo3.jsp). Csv is gedownload.
--	Eventueel: API studiekeuze123.nl. Aanvraagformulier is verzonden.
+ - http://geojson.io/
+
 
 ### Preprocessen
 Het huidige bestand is een CSV file. Er zal een json worden gecreeërd waarbij de
@@ -15,8 +16,12 @@ Provincie | Gemeentenaam | Instellingsnaam | Opleidingsvorm | Opleidingsnaam | 2
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |--- |
 Noord-Holland | Amsterdam | UvA | Voltijd | Biomedische wetenschappen | 50 | 100 | 53 | 112 | 72 | 134 | 60 | 92 | 98 | 114|
 
-Als het mogelijk is per opleiding een cijfer toe te voegen van de data van studiekeuze123.nl,
-zal dat worden gedaan per jaar.
+Ook wordt er aan alle data een "Totaal" per jaar toegevoegd. 
+
+Verder wordt er een aparte dataset gemaakt voor alle steden, zodat hier makkelijk totaal hoeveelheden van gevonden kan worden.
+
+Voor het verkrijgen van geodata van de steden voor een kaart wordt gebruik gemaakt van een website: De data is handmatig verkregen door de steden in te voeren.
+
 
 ## Diagram
 
@@ -25,23 +30,25 @@ zal dat worden gedaan per jaar.
 ## Componenten
 
 ### Kaart Nederland
-Er zal een kaart van Nederland worden weergegeven waarbij kleuren overeenkomen
+Er zal een kaart van Nederland worden weergegeven waarbij kleuren van steden overeenkomen
 met de bepaalde hoeveelheid studenten van dat jaar. Deze jaartallen zullen in te
-stellen zijn door de gebruiker.
+stellen zijn door de gebruiker. Er zal een scale functie worden gemaakt die de data zal schalen tot circles op de kaart. Wanner er op een stad wordt gedrukt, zal de lijngrafiek en de staafdiagram de data laten zien.
 
-### Staafdiagram
-Wanneer de gebruiker een opleiding en jaartal heeft geselecteerd zal een staafdiagram
-worden weergegeven die de eerstejaarsstudenten (man/vrouw) laat zien.
-Wanneer een andere opleiding wordt geselecteerd zal een tweede staafdiagram verschijnen.
-De gebruiker kan zelf de diagrammen verwijderen.
+### Grouped Staafdiagram
+Wanneer de gebruiker een opleiding, instelling en jaartal heeft geselecteerd zal een grouped staafdiagram
+worden weergegeven die de eerstejaarsstudenten (man/vrouw/totaal) laat zien. 
+Wanneer een andere stad wordt geselecteerd zal een tweede groep staven verschijnen, tot een maximum van vier. Er kan ook een opleiding en instelling worden geselecteerd via de lijngrafiek.
+De gebruiker kan zelf de diagrammen verwijderen. 
 
 ### Lijngrafiek
-De gebruiker kan een opleiding kiezen, vervolgens wordt een lijndiagram weergegeven
-welke de eerstejaarsstudenten over de jaren laat zien. Daarbij zal worden aangegeven
-wanneer de studifinanciering stopte.
+De gebruiker kan een opleiding en instelling kiezen, vervolgens wordt een lijndiagram weergegeven
+welke de eerstejaarsstudenten over de jaren laat zien. Er kan worden gelikt op de lijn, waarbij er een staafdiagram wordt toegevoegd
 
 ## Plugins
 ### D3
 * Tip
+* Simple-slider
 
 ### Bootstrap
+
+### JQuery
