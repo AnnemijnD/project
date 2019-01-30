@@ -37,3 +37,14 @@ De lijngrafiek geeft voor een instelling en een opleiding (of alle opleidingen) 
 Het gegroepeerde staafdiagram bestaat uit staven die mannen, vrouwen  en de totaalhoeveelheid studenten weergeven voor één jaar. Dit kan voor een instelling en opleiding zijn, maar ook voor een instelling en alle opleidingen. Wanneer er op een stad of een datapunt uit de lijngrafiek wordt geklikt, komt er een gegroepeerd staafdiagram bij door middel van een updatefunctie.
 
 ![](doc/barGraphs.png)
+
+## Externe bibliotheken en code
+* D3
+* Bootstrap
+* JQuery
+* https://bl.ocks.org/mbostock/3887051 Grouped bar Graph
+* https://bl.ocks.org/gordlea/27370d1eea8464b04538e6d8ced39e89 lijngrafiek
+* https://bl.ocks.org/duspviz-mit/9b6dce37101c30ab80d0bf378fe5e583 legenda 
+* https://github.com/Caged/d3-tip D3-tip
+* https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518 D3-slider
+
