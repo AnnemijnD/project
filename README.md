@@ -1,6 +1,7 @@
 # Project Annemijn Dijkhuis
-Dataprocessing project Eerstejaarsstudenten bij universiteiten
-Minor programming
+Dataprocessing project 
+Eerstejaarsstudenten bij universiteiten
+Minor programmeren
 https://annemijnd.github.io/project/
 
 # Introductie
