@@ -7,12 +7,12 @@
 * Put spaces around operators: <br></br>
 
 ``` a = b + c ```
-## Code indentation (python)
+## Code indentation (JavaScript)
 * Always use 1 tab for indentation of code blocks: <br></br>
 ```javascript
 function toCelsius(fahrenheit) {
-        return (5 / 9) * (fahrenheit - 32);
-       } 
+    return (5 / 9) * (fahrenheit - 32);
+ } 
  ```
 
 ## Statement rules (javascript & D3)
