@@ -7,9 +7,8 @@ https://annemijnd.github.io/project/
 Dit project zal de aanmeldingen van eerstejaars in kaart brengen door een database van DUO.
 
 # Gebruik
-(nog niet werkende link)
-https://annemijnd.github.io/project/index.html
+
 
 
 # Notes
-PROPOSAL.md is later toegevoegd. De eerste versie hiervan is "doc.docx". 
+PROPOSAL.md is later toegevoegd. De eerste versie hiervan is "doc.docx".

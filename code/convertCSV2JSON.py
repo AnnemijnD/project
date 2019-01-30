@@ -11,14 +11,14 @@ def convert_csv_json():
     """
 
     # load files
-    in_file = open('data/eerstejaars.csv', 'r', encoding = "ISO-8859-1")
+    in_file = open('../data/eerstejaars.csv', 'r', encoding = "ISO-8859-1")
     # open('eerstejaars.csv', 'r')
 
     # alle data
-    out_file = open('data/eerstejaars.json', 'w')
+    out_file = open('../data/eerstejaars.json', 'w')
 
     # tweede file voor data per universiteit
-    out_file2 = open("data/instellingen.json", "w")
+    out_file2 = open("../data/instellingen.json", "w")
 
     # schrijft row
     reader = csv.DictReader(in_file, delimiter=';')

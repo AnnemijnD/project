@@ -82,6 +82,7 @@ zijn vanuit alle functies.
 * Gewerkt aan een deleteknop
 * In de updatefunctie een delete optie aangemaakt
 
+
 ## DO 24/1/19
 * Hackaton
 
@@ -101,4 +102,26 @@ staat er ook een los totaal aantal studenten in de tooltip.
 * Gezorgd dat een slider werkt
 * Probeer een mooiere slider te plaatsen van simple slider. Probleem is dat deze
 axisBottom gebruikt, waardoor er nu ook een eerdere as van mij wordt gebruikt. Ik ga
-dit proberen aan te passen in de code. 
+dit proberen aan te passen in de code.
+* Het is gelukt om de class aan te passen waardoor het probleem met de axisslider is opgelost
+
+## DI 29/1/19
+* In plaats van een dropdown nu een select voor het kiezen van de lijn bij de Lijngrafiek
+* Wanneer er op een stad wordt geklikt is zie je nu lijnen voor alle universiteiten van die Stad
+en de bars
+* Dynamische legenda gemaakt met voor de lijnen. Hierdoor kan op deze manier de data
+worden aangepast, door te klikken verwijder je de data. De datakleuren veranderen mee.
+* Viewboxes toegepast. Nu is alles zichtbaar vanuit een scherm.
+
+## WO 30/1/19
+* Astitels aangemaakt waar deze nog misten
+* Er was een probleem met het laden van bepaalde data. Het bleek dat de aanwezigheid
+van zowel voltijd als deeltijdstudies deze problemen veroorzaakten. Dit is verholpen
+door de data van de deeltijdstudies te verwijderen, dit waren namelijk maar 3 studies.
+* Geprobeerd enters in de asticks te maken. Dit gaat heel moeilijk.
+* Error message van bootstrap gebruikt voor als iemand meer dan vier datasets in
+ een grafiek wil plaatsen. Besloten  om dit te doen om overzichtelijkheid te waarborgen.
+* Het bleek een uitdagen te zorgen dat bij studies waarbij geen studenten waren,
+ook het staafdiagram kon worden verwijderd. Dit is opgelost door te zorgen dat deze
+uberhaupt niet in de grafiek komen. In plaats daarvan komt er een alert "Geen
+Studenten"

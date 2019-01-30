@@ -1,3 +1,7 @@
+// Annemijn Dijkhuis 11149272
+// Eindproject Minor programmeren
+// Maakt dropdowns
+
 function makeDropdowns(){
 
   instituten = ["Kies Instelling"];

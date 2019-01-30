@@ -1,4 +1,6 @@
-// Set tooltips
+// Annemijn Dijkhuis 11149272
+// Eindproject Minor programmeren
+// Creeert en update  een kaart van Nederland
 
 // fix get max!
 
@@ -31,9 +33,7 @@ var tip = d3.tip()
 
             })
 
-
-
-function createHeatMap(dataMap, dataStud, jaartal) {
+function createMap(dataMap, jaartal) {
 
   var mapwidth = 600/1.5
   var mapheight = 700/1.5
@@ -271,50 +271,11 @@ function createHeatMap(dataMap, dataStud, jaartal) {
      .text("Aantal studenten")
      .style("font-size", "10px");
 
-    // makeDropdowns
-    // var button = d3.select("#dropdownInst")
-    //     .append("div")
-    //     .attr("class", "dropdown")
-    //     .attr("id", "dropLine-1")
-    //     .append("button")
-    //     .attr("class", "btn btn-default dropdown-toggle")
-    //     .attr("type", "button")
-    //     .attr("data-toggle", "dropdown")
-    //     .text("Instituut")
-    //     .append("span")
-    //     .attr("class", "caret")
-    //
-    // var emptyDropLine = d3.select("#dropLine-1")
-    //                       .append("ul")
-    //                       .attr("id", "dropdown-instelling")
-    //                       .attr("class", "dropdown-menu")
-    //
-    // // makeDropdowns
-    // var button = d3.select("#dropdownOpl")
-    //     .append("div")
-    //     .attr("class", "dropdown")
-    //     .attr("id", "dropLine-2")
-    //     .append("button")
-    //     .attr("class", "btn btn-default dropdown-toggle")
-    //     .attr("type", "button")
-    //     .attr("data-toggle", "dropdown")
-    //     .text("Opleiding")
-    //     .append("span")
-    //     .attr("class", "caret")
-    //
-    // var emptyDropLine2 = d3.select("#dropLine-2")
-    //                       .append("ul")
-    //                       .attr("id", "dropdown-opleiding")
-    //                       .attr("class", "dropdown-menu")
-
-
-
 
     // set standard bargraph to the Netherlands
-    var linegraphvar = lineGraph("Universiteit van Amsterdam", "Biomedische Wetenschappen")
+
     // var dropdowns = makeDropdowns(allData)
-    // var barChartVar = barChart(dataStud)
-    var barGraphVar = barGraph()
+
     // var samsBarvar = samsBar()
 }
 
@@ -323,7 +284,6 @@ function updateMap(jaartal){
 
   var svg = d3.select("#map")
 
-  // allData = dataStud
     var maxStudenten = 0;
     geoData.forEach(function(geo){
       geo["INSTELLINGEN"] = [];

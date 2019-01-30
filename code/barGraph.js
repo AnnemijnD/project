@@ -1,3 +1,6 @@
+// Annemijn Dijkhuis 11149272
+// Eindproject Minor programmeren
+// Maakt en update een staafdiagram
 
 var marginBar = {top: 40, right: 100, bottom: 30, left: 40}
 var widthBar = 1100 - marginBar.left - marginBar.right
