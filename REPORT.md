@@ -43,7 +43,7 @@ In map.js wordt een kaart van Nederland gemaakt met behulp van D3 en de eerder i
 Verder is er een updatefunctie die aan de hand van een jaartal de cirkels op de kaart plaatst op de positie van een stad. De updatefunctie wordt aangeroepen in createMap met een default waarde van 2017.
 De geodata voor de posities van de steden is handmatig verzameld en als JSON geladen. Dit is gebeurd in main.js.
 
-De cirkels zijn verbonden aan de hoeveelheid studenten die zich in dat jaar in die stad hebben aangemeld. Wanneer de slider wordt gebruikt, wordt de updatefunctie aangeroepen. De kleur en grootte van een cirkel worden bepaald aan de hand van een schaal, waarbij een grotere, blauwere cirkel meer studenten betekent dan een kleinere, rode cirkel.
+De cirkels zijn verbonden aan de hoeveelheid studenten die zich in dat jaar in die stad hebben aangemeld. Wanneer de slider wordt gebruikt, wordt de updatefunctie aangeroepen. De kleur en grootte van een cirkel worden bepaald aan de hand van een schaal, waarbij een grotere, blauwere cirkel meer studenten betekent dan een kleinere, rode cirkel. Wanneer wordt geklikt op een cirkel, worden de updateLine en updateBarGraph functies aangeroepen.
 
 Om de cirkels op de juiste positie te zetten op de kaart wordt gebruikt gemaakt van een circleScaleX en circleScaleY functie. Deze functie is ontstaan uit het makeScaleFuncties.js script.
 
@@ -65,7 +65,7 @@ In dit stuk script wordt een functie aangeroepen die dropdowns maakt voor de lij
 
 In barGraph wordt de basis gelegd voor het kunnen neerzetten van een staafdiagram. Er worden assen, titels en een legenda aangemaakt. De updatefunctie wordt aangeroepen voor een default staafdiagram voor de studie Biomedische wetenschappen aan de UvA in 2016.
 
-In updateBarGraph worden gegroepeerde staafdiagrammen toegevoegd of verwijderd. De data van iedere staafdiagramgroep wordt opgeslagen in BARGRAPHDATA. Als het type "Append" is meegegeven, wordt er één toegevoegd. Als het type "Delete" is, wordt deze verwijderd. Wanneer de gebruiker teveel diagrammen wil plaatsen (meer dan vier), wordt een alertbox opgeroepen.
+In updateBarGraph worden gegroepeerde staafdiagrammen toegevoegd of verwijderd. De data van iedere staafdiagramgroep wordt opgeslagen in BARGRAPHDATA. Als het type "Append" is meegegeven, wordt er één toegevoegd. Als het type "Delete" is, wordt deze verwijderd. Wanneer de gebruiker teveel diagrammen wil plaatsen (meer dan vier), wordt een alertbox opgeroepen. Wanneer op een staaf van een staafdiagram wordt geklikt, wordt de updateBarGraph functie opnieuw aangeroepen met het type "Delete".
 
 
 De assen worden opnieuw geschaald en de groepen staafdiagrammen die er al staan worden aangepast aan de hand van het enter/update/exit systeem.
@@ -83,7 +83,7 @@ Er wordt  een uniek id aangemaakt voor iedere lijn die wordt toegevoegd aan LINE
 
 Om lijnen en .dots toe te voegen of te verwijderen wordt gewerkt met de enter/update/exit methode.
 
-Als laatste wordt de legenda geupdate.
+Als laatste wordt de legenda geupdate. Wanneer op een legendablok wordt geklikt, wordt de bijbehorende lijn verwijderd.
 
 
 #### HTML
@@ -101,4 +101,4 @@ Op deze pagina worden de gebruikte bronnen getoond. Er wordt gebruik gemaakt van
 #### CSS
 
 ##### index.css
-Deze stylesheet is algemeen voor alle pagina's die worden gemaakt. 
+Deze stylesheet is algemeen voor alle pagina's die worden gemaakt.
