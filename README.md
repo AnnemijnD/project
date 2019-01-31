@@ -3,27 +3,30 @@ Annemijn Dijkhuis
 11149272
 Minor Programmeren UvA
 
-## Dataprocessing project 
+## Dataprocessing project
 https://annemijnd.github.io/project/
+
+## Video
+https://youtu.be/51fUawofG08
 
 # Introductie
 
 Nederland is een kennisland en het is daarom belangrijk dat er wordt gezorgd dat iedereen die wil kan studeren.
 Met de bezuinigingen, verandering in het leenstel en de vele discussies die om het studeren heen plaats vinden,
-is het belangrijk feit van fictie kunnen blijven onderschijden en argumenten te kunnen onderbouwen met cijfers. 
-Hierom zijn voor dit project deze cijfers in kaart gebracht. 
+is het belangrijk feit van fictie kunnen blijven onderschijden en argumenten te kunnen onderbouwen met cijfers.
+Hierom zijn voor dit project deze cijfers in kaart gebracht.
 
-Daarnaast is het nuttig voor aankomend studenten om te weten hoe hun mogelijke studie er uit ziet. 
+Daarnaast is het nuttig voor aankomend studenten om te weten hoe hun mogelijke studie er uit ziet.
 
-In dit project zal met data van DUO de aanmeldingen van eerstejaars bachelorstudenten op het WO worden weergegeven tussen 2013 en 2017. Dit wordt op drie verschillende manieren gedaan. 
+In dit project zal met data van DUO de aanmeldingen van eerstejaars bachelorstudenten op het WO worden weergegeven tussen 2013 en 2017. Dit wordt op drie verschillende manieren gedaan.
 
 ## Kaart van Nederland
 
 Door middel van een kaart van Nederland kan worden gezien in welke steden de meeste studenten zich hebben aangemeld per jaar.
-Er kan met een slider van jaar worden veranderd. Grotere bolletjes representeren meer studenten. Daarnaast geeft de kleur, zoals deze op de legenda is weergegeven, aan hoeveel studenten zih hebben aangemeld. De kaart is verbonden aan de lijngrafiek en aan de staafdiagram door op een stad te klikken. 
+Er kan met een slider van jaar worden veranderd. Grotere bolletjes representeren meer studenten. Daarnaast geeft de kleur, zoals deze op de legenda is weergegeven, aan hoeveel studenten zih hebben aangemeld. De kaart is verbonden aan de lijngrafiek en aan de staafdiagram door op een stad te klikken.
 
 ![](doc/map.png)
-        
+
 
 ## Lijngrafiek
 
@@ -44,7 +47,6 @@ Het gegroepeerde staafdiagram bestaat uit staven die mannen, vrouwen  en de tota
 * JQuery
 * https://bl.ocks.org/mbostock/3887051 Grouped bar Graph
 * https://bl.ocks.org/gordlea/27370d1eea8464b04538e6d8ced39e89 lijngrafiek
-* https://bl.ocks.org/duspviz-mit/9b6dce37101c30ab80d0bf378fe5e583 legenda 
+* https://bl.ocks.org/duspviz-mit/9b6dce37101c30ab80d0bf378fe5e583 legenda
 * https://github.com/Caged/d3-tip D3-tip
 * https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518 D3-slider
-
