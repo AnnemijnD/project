@@ -137,14 +137,14 @@ De lijngrafiek interactief is gemaakt met het staafdiagram. Daarnaast is het mog
 ## Uitdagingen
 Bij de kaart lag de uitdaging bij het positioneren van de cirkels. Er was hiervan geen voorbeeld te vinden op het internet. Het was daardoor lastig, maar het is uiteindelijk gelukt door het testen (zoals beschreven in makeScaleFucntions.js) en maken van de scalefunctie.
 
-Wat ook lastig bleek, was het maken van een grouped bargraph waarbij je de bargraph zo kan updaten dat er groepen bij komen. Dit was moeilijk omdat je te maken hebt met meerdere "rect" elementen in één "g"-element. Dit is uiteindelijk toch gelukt, door het goed uit te denken en gebruik te maken van de enter/update/exit methode.
+Wat ook lastig bleek, was het maken van een gegroepeerd staafidagram waarbij je het diagram zo kan updaten dat er groepen bij komen. Dit was moeilijk omdat je te maken hebt met meerdere "rect" elementen in één "g"-element. Dit is uiteindelijk toch gelukt, door het goed uit te denken en gebruik te maken van de enter/update/exit methode voor de verschillende elementen.
 
 Verder was het voor de lijngrafiek lastig om meerdere lijnen te maken in één lijngrafiek, die ook nog dynamisch moet zijn. Daarbij moest een legenda gemaakt worden die zó update, dat de kleuren blijven kloppen met de lijnen. Door o.a. id's toe te voegen aan de lijnen is dit wel gelukt.
 
 ## Beslissingen
 
 #### Argumentatie
-De grooste reden van veranderingen in mijn eerte plan, is vooral het interactiever maken van mijn visualisaties. Verder zijn de veranderingen gebaseerd op de vraag: is de huidige vorm nuttig voor de gebruiker? Zo leek mij het niet nuttig voor een gebruiker om te kunnen zien in welke provincies meer mensen zich aanmelden voor studies. Wél leek het mij nuttig om te kunnen onderscheiden in welke steden deze studenten zich aanmelden. Daarnaast leek het me niet nuttig om staafdiagrammen te laten zien die niet op dezelfde schaal zijn weergegeven. Ik denk daarom dat mijn veranderingen bijdragen aan de zin van de informatie die de gebruiker kan opdoen op mijn pagina.
+De grooste reden van veranderingen in mijn eerte plan, is het interactiever maken van mijn visualisaties. Verder zijn de veranderingen gebaseerd op de vraag: is de huidige vorm nuttig voor de gebruiker? Zo leek mij het niet nuttig voor een gebruiker om te kunnen zien in welke provincies meer mensen zich aanmelden voor studies. Wél leek het mij nuttig om te kunnen onderscheiden in welke steden deze studenten zich aanmelden. Daarnaast leek het me niet nuttig om staafdiagrammen te laten zien die niet op dezelfde schaal zijn weergegeven. Ik denk daarom dat mijn veranderingen bijdragen aan de zin van de informatie die de gebruiker kan opdoen op mijn pagina.
 
 #### Toevoegingen in toekomst
 Als ik verder zou werken aan deze site, zou ik wellicht door middel van een webscraper toch proberen de beoordelingen van de verschillende studies te implementeren. Dit zou de pagina extra informatief maken voor aankomend studenten.
