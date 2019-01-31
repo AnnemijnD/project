@@ -100,7 +100,7 @@ Er wordt  een uniek id aangemaakt voor iedere lijn die wordt toegevoegd aan LINE
 
 Om lijnen en .dots toe te voegen of te verwijderen wordt gewerkt met de enter/update/exit methode.
 
-Als laatste wordt de legenda geupdate. Wanneer op een legendablok wordt geklikt, wordt de bijbehorende lijn verwijderd.
+Als laatste wordt de legenda geupdate naar de aanwezige lijnen. Wanneer op een legendablok wordt geklikt, wordt de bijbehorende lijn verwijderd.
 
 
 #### HTML
@@ -110,7 +110,7 @@ Deze html pagina laat een korte introductie zien van de pagina. Er wordt gebruik
 
 ##### vis.html
 Op deze pagina worden de visualisaties getoond. Hier worden ook alle Javascript
-bestanden ingeladen. Er wordt gebruik gemaakt van bootstrap en D3. Verder wordt index.css aangeroepen. Er zijn divs gemaakt voor de visualisaties en voor de errorbalk.
+bestanden ingeladen. Er wordt gebruik gemaakt van bootstrap en D3. Verder wordt index.css aangeroepen. Er zijn divs gemaakt voor de visualisaties en voor de errorbalk om een duidelijke basis te creeëren voor de site.
 
 ##### bronnen.html
 Op deze pagina worden de gebruikte bronnen getoond. Er wordt gebruik gemaakt van bootstrap en index.css wordt aangeroepen voor styling.
