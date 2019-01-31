@@ -9,6 +9,17 @@ Voor dit project zijn met behulp van data van DUO verschillende visualisaties ge
 
 ![](doc/view.png)
 
+### Overzicht pagina
+
+#### Kaart van nederland
+Op deze kaart van Nederland zijn cirkels te zien die verschillende studentensteden representeren. De grootte en kleuren van de cirkels geven aan hoeveel studenten zich in deze stad hebben aangemeld. Wanneer op één van deze cirkels wordt geklikt, wordt een lijngrafiek en een gegroepeerd staafdiagram gemaakt van de instellingen in deze stad.
+
+#### Lijngrafiek
+Een lijngrafiek geeft weer hoeveel studenten zich hebben aangemeld van 2013 tot en met 2017. Een lijn kan door de gebruiker worden toegevoegd door gebruik van de dropdowns of door te klikken op een van de steden in de kaart van Nederland. Een lijn kan worden verwijderd door te klikken op een legendablok.
+
+#### Gegroepeerd staafdiagram
+
+
 ### Functionaliteit Code
 
 #### Python
