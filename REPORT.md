@@ -139,7 +139,7 @@ Bij de kaart lag de uitdaging bij het positioneren van de cirkels. Er was hierva
 
 Wat ook lastig bleek, was het maken van een grouped bargraph waarbij je de bargraph zo kan updaten dat er groepen bij komen. Dit was moeilijk omdat je te maken hebt met meerdere "rect" elementen in één "g"-element. Dit is uiteindelijk toch gelukt, door het goed uit te denken en gebruik te maken van de enter/update/exit methode.
 
-Verder was het voor de lijngrafiek lastig om meerdere lijnen te maken in één lijngrafiek, die ook nog dynamisch moet zijn. Wat daarbij kwam kijken, was een legenda die zó update, dat de kleuren blijven kloppen met de lijnen. Door o.a. id's toe te voegen aan de lijnen is dit wel gelukt.
+Verder was het voor de lijngrafiek lastig om meerdere lijnen te maken in één lijngrafiek, die ook nog dynamisch moet zijn. Daarbij moest een legenda gemaakt worden die zó update, dat de kleuren blijven kloppen met de lijnen. Door o.a. id's toe te voegen aan de lijnen is dit wel gelukt.
 
 ## Beslissingen
 
