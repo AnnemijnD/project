@@ -13,7 +13,7 @@ Voor dit project zijn met behulp van data van DUO verschillende visualisaties ge
 
 ## Overzicht pagina
 
-#### Kaart van nederland
+#### Kaart van Nederland
 Op deze kaart van Nederland zijn cirkels te zien die verschillende studentensteden representeren. De grootte en kleuren van de cirkels geven aan hoeveel studenten zich in deze stad in het geselecteerde jaar hebben aangemeld. Een jaar kan worden geselecteerd door gebruik te maken van de slider. Wanneer op één van deze cirkels wordt geklikt, wordt een lijngrafiek en een gegroepeerd staafdiagram gemaakt van de instellingen in deze stad.
 
 #### Lijngrafiek
@@ -27,7 +27,7 @@ In deze visualisatie worden gegroepeerde staadiagrammen (GS) getoond, waarbij co
 #### Python
 
 ##### convertCSV2JSON.py
-In deze functie wordt de CSV file met data omgezet naar een bruikbare JSON. Verder wordt hier data geparsed. Masters en deeltijdstudies worden verwijderd. Sommige studies staan er twee keer in, één keer als "bachelor" en één keer als "propedeuse bachelor". Deze twee getallen worden samengevoegd.
+In deze functie wordt de CSV file met data omgezet naar een bruikbare JSON. Verder wordt hier data geparsed. Masters en deeltijdstudies worden verwijderd. Sommige studies staan er twee keer in, één keer als "bachelor" en één keer als "propedeuse bachelor". De data van deze datasets worden samengevoegd.
 
 Verder stond voor alle bachelors een "B", zoals bijvoorbeeld: "B Biomedische wetenschappen". Deze "B" wordt in dit script verwijderd.
 
@@ -82,7 +82,7 @@ In dit stuk script wordt een functie aangeroepen die dropdowns maakt voor de lij
 
 In barGraph wordt de basis gelegd voor het kunnen neerzetten van een staafdiagram. Er worden assen, titels en een legenda aangemaakt. De updatefunctie wordt aangeroepen voor een default staafdiagram voor de studie Biomedische wetenschappen aan de UvA in 2016.
 
-In updateBarGraph worden gegroepeerde staafdiagrammen toegevoegd of verwijderd. De data van iedere staafdiagramgroep wordt opgeslagen in BARGRAPHDATA. Als het type "Append" is meegegeven, wordt er één toegevoegd. Als het type "Delete" is, wordt deze verwijderd. Wanneer de gebruiker teveel diagrammen wil plaatsen (meer dan vier), wordt een alertbox opgeroepen. Wanneer op een staaf van een staafdiagram wordt geklikt, wordt de updateBarGraph functie opnieuw aangeroepen met het type "Delete".
+In updateBarGraph worden gegroepeerde staafdiagrammen toegevoegd of verwijderd. De data van iedere staafdiagramgroep wordt opgeslagen in BARGRAPHDATA. Als het type "Append" is meegegeven, wordt er één toegevoegd. Als het type "Delete" is, wordt deze verwijderd. Wanneer de gebruiker teveel diagrammen wil plaatsen (meer dan vier), wordt een alertbox opgeroepen. Ook wordt het aangegeven als de gebruiker data wil weergeven waarvan het totaal aantal studenten "0" is. Wanneer op een staaf van een staafdiagram wordt geklikt, wordt de updateBarGraph functie opnieuw aangeroepen met het type "Delete".
 
 
 De assen worden opnieuw geschaald en de groepen staafdiagrammen die er al staan worden aangepast aan de hand van het enter/update/exit systeem.
@@ -129,7 +129,7 @@ In eerste instantie was mijn idee een heatmap te maken van Nederland en de hoeve
 Ook heb ik besloten de kaart interactief te maken met het staafdiagram en de lijngrafiek.
 
 #### Staafdiagram
-In eerste instantie was mijn idee losse staafdiagrammen te maken voor iedere keer dat de gebruiker data selecteerde. Ik heb dit veranderd naar gegroepeerde staafdiagrammen, die elke keer worden toegevoegd aan een bestaand staafdiagram. Dit heb ik gedaan omdat het lastig is verschillende staafdiagrammen, die ieder veschillende assen hebben, met elkaar te vergelijken. Op de huidige manier kan er een betere vergelijking worden gemaakt, omdat er maar één y-as is.
+In eerste instantie was mijn idee losse staafdiagrammen te maken voor iedere keer dat de gebruiker data selecteerde. Ik heb dit veranderd naar gegroepeerde staafdiagrammen, die elke keer worden toegevoegd aan een bestaand staafdiagram. Dit heb ik gedaan omdat het lastig is verschillende staafdiagrammen, die ieder veschillende assen hebben, met elkaar te vergelijken. Op de huidige manier kan er een betere vergelijking worden gemaakt, omdat er maar één y-as is. Verder heb ik besloten dat de gebruiker maximaal 4 groepen in het diagram mag hebben staan, om overzicht te bewaren.
 
 #### Lijngrafiek
 De lijngrafiek interactief is gemaakt met het staafdiagram. Daarnaast is het mogelijk verschillende lijnen toe te voegen. Op deze manier kunnen verschillende studies beter worden vergeleken.
