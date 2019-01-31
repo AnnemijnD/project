@@ -1,7 +1,9 @@
 # Eindproject minor programmeren
-## Annemijn Dijkhuis - 11149272
+### Annemijn Dijkhuis - 11149272
 
-### Veranderingen in studeren
+#### LET OP - Ik heb het design document per ongeluk aangepast omdat ik dacht dat het de bedoeling was deze te updaten. Voor de goede versie, zie de oudere versie.
+
+## Veranderingen in studeren
 
 In verschillende debatten rondom studeren, denk hierbij aan de man/vrouw verhoudingen, maar ook aan de veranderingen van het studeren sinds de afschaffing van de studiefinanciering als gift, is data van aanmeldingen voor studies essentieel. Een visualisatie hiervan kan een gesprek bevorderen en aannames ondersteunen. Daarnaast kan het voor aankomend studenten wellicht prettig zijn om van een studie waarin zij geinteresseerd zijn te kunnen opzoeken hoeveel studenten er (over de agelopen jaren) zich hebben aangemeld.
 
@@ -9,7 +11,7 @@ Voor dit project zijn met behulp van data van DUO verschillende visualisaties ge
 
 ![](doc/view.png)
 
-### Overzicht pagina
+## Overzicht pagina
 
 #### Kaart van nederland
 Op deze kaart van Nederland zijn cirkels te zien die verschillende studentensteden representeren. De grootte en kleuren van de cirkels geven aan hoeveel studenten zich in deze stad in het geselecteerde jaar hebben aangemeld. Een jaar kan worden geselecteerd door gebruik te maken van de slider. Wanneer op één van deze cirkels wordt geklikt, wordt een lijngrafiek en een gegroepeerd staafdiagram gemaakt van de instellingen in deze stad.
@@ -20,7 +22,7 @@ De lijngrafiek geeft weer hoeveel studenten zich hebben aangemeld van 2013 tot e
 #### Gegroepeerd staafdiagram
 In deze visualisatie worden gegroepeerde staadiagrammen (GS) getoond, waarbij constant de waardes "Man", "Vrouw" en "Totaal" te zien zijn voor de geselecteerde instelling, opleiding en periode. Een GS kan worden toegevoegd door een stad aan te klikken in de kaart of of door een datapunt aan te klikken in de lijngrafiek. Een GS kan worden verwijderd door op één van de staven te klikken.
 
-### Functionaliteit Code
+## Functionaliteit Code
 
 #### Python
 
@@ -108,7 +110,7 @@ Deze html pagina laat een korte introductie zien van de pagina. Er wordt gebruik
 
 ##### vis.html
 Op deze pagina worden de visualisaties getoond. Hier worden ook alle Javascript
-bestanden ingeladen. Er wordt gebruik gemaakt van bootstrap en D3. Verder wordt index.css aangeroepen.
+bestanden ingeladen. Er wordt gebruik gemaakt van bootstrap en D3. Verder wordt index.css aangeroepen. Er zijn divs gemaakt voor de visualisaties en voor de errorbalk.
 
 ##### bronnen.html
 Op deze pagina worden de gebruikte bronnen getoond. Er wordt gebruik gemaakt van bootstrap en index.css wordt aangeroepen voor styling.
@@ -117,3 +119,32 @@ Op deze pagina worden de gebruikte bronnen getoond. Er wordt gebruik gemaakt van
 
 ##### index.css
 Deze stylesheet is algemeen voor alle pagina's die worden gemaakt.
+
+
+## Veranderingen
+Er is geen gebruik meer gemaakt van de API met beoordelingen van studies. De beoordelingen bleken enkel voor het jaar 2017.
+
+#### Kaart van Nederland
+In eerste instantie was mijn idee een heatmap te maken van Nederland en de hoeveelheid studenten per provincie van elkaar te onderscheiden. Dit leek mij echter toch niet nuttig, omdat dit geen toegevoegde waarde heeft. Ik heb toen gekozen voor de cirkels met verschillende groottes en kleuren per stad. Hiervoor moest ik wel een extra dataset gebruiken.
+Ook heb ik besloten de kaart interactief te maken met het staafdiagram en de lijngrafiek.
+
+#### Staafdiagram
+In eerste instantie was mijn idee losse staafdiagrammen te maken voor iedere keer dat de gebruiker data selecteerde. Ik heb dit veranderd naar gegroepeerde staafdiagrammen, die elke keer worden toegevoegd aan een bestaand staafdiagram. Dit heb ik gedaan omdat het lastig is verschillende staafdiagrammen, die ieder veschillende assen hebben, met elkaar te vergelijken. Op de huidige manier kan er een betere vergelijking worden gemaakt, omdat er maar één y-as is.
+
+#### Lijngrafiek
+De lijngrafiek interactief is gemaakt met het staafdiagram. Daarnaast is het mogelijk verschillende lijnen toe te voegen. Op deze manier kunnen verschillende studies beter worden vergeleken.
+
+## Uitdagingen
+Bij de kaart lag de uitdaging bij het positioneren van de cirkels. Er was hiervan geen voorbeeld te vinden op het internet. Het was daardoor lastig, maar het is uiteindelijk gelukt door het testen (zoals beschreven in makeScaleFucntions.js) en maken van de scalefunctie.
+
+Wat ook lastig bleek, was het maken van een grouped bargraph waarbij je de bargraph zo kan updaten dat er groepen bij komen. Dit was moeilijk omdat je te maken hebt met meerdere "rect" elementen in één "g"-element. Dit is uiteindelijk toch gelukt, door het goed uit te denken en gebruik te maken van de enter/update/exit methode.
+
+Verder was het voor de lijngrafiek lastig om meerdere lijnen te maken in één lijngrafiek, die ook nog dynamisch moet zijn. Wat daarbij kwam kijken, was een legenda die zó update, dat de kleuren blijven kloppen met de lijnen. Door o.a. id's toe te voegen aan de lijnen is dit wel gelukt.
+
+## Beslissingen
+
+#### Argumentatie
+De grooste reden van veranderingen in mijn eerte plan, is vooral het interactiever maken van mijn visualisaties. Verder zijn de veranderingen gebaseerd op de vraag: is de huidige vorm nuttig voor de gebruiker? Zo leek mij het niet nuttig voor een gebruiker om te kunnen zien in welke provincies meer mensen zich aanmelden voor studies. Wél leek het mij nuttig om te kunnen onderscheiden in welke steden deze studenten zich aanmelden. Daarnaast leek het me niet nuttig om staafdiagrammen te laten zien die niet op dezelfde schaal zijn weergegeven. Ik denk daarom dat mijn veranderingen bijdragen aan de zin van de informatie die de gebruiker kan opdoen op mijn pagina.
+
+#### Toevoegingen in toekomst
+Als ik verder zou werken aan deze site, zou ik wellicht door middel van een webscraper toch proberen de beoordelingen van de verschillende studies te implementeren. Dit zou de pagina extra informatief maken voor aankomend studenten.
